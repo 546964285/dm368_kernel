@@ -39,6 +39,14 @@
 #include "dm365_ipipe_hw.h"
 #include "dm365_def_para.h"
 
+/* Debug functions */
+static int debug = 1;
+
+
+#define dev_dbg(dev, format, arg...)		\
+	dev_printk(KERN_DEBUG , dev , format , ## arg)
+
+
 /* IPIPE module operation state */
 struct ipipe_oper_state {
 	/* Operation state in continuous mode */
@@ -534,6 +542,8 @@ static int ipipe_process_pix_fmts(enum ipipe_pix_formats in_pix_fmt,
 				  struct ipipe_params *param)
 {
 	enum ipipe_pix_formats temp_pix_fmt;
+
+    printk("*****dm365_ipipe.ipipe_process_pix_fmts(), in_pix_fmt = %d*****\n", in_pix_fmt);
 
 	switch (in_pix_fmt) {
 	case IPIPE_BAYER_8BIT_PACK:
@@ -2400,11 +2410,13 @@ static void ipipe_set_oper_state(unsigned int state)
 
 static unsigned int ipipe_get_prev_config_state(void)
 {
+    printk("*****dm365_ipipe.ipipe_get_prev_config_state() = %d*****\n", oper_state.prev_config_state);
 	return oper_state.prev_config_state;
 }
 
 static unsigned int ipipe_get_rsz_config_state(void)
 {
+    printk("*****dm365_ipipe.ipipe_get_rsz_config_state() = %d*****\n", oper_state.rsz_config_state);
 	return oper_state.rsz_config_state;
 }
 
@@ -3253,6 +3265,20 @@ static int configure_resizer_in_cont_mode(struct device *dev,
 	struct rsz_continuous_config *cont_config =
 	    (struct rsz_continuous_config *)user_config;
 	int line_len, line_len_c, ret;
+    
+#if 1
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.out_chr_pos=%d*****\n", cont_config->out_chr_pos);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.output2.enable=%d*****\n", cont_config->output2.enable);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.output2.height=%d*****\n", cont_config->output2.height);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.output2.pix_fmt=%x*****\n", cont_config->output2.pix_fmt);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.output2.width=%d*****\n", cont_config->output2.width);
+    
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.chroma_sample_even=%d*****\n", cont_config->chroma_sample_even);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.yuv_c_max=%d*****\n", cont_config->yuv_c_max);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.yuv_c_min=%d*****\n", cont_config->yuv_c_min);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.yuv_y_max=%d*****\n", cont_config->yuv_y_max);
+    printk("*****dm365_ipipe.configure_resizer_in_cont_mode(), user_config.yuv_y_min=%d*****\n", cont_config->yuv_y_min);
+#endif
 
 	if (resizer_chained) {
 		ret = mutex_lock_interruptible(&oper_state.lock);
@@ -3354,6 +3380,8 @@ static int ipipe_set_resize_config(struct device *dev,
 						     user_config,
 						     resizer_chained,
 						     param);
+ //   printk("*****dm365_ipipe.ipipe_set_resize_config() user_config = %d*****\n", user_config-> chroma_sample_even);
+    
 	return ret;
 }
 
@@ -3455,6 +3483,26 @@ static int configure_previewer_in_cont_mode(struct device *dev,
 	struct prev_continuous_config *cont_config =
 	    (struct prev_continuous_config *)user_config;
 
+    dev_dbg(dev, "configure_previewer_in_cont_mode\n");
+    dev_dbg(dev, "\tcont_config->bypass = %d\n",cont_config->bypass);
+    dev_dbg(dev, "\tcont_config->input.colp_elep = %d\n",cont_config->input.colp_elep);
+    dev_dbg(dev, "\tcont_config->input.colp_elop = %d\n",cont_config->input.colp_elop);
+    dev_dbg(dev, "\tcont_config->input.colp_olep = %d\n",cont_config->input.colp_olep);
+    dev_dbg(dev, "\tcont_config->input.colp_olop = %d\n",cont_config->input.colp_olop);
+    dev_dbg(dev, "\tcont_config->input.align_sync = %x\n",cont_config->input.align_sync);
+    dev_dbg(dev, "\tcont_config->input.avg_filter_en = %x\n",cont_config->input.avg_filter_en);
+    dev_dbg(dev, "\tcont_config->input.clip = %x\n",cont_config->input.clip);
+    dev_dbg(dev, "\tcont_config->input.dec_en = %x\n",cont_config->input.dec_en);
+    dev_dbg(dev, "\tcont_config->input.df_gain = %d\n",cont_config->input.df_gain);
+    dev_dbg(dev, "\tcont_config->input.df_gain_thr = %d\n",cont_config->input.df_gain_thr);
+    dev_dbg(dev, "\tcont_config->input.dpc.en = %d\n",cont_config->input.dpc.en);
+    dev_dbg(dev, "\tcont_config->input.dpc.thr = %d\n",cont_config->input.dpc.thr);
+    dev_dbg(dev, "\tcont_config->input.en_df_gain = %d\n",cont_config->input.en_df_gain);
+    dev_dbg(dev, "\tcont_config->input.en_df_sub = %x\n",cont_config->input.en_df_sub);
+    dev_dbg(dev, "\tcont_config->input.gain = %x\n",cont_config->input.gain);
+    dev_dbg(dev, "\tcont_config->input.rsz = %x\n",cont_config->input.rsz);
+    dev_dbg(dev, "\tcont_config->input.rsz_start = %x\n",cont_config->input.rsz_start);
+
 	if (cont_config->input.en_df_sub) {
 		dev_err(dev, "DF subtraction is not supported\n");
 		return -EINVAL;
@@ -3514,6 +3562,8 @@ static int configure_previewer_in_ss_mode(struct device *dev,
 	struct prev_single_shot_config *ss_config =
 	    (struct prev_single_shot_config *)user_config;
 
+    dev_dbg(dev, "configure_previewer_in_ss_mode\n");
+    
 	ret = validate_preview_input_spec(dev,
 					  ss_config->input.pix_fmt,
 					  ss_config->input.image_width,
@@ -3841,6 +3891,8 @@ static int ipipe_set_preview_config(struct device *dev,
 	} else
 		ret = configure_previewer_in_cont_mode(dev, user_config, param);
 	/* continuous mode */
+
+    ipipe_dump_hw_config();
 	return ret;
 }
 struct imp_hw_interface *imp_get_hw_if(void)
@@ -3875,6 +3927,10 @@ static int ipipe_set_input_win(struct imp_window *win)
 	param->rsz_common.vsz = param->ipipe_vsz;
 	param->rsz_common.hsz = param->ipipe_hsz;
 	mutex_unlock(&oper_state.lock);
+
+    printk("******ipipe_set_input_win()*****\n");
+    
+    ipipe_dump_hw_config();
 	return 0;
 }
 static int ipipe_get_input_win(struct imp_window *win)
@@ -3899,6 +3955,8 @@ static int ipipe_get_input_win(struct imp_window *win)
 	}
 	win->hst = param->ipipe_hps;
 	mutex_unlock(&oper_state.lock);
+
+    ipipe_dump_hw_config();
 	return 0;
 }
 
@@ -3913,6 +3971,8 @@ static int ipipe_set_in_pixel_format(enum imp_pix_formats pix_fmt)
 	oper_state.in_pixel_format = pix_fmt;
 	param->rsz_common.src_img_fmt = RSZ_IMG_422;
 	mutex_unlock(&oper_state.lock);
+
+    ipipe_dump_hw_config();
 	return 0;
 }
 
@@ -3938,6 +3998,8 @@ static int ipipe_set_out_pixel_format(enum imp_pix_formats pix_fmt)
 				     param);
 
 	mutex_unlock(&oper_state.lock);
+
+    ipipe_dump_hw_config();
 	return err;
 }
 
@@ -3950,6 +4012,8 @@ static int ipipe_set_buftype(unsigned char buf_type)
 		return ret;
 	oper_state.buffer_type = buf_type;
 	mutex_unlock(&oper_state.lock);
+
+    ipipe_dump_hw_config();
 	return 0;
 }
 
@@ -3962,6 +4026,8 @@ static int ipipe_set_frame_format(unsigned char frm_fmt)
 		return ret;
 	oper_state.frame_format = frm_fmt;
 	mutex_unlock(&oper_state.lock);
+
+    ipipe_dump_hw_config();
 	return 0;
 }
 
@@ -4019,6 +4085,8 @@ static int ipipe_set_output_win(struct imp_window *win)
 	if (ret)
 		printk(KERN_ERR "error in calculating sdram offsets\n");
 	mutex_unlock(&oper_state.lock);
+
+    ipipe_dump_hw_config();
 	return ret;
 }
 static int ipipe_get_output_state(unsigned char out_sel)
@@ -4102,6 +4170,7 @@ static int dm365_ipipe_init(void)
 	oper_state.frame_format = 1;
 	oper_state.in_pixel_format = IMP_BAYER;
 	oper_state.out_pixel_format = IMP_UYVY;
+	ipipe_dump_hw_config();  //add by zhigang
 	if (oper_mode == IMP_MODE_SINGLE_SHOT)
 		printk(KERN_NOTICE
 		       "DM365 IPIPE initialized in Single Shot mode\n");

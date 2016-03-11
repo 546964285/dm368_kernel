@@ -110,7 +110,17 @@
 #define CEIL(x) ((x - (int)x)==0 ? (int)x : (int)x+1)
 
 /* Debug functions */
-static int debug;
+static int debug = 1;
+
+#define dev_dbg(dev, format, arg...)		\
+	dev_printk(KERN_DEBUG , dev , format , ## arg)
+
+#define v4l2_dbg(level, debug, dev, fmt, arg...)			\
+	do { 								\
+		if (debug >= (level))					\
+			v4l2_printk(KERN_DEBUG, dev, fmt , ## arg); 	\
+	} while (0)
+
 module_param(debug, bool, 0644);
 MODULE_PARM_DESC(debug, "Debug level (0-1)");
 
@@ -380,6 +390,9 @@ static int reg_read(struct i2c_client *client, const u8 reg)
     s32 data;
 
     data = i2c_smbus_read_word_data(client, reg);
+
+    printk("\n*****9p031.reg_read(%4x)=%x*****\n", reg,data);
+    
     return data < 0 ? data : swab16(data);
 }
 
@@ -390,6 +403,9 @@ static int reg_write(struct i2c_client *client, const u8 reg,
 
     //ret = reg_read(client, reg);
     //printk("\n***Register:0x%x actualvalue:0x%x, Value to be write:0x%x",reg,ret,data);
+    
+    printk("\n*****9p031.reg_write(%4x, %x)*****\n", reg, data);
+    
     return i2c_smbus_write_word_data(client, reg, swab16(data));
 }
 
@@ -399,8 +415,10 @@ static int reg_set(struct i2c_client *client, const u8 reg,
     int ret;
 
     ret = reg_read(client, reg);
+    dev_dbg(&client->dev, "9p031.reg_set().read: %8x from %8x", ret, reg);
     if (ret < 0)
         return ret;
+    dev_dbg(&client->dev, "9p031.reg_set().write: %8x to %8x\n", data, reg);
     return reg_write(client, reg, ret | data);
 }
 
@@ -410,6 +428,7 @@ static int reg_clear(struct i2c_client *client, const u8 reg,
     int ret;
 
     ret = reg_read(client, reg);
+    dev_dbg(&client->dev, "9p031.reg_set().read: %8x from %8x", ret, reg);
     if (ret < 0)
         return ret;
     return reg_write(client, reg, ret & ~data);
@@ -433,10 +452,12 @@ static int get_shutter(struct v4l2_subdev *sd, u32 *data)
     struct i2c_client *client = v4l2_get_subdevdata(sd);
 
     ret = reg_read(client, MT9P031_SHUTTER_WIDTH_UPPER);
+    dev_dbg(&client->dev, "9p031.get_shutter().read: %8x from %8x", ret, MT9P031_SHUTTER_WIDTH_UPPER);
     *data = ret << 16;
 
     if (ret >= 0)
         ret = reg_read(client, MT9P031_SHUTTER_WIDTH);
+        dev_dbg(&client->dev, "9p031.get_shutter().read: %8x from %8x", ret, MT9P031_SHUTTER_WIDTH);
     *data |= ret & 0xffff;
     return ret < 0 ? ret : 0;
 }
@@ -593,6 +614,7 @@ static int mt9p031_s_stream(struct v4l2_subdev *sd, int enable)
         ret = reg_set(client, MT9P031_RESTART,1);
         /*Setup PLL to generate  96MHz from extclk at 24MHz*/
         ret = mt9p031_setpll(client, 16, 1, 1);
+        //ret = mt9p031_setpll(client, 4, 1, 1);
         /*Resume*/
         ret = reg_clear(client, MT9P031_RESTART,2);
 
@@ -999,6 +1021,7 @@ static int mt9p031_queryctrl(struct v4l2_subdev *sd,
         v4l2_dbg(1, debug,sd, "control id %d not supported", qctrl->id);
         return -EINVAL;
     }
+    v4l2_dbg(1, debug,sd, "control id %d supported", qctrl->id);
     memcpy(qctrl, temp_qctrl, sizeof(*qctrl));
     return 0;
 }
@@ -1249,7 +1272,7 @@ static int mt9p031_detect(struct i2c_client *client, int *model)
     default:
         dev_err(&client->dev,
             "No MT9P031 chip detected, register read %x\n", data);
-        return -ENODEV;
+//        return -ENODEV;  // comment by andy
     }
 
     dev_info(&client->dev, "Detected a MT9P031 chip ID %x\n", data);

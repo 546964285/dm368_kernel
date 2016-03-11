@@ -57,6 +57,9 @@ struct i2c_board_info;
 extern int i2c_master_send(struct i2c_client *client, const char *buf,
 			   int count);
 extern int i2c_master_recv(struct i2c_client *client, char *buf, int count);
+extern int i2c_master_recv2(struct i2c_client *client, char * sub_addr , char* res, int count);
+extern int i2c_master_send2(struct i2c_client *client,const char *buf ,int count);
+
 
 /* Transfer num messages.
  */

@@ -92,6 +92,17 @@ static struct v4l2_input mt9p031_inputs[] = {
 };
 #endif
 
+#if defined(CONFIG_SOC_CAMERA_OV420) || defined(CONFIG_SOC_CAMERA_OV420_MODULE)
+/* Input available at the ov420 */
+static struct v4l2_input ov420_inputs[] = {
+	{
+		.index = 0,
+		.name = "Camera",
+		.type = V4L2_INPUT_TYPE_CAMERA,
+	}
+};
+#endif
+
 #if defined(CONFIG_VIDEO_TVP514X) || defined(CONFIG_VIDEO_TVP514X_MODULE)
 static struct tvp514x_platform_data tvp5146_pdata = {
        .clk_polarity = 0,
@@ -220,6 +231,27 @@ static struct vpfe_subdev_info vpfe_sub_devs[] = {
 		},
 		.board_info = {
 			I2C_BOARD_INFO("mt9p031", 0x48),
+			/* this is for PCLK rising edge */
+			.platform_data = (void *)1,
+		},
+	}
+#endif
+#if defined(CONFIG_SOC_CAMERA_OV420) || defined(CONFIG_SOC_CAMERA_OV420_MODULE)
+	{
+		.module_name = "ov420",
+		.is_camera = 1,
+		.grp_id = VPFE_SUBDEV_OV420,
+		.num_inputs = ARRAY_SIZE(ov420_inputs),
+		.inputs = ov420_inputs,
+		.ccdc_if_params = {
+			.if_type = VPFE_RAW_BAYER,
+			.hdpol = VPFE_PINPOL_POSITIVE,
+			.vdpol = VPFE_PINPOL_POSITIVE,
+		},
+		.board_info = {
+			I2C_BOARD_INFO("ov420", 0x35),
+			// FIXME:
+			//I2C_BOARD_INFO("ov420", 0x48),
 			/* this is for PCLK rising edge */
 			.platform_data = (void *)1,
 		},

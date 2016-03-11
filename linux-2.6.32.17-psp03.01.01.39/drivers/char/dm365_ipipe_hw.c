@@ -400,7 +400,7 @@ static int ipipe_setup_resizer(struct ipipe_params *params)
 	if (params->rsz_common.passthrough)
 		regw_rsz(0, RSZ_GCK_SDR);
 	else
-		regw_rsz(1, RSZ_GCK_SDR);
+		regw_rsz(1, RSZ_GCK_SDR); // should be here
 
 	rsz_set_common_params(params);
 
@@ -438,6 +438,7 @@ int ipipe_hw_setup(struct ipipe_params *config)
 		return -EINVAL;
 	}
 
+    printk("ipipe_hw_setup().enable clock to IPIPE\n");
 	/* enable clock to IPIPE */
 	vpss_enable_clock(VPSS_IPIPE_CLOCK, 1);
 	/* enable clock to MMR and modules before writting
@@ -445,6 +446,7 @@ int ipipe_hw_setup(struct ipipe_params *config)
 	 */
 	ipipe_clock_enable();
 
+    printk("config->rsz_common.source = %d, should be 0\n", config->rsz_common.source);
 	if (config->rsz_common.source == IPIPEIF_DATA) {
 		/* we need to skip configuring IPIPE */
 		regw_ip(0, IPIPE_SRC_EN);
@@ -1207,6 +1209,7 @@ int ipipe_set_bsc_regs(struct prev_bsc *bsc)
 
 void rsz_src_enable(int enable)
 {
+    printk("rsz_src_enable\n");
 	regw_rsz(enable, RSZ_SRC_EN);
 }
 
@@ -1218,6 +1221,7 @@ int rsz_enable(int rsz_id, int enable)
 		 * application. So enable RSZ_SRC_EN along with RSZ_A
 		 */
 		regw_rsz(enable, RSZ_SRC_EN);
+        printk("rsz_enable\n");
 	} else if (rsz_id == RSZ_B)
 		regw_rsz(enable, RSZ_EN_B);
 	else

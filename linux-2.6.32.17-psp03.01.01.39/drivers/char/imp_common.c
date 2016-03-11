@@ -38,6 +38,14 @@ static int serializer_initialized;
 struct imp_serializer imp_serializer_info;
 static struct imp_hw_interface *imp_hw_if;
 
+/* Debug functions */
+static int debug = 1;
+
+
+#define dev_dbg(dev, format, arg...)		\
+	dev_printk(KERN_DEBUG , dev , format , ## arg)
+
+
 int imp_common_mmap(struct file *filp,
 		    struct vm_area_struct *vma,
 		    struct imp_logical_channel *channel)
@@ -956,6 +964,17 @@ int imp_set_resizer_config(struct device *dev,
 		dev_dbg(dev, "imp_set_resizer_config, user setting\n");
 	}
 
+#if 1
+    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.oper_mode=%d*****\n",chan_config->oper_mode);
+    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.chain=%d*****\n", chan_config->chain);
+    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.len=%d*****\n", chan_config->len);
+//	    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.config.chroma_sample_even=%d*****\n",  chan_config->config->chroma_sample_even);
+//	    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.config.yuv_c_max=%d*****\n", chan_config->config->yuv_c_max);
+//	    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.config.yuv_c_min=%d*****\n", chan_config->config->yuv_c_min);
+//	    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.config.yuv_y_max=%d*****\n", chan_config->config->yuv_y_max);
+//	    printk("*****imp_common.imp_set_resizer_config(), rsz_channel_config.config.yuv_y_min=%d*****\n", chan_config->config->yuv_y_min);
+#endif
+
 	/* Update the user configuration in the hw config block or
 	   if chained, copy it to the shared block and allow previewer
 	   to configure it */
@@ -1251,6 +1270,20 @@ static int imp_common_start(struct device *dev,
 	unsigned int offset = 0;
 	unsigned long addr;
 	int status = 0;
+
+    printk("\n*****imp_common.imp_common_start()*****\n");
+    printk("convert->in_buff.buf_type = %d\n",convert->in_buff.buf_type);
+    printk("convert->in_buff.index = %d\n",convert->in_buff.index);
+    printk("convert->in_buff.offset = %d\n",convert->in_buff.offset);
+    printk("convert->in_buff.size = %d\n",convert->in_buff.size);
+    printk("convert->out_buff1.buf_type = %d\n",convert->out_buff1.buf_type);
+    printk("convert->out_buff1.index = %d\n",convert->out_buff1.index);
+    printk("convert->out_buff1.offset = %d\n",convert->out_buff1.offset);
+    printk("convert->out_buff1.size = %d\n",convert->out_buff1.size);
+    printk("convert->out_buff2.buf_type = %d\n",convert->out_buff2.buf_type);
+    printk("convert->out_buff2.index = %d\n",convert->out_buff2.index);
+    printk("convert->out_buff2.offset = %d\n",convert->out_buff2.offset);
+    printk("convert->out_buff2.size = %d\n",convert->out_buff2.size);
 
 	if ((convert->in_buff.size == 0) || (convert->in_buff.offset == 0)) {
 		dev_err(dev, "in_buff buf size or offset invalid\n");

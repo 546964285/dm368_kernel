@@ -19,7 +19,6 @@
  *    VPFE Capture driver allows applications to capture and stream video
  *    frames on DaVinci SoCs (DM6446, DM355 etc) from a YUV source such as
  *    TVP5146 or  Raw Bayer RGB image data from an image sensor
- *    such as Microns' MT9T001, mt9p031 etc.
  *
  *    These SoCs have, in common, a Video Processing Subsystem (VPSS) that
  *    consists of a Video Processing Front End (VPFE) for capturing
@@ -100,12 +99,9 @@ module_param(cont_bufsize, uint, S_IRUGO);
 
 /**
  * VPFE capture can be used for capturing video such as from TVP5146 or TVP7002
- * and for capture raw bayer data from camera sensors such as mt9p031. At this
- * point there is problem in co-existence of mt9p031 and tvp5146 due to i2c
- * address collision. So set the variable below from bootargs to do either video
- * capture or camera capture.
+ * and for capture raw bayer data from camera sensors such as ov420.
  * interface = 0 - video capture (from TVP514x or such),
- * interface = 1 - Camera capture (from mt9p031 or such)
+ * interface = 1 - Camera capture (from ov420 or such)
  * Re-visit this when we fix the co-existence issue
  */
 MODULE_PARM_DESC(interface, "interface 0-1 (default:0)");
@@ -142,7 +138,7 @@ struct ccdc_config {
 static struct vpfe_config_params config_params = {
 	.min_numbuffers = 3,
 	.numbuffers = 3,
-	.min_bufsize = 1280 * 720 * 2,
+	.min_bufsize = 400 * 400 * 2,
 	/* DM365 IPIPE supports up to 2176 pixels, otherwise you need to use raw */
 	.device_bufsize = 2176 * 2176 * 2,
 };
@@ -359,7 +355,7 @@ static int vpfe_get_camera_frame_params(struct vpfe_device *vpfe_dev)
 	 */
 	memset(&sd_fmt, 0, sizeof(sd_fmt));
 	sd_fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-	/* hard code it to match that of mt9p031 sensor */
+	/* hard code it to match that of ov420 sensor */
 	sd_fmt.fmt.pix.pixelformat = V4L2_PIX_FMT_SGRBG10;
 	/* use a value big enough */
 	sd_fmt.fmt.pix.width = 1 << 31;
@@ -487,6 +483,8 @@ static int vpfe_config_image_format(struct vpfe_device *vpfe_dev,
 	struct v4l2_format sd_fmt;
 	int i, ret = 0;
 
+        printk("\n***** vpfe_config_image_format(), std_id=%llx*****\n", *std_id);
+        
 	/* configure the ccdc based on standard */
 	for (i = 0; i < ARRAY_SIZE(vpfe_standards); i++) {
 		if (vpfe_standards[i].std_id & *std_id) {
@@ -590,7 +588,10 @@ static int vpfe_initialize_device(struct vpfe_device *vpfe_dev)
 	 * So we set it to -1. Otherwise, first entry in the standard is the
 	 * is the default
 	 */
+
+        printk("\n*****vpfe_initialize_device() *****\n" );
 	if (vpfe_dev->current_subdev->is_camera) {
+                  printk("\t***** is_camera*****\n" );
 		vpfe_dev->std_index = -1;
 		/* Set the bus/interface parameter for the sub device in ccdc */
 		ret = ccdc_dev->hw_ops.set_hw_if_params(&sdinfo->ccdc_if_params);
@@ -617,7 +618,8 @@ static int vpfe_initialize_device(struct vpfe_device *vpfe_dev)
 		ret = vpfe_get_camera_frame_params(vpfe_dev);
 
 	} else {
-		vpfe_dev->std_index = 0;
+                printk("\t***** not_camera*****\n" );
+                vpfe_dev->std_index = 0;
 		/* Configure the default format information */
 		ret = vpfe_config_image_format(vpfe_dev,
 				&vpfe_standards[vpfe_dev->std_index].std_id);
@@ -644,28 +646,40 @@ static int vpfe_initialize_device(struct vpfe_device *vpfe_dev)
 	vpfe_dev->second_output = 0;
 	vpfe_dev->second_out_img_sz = 0;
 	vpfe_dev->rsz_present = 0;
+	//vpfe_dev->rsz_present = 1; //
 	vpfe_dev->out_from = VPFE_CCDC_OUT;
 	vpfe_dev->skip_frame_count = 1;
 	vpfe_dev->skip_frame_count_init = 1;
 
 	/* TODO - revisit for MC */
-	if (!(ISNULL(imp_hw_if)) &&
-		(imp_hw_if->get_preview_oper_mode() == IMP_MODE_CONTINUOUS)) {
-		if (imp_hw_if->get_previewer_config_state()
-			== STATE_CONFIGURED) {
+    printk("*****ISNULL(imp_hw_if) = %d*****\n", ISNULL(imp_hw_if));
+    printk("*****branch.imp_hw_if = %d*****\n", (imp_hw_if->get_preview_oper_mode() == IMP_MODE_CONTINUOUS));
+    //imp_hw_if->set_preview_oper_mode(IMP_MODE_CONTINUOUS);
+    printk("*****changed branch.imp_hw_if = %d*****\n", (imp_hw_if->get_preview_oper_mode() == IMP_MODE_CONTINUOUS));
+
+    printk("*****branch.imp_hw_if.get_previewer_config_state() = %d*****\n",imp_hw_if->get_previewer_config_state() == STATE_CONFIGURED);
+
+    printk("*****vpfe_capture.imp_hw_if->name = %s*****\n",imp_hw_if->name);
+    printk("*****vpfe_capture.imp_hw_if->owner->name = %s*****\n",imp_hw_if->owner->name);
+    printk("*****vpfe_capture.imp_hw_if->get_bsc_state() = %d*****\n",imp_hw_if->get_bsc_state());
+    printk("*****vpfe_capture.imp_hw_if->get_hw_state() = %d*****\n",imp_hw_if->get_hw_state());
+
+	if (!(ISNULL(imp_hw_if)) && (imp_hw_if->get_preview_oper_mode() == IMP_MODE_CONTINUOUS)) 
+    {
+		if (imp_hw_if->get_previewer_config_state() == STATE_CONFIGURED) 
+        {
 			//v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "IPIPE Chained\n");
 			v4l2_info(&vpfe_dev->v4l2_dev, "IPIPE Chained\n");
 			vpfe_dev->imp_chained = 1;
 			vpfe_dev->out_from = VPFE_IMP_PREV_OUT;
-			if (imp_hw_if->get_resizer_config_state()
-				== STATE_CONFIGURED) {
-				v4l2_info(&vpfe_dev->v4l2_dev,
-					 "Resizer present\n");
+			if (imp_hw_if->get_resizer_config_state()== STATE_CONFIGURED) 
+            {
+				v4l2_info(&vpfe_dev->v4l2_dev, "Resizer present\n");
 				vpfe_dev->rsz_present = 1;
 				vpfe_dev->out_from = VPFE_IMP_RSZ_OUT;
-				if (imp_hw_if->get_output_state(1)) {
-					v4l2_info(&vpfe_dev->v4l2_dev,
-						  "second output present\n");
+				if (imp_hw_if->get_output_state(1)) 
+                {
+					v4l2_info(&vpfe_dev->v4l2_dev, "second output present\n");
 					vpfe_dev->second_output = 1;
 					vpfe_dev->second_out_img_sz =
 						imp_hw_if->
@@ -697,6 +711,9 @@ static int vpfe_open(struct file *file)
 
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_open\n");
 
+    printk("******vpfe_dev->imp_chained=%d*****\n",vpfe_dev->imp_chained);
+    printk("******vpfe_dev->rsz_present=%d*****\n",vpfe_dev->rsz_present);
+    
 	if (!vpfe_dev->cfg->num_subdevs) {
 		v4l2_err(&vpfe_dev->v4l2_dev, "No decoder registered\n");
 		return -ENODEV;
@@ -735,18 +752,31 @@ static void vpfe_schedule_next_buffer(struct vpfe_device *vpfe_dev)
 {
 	unsigned long addr;
 
+    printk("\nvpfe_schedule_next_buffer()\n");
 	vpfe_dev->next_frm = list_entry(vpfe_dev->dma_queue.next,
 					struct videobuf_buffer, queue);
 	list_del(&vpfe_dev->next_frm->queue);
 	vpfe_dev->next_frm->state = VIDEOBUF_ACTIVE;
 	addr = videobuf_to_dma_contig(vpfe_dev->next_frm);
 	if (vpfe_dev->out_from == VPFE_CCDC_OUT)
+    {   
 		ccdc_dev->hw_ops.setfbaddr(addr);
-	else {
+         printk("\nvpfe_schedule_next_buffer().vpfe_dev->out_from == VPFE_CCDC_OUT\n");
+    }
+	else 
+    {
 		imp_hw_if->update_outbuf1_address(NULL, addr);
+        printk("\nvpfe_schedule_next_buffer().vpfe_dev->out_from != VPFE_CCDC_OUT\n");
 		if (vpfe_dev->second_output)
+        {      
+            printk("\nvpfe_schedule_next_buffer().vpfe_dev->second_output == 1\n");
 			imp_hw_if->update_outbuf2_address(NULL,
 					addr + vpfe_dev->second_off);
+        }
+        else
+        {
+            printk("\nvpfe_schedule_next_buffer().vpfe_dev->second_output != 1\n");
+        }
 	}
 }
 
@@ -779,6 +809,7 @@ static void vpfe_process_buffer_complete(struct vpfe_device *vpfe_dev)
 	vpfe_dev->cur_frm->size = vpfe_dev->fmt.fmt.pix.sizeimage;
 	wake_up_interruptible(&vpfe_dev->cur_frm->done);
 	vpfe_dev->cur_frm = vpfe_dev->next_frm;
+    printk("*****vpfe_process_buffer_complete()*****\n");
 }
 
 static irqreturn_t vpfe_bsc_isr(int irq, void *dev_id)
@@ -786,6 +817,8 @@ static irqreturn_t vpfe_bsc_isr(int irq, void *dev_id)
 	struct vpfe_device *vpfe_dev = dev_id;
 	unsigned long* addr = 0;
 	unsigned long* tb_ptr;
+
+    printk("*****vpfe_bsc_isr()*****\n");
 
 	/*Copy bsc results to the end of the current frame*/
     if (vpfe_dev->cur_frm) {
@@ -813,6 +846,8 @@ static irqreturn_t vpfe_isr(int irq, void *dev_id)
 	int fid;
 
 	field = vpfe_dev->fmt.fmt.pix.field;
+
+    printk("*****vpfe_capture.vpfe_isr()*****\n");
 
 	/* if streaming not started, don't do anything */
 	if (!vpfe_dev->started)
@@ -917,11 +952,16 @@ static irqreturn_t vpfe_imp_dma_isr(int irq, void *dev_id)
 
 	/* if streaming not started, don't do anything */
 	if (!vpfe_dev->started)
+    {   
+        printk("vpfe_imp_dma_isr().streaming not started\n");
 		return IRQ_HANDLED;
+    }
 
 	field = vpfe_dev->fmt.fmt.pix.field;
+    printk("vpfe_imp_dma_isr().field = %d\n, should be 1", field);
 
 	if (field == V4L2_FIELD_NONE) {
+        printk("vpfe_imp_dma_isr().V4L2_FIELD_NONE\n");
 		/* handle progressive frame capture */
 		if (vpfe_dev->cur_frm != vpfe_dev->next_frm)
 			vpfe_process_buffer_complete(vpfe_dev);
@@ -950,10 +990,18 @@ static irqreturn_t vpfe_imp_update_isr(int irq, void *dev_id)
 
 	/* if streaming not started, don't do anything */
 	if (!vpfe_dev->started)
+    {   
+        printk("vpfe_imp_update_isr().streaming not started\n");
 		return IRQ_HANDLED;
+    }
+//	    if(vpfe_dev->cur_frm == vpfe_dev->next_frm)
+//	        printk("vpfe_dev->cur_frm == vpfe_dev->next_frm\n");
+//	    if(!list_empty(&vpfe_dev->dma_queue))
+//	        printk("!list_empty(&vpfe_dev->dma_queue\n");
 
 	if (!list_empty(&vpfe_dev->dma_queue) &&
 		vpfe_dev->cur_frm == vpfe_dev->next_frm) {
+		printk("vpfe_imp_update_isr().dma_queue\n");
 		spin_lock(&vpfe_dev->dma_queue_lock);
 		vpfe_schedule_next_buffer(vpfe_dev);
 		spin_unlock(&vpfe_dev->dma_queue_lock);
@@ -996,8 +1044,10 @@ static int vpfe_attach_irq(struct vpfe_device *vpfe_dev)
 			"Error: requesting VINT0 interrupt\n");
 		return ret;
 	}
-
+//	    vpfe_dev->out_from = VPFE_IMP_RSZ_OUT;
+	printk("\n@@@@@@@@@@@@@ vpfe_dev->out_from  is %d\n", vpfe_dev->out_from);
 	if (vpfe_dev->out_from == VPFE_CCDC_OUT) {
+		printk("\n@@@@@@@@@@@@@vpfe_dev->out_from == VPFE_CCDC_OUT \n");
 		frame_format = ccdc_dev->hw_ops.get_frame_format();
 		if (frame_format == CCDC_FRMFMT_PROGRESSIVE) {
 			ret = request_irq(vpfe_dev->ccdc_irq1,
@@ -1020,26 +1070,37 @@ static int vpfe_attach_irq(struct vpfe_device *vpfe_dev)
 
 		field = vpfe_dev->fmt.fmt.pix.field;
 
-		if (field == V4L2_FIELD_NONE) {
+		if (field == V4L2_FIELD_NONE) 
+        {
 			vpfe_dev->imp_update_irq = irq_info.update;
+			printk("\n@@@@@@@@@@@@@ irq_info.update is %d\n", irq_info.update);
 			ret = request_irq(irq_info.update, vpfe_imp_update_isr, IRQF_DISABLED,
 					  "Imp_Update_Irq", vpfe_dev);
 			if (ret < 0) {
 				v4l2_err(&vpfe_dev->v4l2_dev,
-					"Error: requesting VINT0 interrupt\n");
+					"Error: requesting vpfe_imp_update_isr interrupt\n");
 				return ret;
 			}
 		}
 		
 		vpfe_dev->imp_dma_irq = irq_info.sdram;
+		printk("\n@@@@@@@@@@@@@ irq_info.sdram is %d\n", irq_info.sdram);
 		ret = request_irq(irq_info.sdram,
 				  vpfe_imp_dma_isr,
 				  IRQF_DISABLED,
 				  "Imp_Sdram_Irq",
 				  vpfe_dev);
+        if (ret < 0) 
+        {
+				v4l2_err(&vpfe_dev->v4l2_dev,
+					"Error: requesting vpfe_imp_dma_isr interrupt\n");
+				return ret;
+        }
 		/*Attach bsc irq if bsc is enable*/
-		if (imp_hw_if->get_bsc_state() == 1){
+        if (imp_hw_if->get_bsc_state() == 1)
+        {
 			vpfe_dev->imp_bsc_irq = irq_info.ipipe_bsc;
+		printk("\n@@@@@@@@@@@@@ (irq_info.ipipe_bsc is %d\n", (irq_info.ipipe_bsc));
 			ret = request_irq(irq_info.ipipe_bsc,
 					  vpfe_bsc_isr,
 					  IRQF_DISABLED,
@@ -1364,9 +1425,10 @@ static const struct vpfe_pixel_format *
 	 * recalculate bytesperline and sizeimage since width
 	 * and height might have changed
 	 */
-	pixfmt->bytesperline = (((pixfmt->width * vpfe_pix_fmt->bpp) + 31)
-				& ~31);
+	pixfmt->bytesperline = (((pixfmt->width * vpfe_pix_fmt->bpp) + 31) & ~31);
+				
 	if (pixfmt->pixelformat == V4L2_PIX_FMT_NV12)
+		// pixfmt->sizeimage =240000;
 		pixfmt->sizeimage =
 			pixfmt->bytesperline * pixfmt->height +
 			((pixfmt->bytesperline * pixfmt->height) >> 1);
@@ -1469,6 +1531,8 @@ static int vpfe_config_imp_image_format(struct vpfe_device *vpfe_dev)
 		goto imp_exit;
 	}
 
+    printk("*****vpfe_dev->fmt.fmt.pix.pixelformat = %x****\n",vpfe_dev->fmt.fmt.pix.pixelformat);
+    //vpfe_dev->fmt.fmt.pix.pixelformat=0x32525942;
 	if (vpfe_dev->fmt.fmt.pix.pixelformat == V4L2_PIX_FMT_SBGGR16)
 		imp_pix = IMP_BAYER;
 	else if (vpfe_dev->fmt.fmt.pix.pixelformat == V4L2_PIX_FMT_UYVY)
@@ -1477,13 +1541,13 @@ static int vpfe_config_imp_image_format(struct vpfe_device *vpfe_dev)
 		imp_pix = IMP_YUV420SP;
 	else {
 		v4l2_err(&vpfe_dev->v4l2_dev,
-			"pixel format not supported at IMP\n");
+			"pixel format not supported at IMP 1\n");
 		goto imp_exit;
 	}
 
 	if (imp_hw_if->set_out_pixel_format(imp_pix) < 0) {
 		v4l2_err(&vpfe_dev->v4l2_dev, "pixel format not supported"
-			 " at IMP\n");
+			 " at IMP 2\n");
 		goto imp_exit;
 	}
 
@@ -1526,6 +1590,11 @@ static int vpfe_config_imp_image_format(struct vpfe_device *vpfe_dev)
 	}
 
 	bytesperline = imp_hw_if->get_line_length(0);
+
+    printk("****bytesperline = %d******\n",bytesperline);
+    printk("****vpfe_dev->fmt.fmt.pix.bytesperline = %d******\n",vpfe_dev->fmt.fmt.pix.bytesperline);
+    printk("****vpfe_dev->fmt.fmt.pix.pixelformat = %x******\n",vpfe_dev->fmt.fmt.pix.pixelformat);
+    
 	if (bytesperline !=
 		vpfe_dev->fmt.fmt.pix.bytesperline) {
 		v4l2_err(&vpfe_dev->v4l2_dev, "Mismatch between bytesperline"
@@ -1550,6 +1619,15 @@ static int vpfe_s_fmt_vid_cap(struct file *file, void *priv,
 	int ret = 0;
 
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_fmt_vid_cap\n");
+    printk("*****vpfe_capture.vpfe_s_fmt_vid_cap()*****\n");
+
+    printk("\tpix_w is:%d\n",fmt->fmt.pix.width);
+    printk("\tpix_h is:%d\n",fmt->fmt.pix.height);
+    printk("\tpix_pixelformat is:%x\n",fmt->fmt.pix.pixelformat);
+    printk("\ta=%c\n",(fmt->fmt.pix.pixelformat)&&0xff);
+    printk("\tb=%c\n",((fmt->fmt.pix.pixelformat)>>8)&&0xff);
+    printk("\tc=%c\n",((fmt->fmt.pix.pixelformat)>>16)&&0xff);
+    printk("\td=%c\n",((fmt->fmt.pix.pixelformat)>>24)&&0xff);
 
 	/* If streaming is started, return error */
 	if (vpfe_dev->started) {
@@ -1568,6 +1646,11 @@ static int vpfe_s_fmt_vid_cap(struct file *file, void *priv,
 	if (ret)
 		return ret;
 
+//	    fmt->fmt.pix.width=400;
+//	    fmt->fmt.pix.height=400;
+//	    printk("\t* pix_w is:%d\n",fmt->fmt.pix.width);
+//	    printk("\t* pix_h is:%d\n",fmt->fmt.pix.height);
+
 	sdinfo = vpfe_dev->current_subdev;
 	if (sdinfo->is_camera) {
 		/*
@@ -1583,6 +1666,12 @@ static int vpfe_s_fmt_vid_cap(struct file *file, void *priv,
 			 * Set Crop size to frame size. Application needs to call
 			 * S_CROP to change it after S_FMT
 			 */
+
+//	                            fmt->fmt.pix.width=400;
+//	                            fmt->fmt.pix.height=400;
+                            printk("\t* pix_w is:%d in is_camera\n",fmt->fmt.pix.width);
+                            printk("\t* pix_h is:%d in is_camera\n",fmt->fmt.pix.height);
+
 			vpfe_dev->crop.width = fmt->fmt.pix.width;
 			vpfe_dev->crop.height = fmt->fmt.pix.height;
 		} else
@@ -1598,6 +1687,8 @@ static int vpfe_s_fmt_vid_cap(struct file *file, void *priv,
 		 */
 		vpfe_dev->crop.width = fmt->fmt.pix.width;
 		vpfe_dev->crop.height = fmt->fmt.pix.height;
+                              printk("\t* pix_w is:%d in imp_chained\n",fmt->fmt.pix.width);
+                              printk("\t* pix_h is:%d in imp_chained\n",fmt->fmt.pix.height);
 
 		/* set image capture parameters in the ccdc if */
 		ret = vpfe_config_ccdc_image_format(vpfe_dev);
@@ -1612,10 +1703,17 @@ static int vpfe_s_fmt_vid_cap(struct file *file, void *priv,
 		 * up. So processing is different for both cases
 		 */
 		if (vpfe_dev->current_subdev->is_camera)
+                    {      
+                           printk("\t* pix_w is:%d in current_subdev->is_camera\n",fmt->fmt.pix.width);
+                           printk("\t* pix_h is:%d in current_subdev->is_camera\n",fmt->fmt.pix.height);
 			ret = vpfe_config_ccdc_image_format(vpfe_dev);
-
+                    }
 		if (!ret)
+                    {
+                           printk("\t* pix_w is:%d in ret=0\n",fmt->fmt.pix.width);
+                           printk("\t* pix_h is:%d in ret=0\n",fmt->fmt.pix.height);
 			ret = vpfe_config_imp_image_format(vpfe_dev);
+                    }
 	}
 
 s_fmt_out:
@@ -1629,7 +1727,7 @@ static int vpfe_try_fmt_vid_cap(struct file *file, void *priv,
 	struct vpfe_device *vpfe_dev = video_drvdata(file);
 	const struct vpfe_pixel_format *pix_fmts;
 
-	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_try_fmt_vid_cap\n");
+	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_try_fmt_vid_cap. fmt = %x\n", f->fmt.pix.pixelformat);
 
 	pix_fmts = vpfe_check_format(vpfe_dev, &f->fmt.pix);
 	if (NULL == pix_fmts)
@@ -1730,6 +1828,7 @@ static int vpfe_s_input(struct file *file, void *priv, unsigned int index)
 	u32 input = 0, output = 0;
 
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_input\n");
+printk("*****vpfe_capture.vpfe_s_input()*****\n");
 
 	ret = mutex_lock_interruptible(&vpfe_dev->lock);
 	if (ret)
@@ -1850,14 +1949,15 @@ static int vpfe_s_std(struct file *file, void *priv, v4l2_std_id *std_id)
 	struct vpfe_device *vpfe_dev = video_drvdata(file);
 	struct vpfe_subdev_info *sdinfo;
 	int ret = 0;
-
+	
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_std\n");
-
+printk("*****vpfe_capture.vpfe_s_std()*****\n");
+	
 	/* Call decoder driver function to set the standard */
 	ret = mutex_lock_interruptible(&vpfe_dev->lock);
 	if (ret)
 		return ret;
-
+	
 	sdinfo = vpfe_dev->current_subdev;
 	/* If streaming is started, return device busy error */
 	if (vpfe_dev->started) {
@@ -1865,7 +1965,7 @@ static int vpfe_s_std(struct file *file, void *priv, v4l2_std_id *std_id)
 		ret = -EBUSY;
 		goto unlock_out;
 	}
-
+	
 	/* Set filter value in ths7353 for TVP7002 input path */
 	if (sdinfo->grp_id == VPFE_SUBDEV_TVP7002) {
 		ret = v4l2_device_call_until_err(&vpfe_dev->v4l2_dev,
@@ -1875,7 +1975,7 @@ static int vpfe_s_std(struct file *file, void *priv, v4l2_std_id *std_id)
 			goto unlock_out;
 		}
 	}
-
+	
 	ret = v4l2_device_call_until_err(&vpfe_dev->v4l2_dev, sdinfo->grp_id,
 					 core, s_std, *std_id);
 	if (ret < 0) {
@@ -1883,10 +1983,11 @@ static int vpfe_s_std(struct file *file, void *priv, v4l2_std_id *std_id)
 		goto unlock_out;
 	}
 	ret = vpfe_config_image_format(vpfe_dev, std_id);
-
+	
 unlock_out:
 	mutex_unlock(&vpfe_dev->lock);
-	return ret;
+return ret;
+//        return 0;
 }
 
 static int vpfe_g_std(struct file *file, void *priv, v4l2_std_id *std_id)
@@ -1921,6 +2022,9 @@ static int vpfe_videobuf_setup(struct videobuf_queue *vq,
 	 * than or equal to the maximum specified in the driver. Assume here the
 	 * user has called S_FMT and sizeimage has been calculated.
 	 */
+
+    printk("\nvpfe_dev->fmt.fmt.pix.sizeimage=%d\n",vpfe_dev->fmt.fmt.pix.sizeimage);
+    
 	*size = vpfe_dev->fmt.fmt.pix.sizeimage;
 	if (imp_hw_if->get_bsc_state() == 1)
 		*size += 0x4000;
@@ -2070,6 +2174,7 @@ unlock_out:
 static int vpfe_querybuf(struct file *file, void *priv,
 			 struct v4l2_buffer *buf)
 {
+    int ret;
 	struct vpfe_device *vpfe_dev = video_drvdata(file);
 
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_querybuf\n");
@@ -2084,7 +2189,12 @@ static int vpfe_querybuf(struct file *file, void *priv,
 		return -EINVAL;
 	}
 	/* Call videobuf_querybuf to get information */
-	return videobuf_querybuf(&vpfe_dev->buffer_queue, buf);
+	//return videobuf_querybuf(&vpfe_dev->buffer_queue, buf);
+
+    ret = videobuf_querybuf(&vpfe_dev->buffer_queue, buf);
+    printk("\nvpfe_querybuf(),buf->length = %d\n",buf->length);
+
+    return ret;
 }
 
 static int vpfe_qbuf(struct file *file, void *priv,
@@ -2194,8 +2304,11 @@ static int vpfe_streamon(struct file *file, void *priv,
 	}
 
 	sdinfo = vpfe_dev->current_subdev;
+
+    //printk("\n \n");
 	ret = v4l2_device_call_until_err(&vpfe_dev->v4l2_dev, sdinfo->grp_id,
 					video, s_stream, 1);
+    //printk("\n \n");
 
 	if (ret && (ret != -ENOIOCTLCMD)) {
 		v4l2_err(&vpfe_dev->v4l2_dev, "stream on failed in subdev\n");
@@ -2219,6 +2332,9 @@ static int vpfe_streamon(struct file *file, void *priv,
 	/* Get the next frame from the buffer queue */
 	vpfe_dev->next_frm = list_entry(vpfe_dev->dma_queue.next,
 					struct videobuf_buffer, queue);
+    printk("*****vpfe_dev->next_frm=%lx*****\n",vpfe_dev->next_frm);
+    printk("*****vpfe_dev->cur_frm=%lx*****\n",vpfe_dev->cur_frm);
+    printk("*****vpfe_dev->cur_frm = vpfe_dev->next_frm*****\n");
 	vpfe_dev->cur_frm = vpfe_dev->next_frm;
 	/* Remove buffer from the buffer queue */
 	list_del(&vpfe_dev->cur_frm->queue);
@@ -2227,6 +2343,7 @@ static int vpfe_streamon(struct file *file, void *priv,
 	/* Initialize field_id and started member */
 	vpfe_dev->field_id = 0;
 	addr = videobuf_to_dma_contig(vpfe_dev->cur_frm);
+    printk("*****videobuf_to_dma_contig() = %lx*****\n", addr);
 
 	/* Calculate field offset */
 	vpfe_calculate_offsets(vpfe_dev);
@@ -2279,11 +2396,14 @@ out:
 	ret = 0;
 	vpfe_start_capture(vpfe_dev);
 	mutex_unlock(&vpfe_dev->lock);
+    printk("*****vpfe_streamon().out*****\n");
 	return ret;
 unlock_out:
 	mutex_unlock(&vpfe_dev->lock);
+    printk("*****vpfe_streamon().unlock_out*****\n");
 streamoff:
 	ret = videobuf_streamoff(&vpfe_dev->buffer_queue);
+    printk("*****vpfe_streamon().streamoff*****\n");
 	return ret;
 }
 
@@ -2364,6 +2484,7 @@ static int vpfe_s_ctrl(struct file *file, void *priv,
 	struct vpfe_subdev_info *sub_dev = vpfe_dev->current_subdev;
 
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_ctrl\n");
+printk("*****vpfe_capture.vpfe_s_ctrl()*****\n");
 
 	return v4l2_device_call_until_err(&vpfe_dev->v4l2_dev, sub_dev->grp_id,
 					  core, s_ctrl, ctrl);
@@ -2424,6 +2545,7 @@ static int vpfe_s_crop(struct file *file, void *priv,
 	int ret = 0, max_height, max_width;
 
 	v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev, "vpfe_s_crop\n");
+printk("*****vpfe_capture.vpfe_s_crop()*****\n");
 
 	ret = mutex_lock_interruptible(&vpfe_dev->lock);
 	if (ret)
@@ -2508,33 +2630,39 @@ static int vpfe_s_parm(struct file *file, void *priv,
 	struct v4l2_captureparm *capparam = &parm->parm.capture;
 	struct vpfe_device *vpfe_dev = video_drvdata(file);
 	int ret = -EINVAL;
+	
+    printk("*****vpfe_capture.vpfe_s_parm()*****\n");
+    printk("\t*****parm.parm.capture.timeperframe.numerator = %d\n", parm->parm.capture.timeperframe.numerator);
+    printk("\t*****parm.parm.capture.timeperframe.denominator = %d\n", parm->parm.capture.timeperframe.denominator);
+    printk("\t*****parm.parm.capture.capturemode = %d", parm->parm.capture.capturemode);
 
+	
 	/* TODO - Revisit it before submitting to upstream */
 	if (!cpu_is_davinci_dm365()) {
 		v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev,
 			"Ioctl not supported on this platform\n");
 		goto out;
 	}
-
+	
 	if (vpfe_dev->started) {
 		v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev,
 			"Steaming ON. Cannot change capture streaming params.");
 		goto out;
 	}
-
+	
 	if (vpfe_dev->std_info.frame_format) {
 		v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev,
 			"Supported only for progressive scan");
 		goto out;
 	}
-
+	
 	if (!capparam->timeperframe.numerator ||
 	    !capparam->timeperframe.denominator) {
 		v4l2_dbg(1, debug, &vpfe_dev->v4l2_dev,
 			"invalid timeperframe");
 		goto out;
 	}
-
+	
 	if (capparam->timeperframe.numerator !=
 	    vpfe_dev->std_info.fps.numerator ||
 	    capparam->timeperframe.denominator >
@@ -2550,11 +2678,11 @@ static int vpfe_s_parm(struct file *file, void *priv,
 			vpfe_dev->std_info.fps.denominator);
 		goto out;
 	}
-
+	
 	ret = mutex_lock_interruptible(&vpfe_dev->lock);
 	if (ret)
 		goto out;
-
+	
 	vpfe_dev->timeperframe = capparam->timeperframe;
 	vpfe_dev->skip_frame_count = vpfe_dev->std_info.fps.denominator/
 					capparam->timeperframe.denominator;
@@ -2932,6 +3060,10 @@ static __init int vpfe_probe(struct platform_device *pdev)
 	video_set_drvdata(vpfe_dev->video_dev, vpfe_dev);
 	i2c_adap = i2c_get_adapter(1);
 	vpfe_cfg = pdev->dev.platform_data;
+//	    printk("platform_data->card_name = %s",vpfe_cfg->card_name);
+//	    printk("platform_data->ccdc = %s",vpfe_cfg->ccdc);
+//	    printk("platform_data->clocks = %s",vpfe_cfg->clocks);
+    
 	num_subdevs = vpfe_cfg->num_subdevs;
 	vpfe_dev->sd = kmalloc(sizeof(struct v4l2_subdev *) * num_subdevs,
 				GFP_KERNEL);
@@ -2947,11 +3079,7 @@ static __init int vpfe_probe(struct platform_device *pdev)
 
 		sdinfo = &vpfe_cfg->sub_devs[i];
 		/**
-		 * register subdevices based on interface setting. Currently
-		 * tvp5146 and mt9p031 cannot co-exists due to i2c address
-		 * conflicts. So only one of them is registered. Re-visit this
-		 * once we have support for i2c switch handling in i2c driver
-		 * framework
+		 * register subdevices based on interface setting. 
 		 */
 		if (interface == sdinfo->is_camera) {
 			/* setup input path */

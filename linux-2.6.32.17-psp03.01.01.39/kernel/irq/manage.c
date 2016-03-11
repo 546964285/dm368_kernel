@@ -1021,6 +1021,7 @@ int request_threaded_irq(unsigned int irq, irq_handler_t handler,
 	struct irq_desc *desc;
 	int retval;
 
+    printk("*****Manage.request_threaded_irq(%d)*****\n",irq);
 	/*
 	 * handle_IRQ_event() always ignores IRQF_DISABLED except for
 	 * the _first_ irqaction (sigh).  That can cause oopsing, but

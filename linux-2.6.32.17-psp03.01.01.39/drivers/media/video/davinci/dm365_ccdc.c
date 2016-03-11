@@ -32,6 +32,13 @@
 #include "dm365_ccdc_regs.h"
 #include "ccdc_hw_device.h"
 
+/* Debug functions */
+static int debug = 1;
+
+#define dev_dbg(dev, format, arg...)		\
+	dev_printk(KERN_DEBUG , dev , format , ## arg)
+
+
 static struct device *dev;
 
 /* Defauts for module configuation paramaters */
@@ -96,7 +103,7 @@ static struct ccdc_oper_config ccdc_cfg = {
 	.bayer = {
 		.pix_fmt = CCDC_PIXFMT_RAW,
 		.frm_fmt = CCDC_FRMFMT_PROGRESSIVE,
-		.win = CCDC_WIN_VGA,
+		.win = CCDC_WIN_OV420,
 		.fid_pol = VPFE_PINPOL_POSITIVE,
 		.vd_pol = VPFE_PINPOL_POSITIVE,
 		.hd_pol = VPFE_PINPOL_POSITIVE,
@@ -107,9 +114,11 @@ static struct ccdc_oper_config ccdc_cfg = {
 			.b_mg = {1, 0},
 		},
 		.cfa_pat = CCDC_CFA_PAT_MOSAIC,
-		.data_msb = CCDC_BIT_MSB_11,
+		.data_msb = CCDC_BIT_MSB_9,
+		//.data_msb = CCDC_BIT_MSB_11,
 		.config_params = {
-			.data_size = CCDC_12_BITS,
+			.data_size = CCDC_10_BITS,
+			//.data_size = CCDC_12_BITS,
 			.data_shift = CCDC_NO_SHIFT,
 			.col_pat_field0 = {
 				.olop = CCDC_GREEN_BLUE,
@@ -127,6 +136,7 @@ static struct ccdc_oper_config ccdc_cfg = {
 		},
 	},
 	.data_pack = CCDC_DATA_PACK8,
+	//.data_pack = CCDC_DATA_PACK16,
 };
 
 /* Raw Bayer formats */
@@ -311,9 +321,14 @@ static void ccdc_setwin(struct v4l2_rect *image_win,
 	horz_start = image_win->left << (ppc - 1);
 	horz_nr_pixels = ((image_win->width) << (ppc - 1)) - 1;
 
+    printk("\n******dm365_ccdc.ccdc_setwin()******\n");
+
 	/* Writing the horizontal info into the registers */
 	regw(horz_start & START_PX_HOR_MASK, SPH);
 	regw(horz_nr_pixels & NUM_PX_HOR_MASK, LNH);
+    printk("\n######################	SPH value is : %x\n",horz_start & START_PX_HOR_MASK);
+    printk("\n######################	LNH value is : %x\n",horz_nr_pixels & NUM_PX_HOR_MASK);
+    
 	vert_start = image_win->top;
 
 	if (frm_fmt == CCDC_FRMFMT_INTERLACED) {
@@ -334,6 +349,11 @@ static void ccdc_setwin(struct v4l2_rect *image_win,
 		regw(0, VDINT0);
 	else
 		regw(vert_nr_lines, VDINT0);
+	printk("\n######################	SLV0 value is : %x\n",vert_start & START_VER_ONE_MASK);
+	printk("\n######################	SLV1 value is : %x\n",vert_start & START_VER_TWO_MASK);
+	printk("\n######################	LNV value is : %x\n",vert_nr_lines & NUM_LINES_VER);
+
+	
 	regw(vert_start & START_VER_ONE_MASK, SLV0);
 	regw(vert_start & START_VER_TWO_MASK, SLV1);
 	regw(vert_nr_lines & NUM_LINES_VER, LNV);
@@ -357,7 +377,7 @@ static void ccdc_config_bclamp(struct ccdc_black_clamp *bc)
 		/* Enable BC and horizontal clamp caculation paramaters */
 		val = val | 1 | ((bc->horz.mode & CCDC_HORZ_BC_MODE_MASK) <<
 		CCDC_HORZ_BC_MODE_SHIFT);
-
+		printk("\n######################	CLAMPCFG is : %x\n",val);
 		regw(val, CLAMPCFG);
 
 		if (bc->horz.mode != CCDC_HORZ_BC_DISABLE) {
@@ -382,16 +402,18 @@ static void ccdc_config_bclamp(struct ccdc_black_clamp *bc)
 				((bc->horz.win_v_sz_calc &
 				CCDC_HORZ_BC_WIN_V_SIZE_MASK)
 				<< CCDC_HORZ_BC_WIN_V_SIZE_SHIFT);
-
+			printk("\n######################	CLHWIN0 is : %x\n",val);
 			regw(val, CLHWIN0);
 
 			val = (bc->horz.win_start_h_calc &
 				CCDC_HORZ_BC_WIN_START_H_MASK);
+			printk("\n######################	CLHWIN1 is : %x\n",val);
 			regw(val, CLHWIN1);
 
 			val =
 			    (bc->horz.
 			     win_start_v_calc & CCDC_HORZ_BC_WIN_START_V_MASK);
+			printk("\n######################	CLHWIN2 is : %x\n",val);
 			regw(val, CLHWIN2);
 		}
 
@@ -408,6 +430,7 @@ static void ccdc_config_bclamp(struct ccdc_black_clamp *bc)
 		/* Line average coefficient */
 		val |= (bc->vert.line_ave_coef <<
 			CCDC_VERT_BC_LINE_AVE_COEF_SHIFT);
+		printk("\n######################	CLVWIN0 is : %x\n",val);
 		regw(val, CLVWIN0);
 
 		/* Configured reset value */
@@ -416,22 +439,27 @@ static void ccdc_config_bclamp(struct ccdc_black_clamp *bc)
 			val =
 			    (bc->vert.
 			     reset_clamp_val & CCDC_VERT_BC_RST_VAL_MASK);
+		printk("\n######################	CLVRV is : %x\n",val);	
 			regw(val, CLVRV);
 		}
 
 		/* Optical Black horizontal start position */
 		val = (bc->vert.ob_start_h & CCDC_VERT_BC_OB_START_HORZ_MASK);
+		printk("\n######################	CLVWIN1 is : %x\n",val);
 		regw(val, CLVWIN1);
 
 		/* Optical Black vertical start position */
 		val = (bc->vert.ob_start_v & CCDC_VERT_BC_OB_START_VERT_MASK);
+		printk("\n######################	CLVWIN2 is : %x\n",val);
 		regw(val, CLVWIN2);
 
 		val = (bc->vert.ob_v_sz_calc & CCDC_VERT_BC_OB_VERT_SZ_MASK);
+		printk("\n######################	CLVWIN3 is : %x\n",val);
 		regw(val, CLVWIN3);
 
 		/* Vertical start position for BC subtraction */
 		val = (bc->vert_start_sub & CCDC_BC_VERT_START_SUB_V_MASK);
+		printk("\n######################	CLSV is : %x\n",val);
 		regw(val, CLSV);
 	}
 }
@@ -449,6 +477,7 @@ static void ccdc_config_linearization(struct ccdc_linearize *linearize)
 	    << CCDC_LIN_CORRSFT_SHIFT;
 	/* enable */
 	val |= 1;
+	printk("\n######################	LINCFG0 is : %x\n",val);
 	regw(val, LINCFG0);
 
 	/* Scale factor */
@@ -456,6 +485,7 @@ static void ccdc_config_linearization(struct ccdc_linearize *linearize)
 	    << CCDC_LIN_SCALE_FACT_INTEG_SHIFT;
 	val |= (linearize->scale_fact.decimal &
 				CCDC_LIN_SCALE_FACT_DECIMAL_MASK);
+	printk("\n######################	LINCFG1 is : %x\n",val);
 	regw(val, LINCFG1);
 
 	for (i = 0; i < CCDC_LINEAR_TAB_SIZE; i++) {
@@ -487,11 +517,12 @@ static void ccdc_config_dfc(struct ccdc_dfc *vdfc)
 	/* level shift value */
 	val |= (vdfc->def_level_shift & CCDC_VDFC_LEVEL_SHFT_MASK) <<
 		CCDC_VDFC_LEVEL_SHFT_SHIFT;
-
+	printk("\n######################	DFCCTL value is : %x\n",val);
 	regw(val, DFCCTL);
 
 	/* Defect saturation level */
 	val = vdfc->def_sat_level & CCDC_VDFC_SAT_LEVEL_MASK;
+	printk("\n######################	VDFSATLV value is : %x\n",val);
 	regw(val, VDFSATLV);
 
 	regw(vdfc->table[0].pos_vert & CCDC_VDFC_POS_MASK, DFCMEM0);
@@ -651,13 +682,14 @@ static int ccdc_config_raw(int mode)
 	 * Set EXTRG
 	 * Packed to 8 or 16 bits
 	 */
-
+	//ccdc_cfg.data_pack=CCDC_PACK_16BIT;
 	val = CCDC_YCINSWP_RAW | CCDC_CCDCFG_FIDMD_LATCH_VSYNC |
 		CCDC_CCDCFG_WENLOG_AND | CCDC_CCDCFG_TRGSEL_WEN |
 		CCDC_CCDCFG_EXTRG_DISABLE | (ccdc_cfg.data_pack &
 		CCDC_DATA_PACK_MASK);
 
 	dev_dbg(dev, "Writing 0x%x to ...CCDCFG \n", val);
+	printk("\n#########CCDCFG value is : %x\n",val);
 	regw(val, CCDCFG);
 
 	/**
@@ -672,9 +704,12 @@ static int ccdc_config_raw(int mode)
 	 */
 
 	val = CCDC_VDHDOUT_INPUT |
-		((params->vd_pol & CCDC_VD_POL_MASK) << CCDC_VD_POL_SHIFT) |
-		((params->hd_pol & CCDC_HD_POL_MASK) << CCDC_HD_POL_SHIFT) |
-		((params->fid_pol & CCDC_FID_POL_MASK) << CCDC_FID_POL_SHIFT) |
+		//((params->vd_pol & CCDC_VD_POL_MASK) << CCDC_VD_POL_SHIFT) |
+		((0 & CCDC_VD_POL_MASK) << CCDC_VD_POL_SHIFT) |		
+		//((params->hd_pol & CCDC_HD_POL_MASK) << CCDC_HD_POL_SHIFT) |
+		((0 & CCDC_HD_POL_MASK) << CCDC_HD_POL_SHIFT) |
+		//((params->fid_pol & CCDC_FID_POL_MASK) << CCDC_FID_POL_SHIFT) |
+		((0 & CCDC_FID_POL_MASK) << CCDC_FID_POL_SHIFT) |
 		((CCDC_DATAPOL_NORMAL & CCDC_DATAPOL_MASK)
 			<< CCDC_DATAPOL_SHIFT) |
 		((CCDC_EXWEN_DISABLE & CCDC_EXWEN_MASK) << CCDC_EXWEN_SHIFT) |
@@ -685,6 +720,7 @@ static int ccdc_config_raw(int mode)
 
 	regw(val, MODESET);
 	dev_dbg(dev, "Writing 0x%x to MODESET...\n", val);
+	printk("\n#########MODESET value is : %x\n",val);
 
 	/**
 	 * Configure GAMMAWD register
@@ -699,7 +735,10 @@ static int ccdc_config_raw(int mode)
 
 	val = val | ((params->data_msb & CCDC_ALAW_GAMA_WD_MASK) <<
 			CCDC_ALAW_GAMA_WD_SHIFT);
-
+	//val = val | ((CCDC_BIT_MSB_10 & CCDC_ALAW_GAMA_WD_MASK) <<
+	//		CCDC_ALAW_GAMA_WD_SHIFT);
+	
+	printk("\n#########CGAMMAWD value is : %x\n",val);
 	regw(val, CGAMMAWD);
 
 	/* Configure DPCM compression settings */
@@ -708,7 +747,7 @@ static int ccdc_config_raw(int mode)
 		val |= (module_params->compress.pred &
 			CCDC_DPCM_PREDICTOR_MASK) << CCDC_DPCM_PREDICTOR_SHIFT;
 	}
-
+	printk("\n######################MISC value is : %x\n",val);
 	regw(val, MISC);
 	/* Configure Gain & Offset */
 
@@ -724,6 +763,7 @@ static int ccdc_config_raw(int mode)
 	(params->config_params.col_pat_field1.elop << 12) |
 	(params->config_params.col_pat_field1.elep << 14);
 	regw(val, CCOLP);
+	printk("\n######################	CCOLP value is : %x\n",val);
 	dev_dbg(dev, "Writing %x to CCOLP ...\n", val);
 
 	/* Configure HSIZE register  */
@@ -733,15 +773,25 @@ static int ccdc_config_raw(int mode)
 
 	/* calculate line offset in 32 bytes based on pack value */
 	if (ccdc_cfg.data_pack == CCDC_PACK_8BIT)
+    {   
 		val |= (((params->win.width + 31) >> 5) & CCDC_LINEOFST_MASK);
+        printk("\nccdc_cfg.data_pack == CCDC_PACK_8BIT\n");
+    }
 	else if (ccdc_cfg.data_pack == CCDC_PACK_12BIT)
+    {   
+        printk("\nccdc_cfg.data_pack == CCDC_PACK_12BIT\n");
 		val |= ((((params->win.width +
 			   (params->win.width >> 2)) +
 			  31) >> 5) & CCDC_LINEOFST_MASK);
+    }
 	else
+    {   
+        printk("\nccdc_cfg.data_pack == CCDC_PACK_16BIT\n");
 		val |=
 		    ((((params->win.width * 2) +
 		       31) >> 5) & CCDC_LINEOFST_MASK);
+    }
+	printk("\n######################	HSIZE value is : %x\n",val);
 	regw(val, HSIZE);
 
 	/* Configure SDOFST register  */
@@ -752,6 +802,7 @@ static int ccdc_config_raw(int mode)
 			dev_dbg(dev, "Writing 0x4B6D to SDOFST...\n");
 		} else {
 			/* For interlace non inverse mode */
+			printk("\n#####################CCDC_FRMFMT_INTERLACED############	SDOFST value is : 0x0B6D\n");
 			regw(0x0B6D, SDOFST);
 			dev_dbg(dev, "Writing 0x0B6D to SDOFST...\n");
 		}
@@ -759,10 +810,12 @@ static int ccdc_config_raw(int mode)
 		if (params->image_invert_en) {
 			/* For progessive inverse mode */
 			regw(0x4000, SDOFST);
+			
 			dev_dbg(dev, "Writing 0x4000 to SDOFST...\n");
 		} else {
 			/* For progessive non inverse mode */
 			regw(0x0000, SDOFST);
+			printk("\n##################CCDC_FRMFMT_PROGRESSIVE########	SDOFST value is : 0 \n");
 			dev_dbg(dev, "Writing 0x0000 to SDOFST...\n");
 		}
 	}
@@ -787,9 +840,11 @@ static int ccdc_config_raw(int mode)
 
 	/* Configure Horizontal and vertical offsets(DFC,LSC,Gain) */
 	val = module_params->horz_offset & CCDC_DATA_H_OFFSET_MASK;
+	printk("\n######################	DATAHOFST value is : %x\n",val);
 	regw(val, DATAHOFST);
 
 	val = module_params->vert_offset & CCDC_DATA_V_OFFSET_MASK;
+	printk("\n######################	DATAVOFST value is : %x\n",val);
 	regw(val, DATAVOFST);
 
 	/* Setup test pattern if enabled */

@@ -1469,6 +1469,7 @@ static void ipipe_set_oper_state(unsigned int state)
 
 static unsigned int ipipe_get_prev_config_state(void)
 {
+    printk("*****dm355_ipipe.ipipe_get_prev_config_state()*****\n");
 	return oper_state.prev_config_state;
 }
 

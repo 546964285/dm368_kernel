@@ -1021,6 +1021,12 @@ config SOC_CAMERA_MT9P031
 	help
 	  This driver supports MT9P031 cameras from Micron.
 
+config SOC_CAMERA_OV420
+	tristate "ov420 support"
+	depends on I2C
+	help
+	  This driver supports ov420 cameras from OminiVision.
+
 config SOC_CAMERA_MT9V022
 	tristate "mt9v022 support"
 	depends on SOC_CAMERA && I2C

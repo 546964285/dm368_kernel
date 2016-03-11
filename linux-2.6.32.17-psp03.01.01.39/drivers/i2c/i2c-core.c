@@ -1147,6 +1147,27 @@ int i2c_master_send(struct i2c_client *client,const char *buf ,int count)
 }
 EXPORT_SYMBOL(i2c_master_send);
 
+int i2c_master_send2(struct i2c_client *client,const char *buf ,int count)
+{
+	int ret;
+	struct i2c_adapter *adap=client->adapter;
+	struct i2c_msg msg;
+
+	msg.addr = client->addr;
+	msg.flags = 0;
+	msg.len = 1+ count;
+	msg.buf = (char *)buf;
+
+	ret = i2c_transfer(adap, &msg, 1);
+
+	/* If everything went ok (i.e. 1 msg transmitted), return #bytes
+	   transmitted, else error code. */
+	//return (ret == 1) ? count : ret;
+	return ret;
+}
+EXPORT_SYMBOL(i2c_master_send2);
+
+
 /**
  * i2c_master_recv - issue a single I2C message in master receive mode
  * @client: Handle to slave device
@@ -1174,6 +1195,37 @@ int i2c_master_recv(struct i2c_client *client, char *buf ,int count)
 	return (ret == 1) ? count : ret;
 }
 EXPORT_SYMBOL(i2c_master_recv);
+
+
+int i2c_master_recv2(struct i2c_client *client, char * sub_addr , char* res, int count)
+{
+	struct i2c_adapter *adap=client->adapter;
+	struct i2c_msg msg;
+	int ret;
+
+	msg.addr = client->addr;
+	msg.flags = 0;
+	msg.len = count;
+	msg.buf = sub_addr;
+        //printk("***in i2c_master_recv2(), addr = %x *****\n", msg.addr);
+
+	ret = i2c_transfer(adap, &msg, 1);
+
+        msg.addr = client->addr;
+	msg.flags = I2C_M_RD;
+	msg.len = 1;
+	msg.buf = res;
+
+        ret = i2c_transfer(adap, &msg, 1);
+
+//        printk("***in i2c_master_recv2(), ret = %x*****\n", ret);
+	/* If everything went ok (i.e. 1 msg transmitted), return #bytes
+	   transmitted, else error code. */
+	return (ret == 1) ? count : ret;
+}
+
+EXPORT_SYMBOL(i2c_master_recv2);
+
 
 /* ----------------------------------------------------
  * the i2c address scanning function

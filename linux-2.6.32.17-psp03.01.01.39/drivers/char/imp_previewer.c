@@ -38,6 +38,13 @@
 
 #define DRIVERNAME  "DaVinciPreviewer"
 
+/* Debug functions */
+static int debug = 1;
+
+#define dev_dbg(dev, format, arg...)		\
+	dev_printk(KERN_DEBUG , dev , format , ## arg)
+
+
 struct device *prev_dev;
 
 /* prev_device structure */
