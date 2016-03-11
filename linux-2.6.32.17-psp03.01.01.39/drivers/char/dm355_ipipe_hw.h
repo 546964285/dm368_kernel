@@ -34,6 +34,7 @@ static inline u32 regr_ip(u32 offset)
 
 static inline u32 regw_ip(u32 val, u32 offset)
 {
+//    printk("regw_ip(%x,%x), offset=%d\n", val, IPIPE_IOBASE_VADDR + offset, offset);
     __raw_writel(val, IPIPE_IOBASE_VADDR + offset);
     return val;
 }

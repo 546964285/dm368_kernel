@@ -1821,8 +1821,10 @@ int davincifb_blank(int blank_mode, struct fb_info *info)
 	int retval = 0;
 
 	if (!win->own_window)
+	{
+        //printk("\n\tin davicifb.c davincifb_blank !win->own_window");
 		return -ENODEV;
-
+    }
 	if (!blank_mode) {
 		win->display_window = 1;
 		retval = info->fbops->fb_check_var(&info->var, info);
@@ -1833,7 +1835,7 @@ int davincifb_blank(int blank_mode, struct fb_info *info)
 		win->display_window = 0;
 		davinci_disp_disable_layer(win->layer);
 	}
-
+    //printk("\n\tin davicifb.c davincifb_blank retval=%d", retval);
 	return retval;
 }
 

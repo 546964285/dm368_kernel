@@ -25,6 +25,13 @@
  * and call i2c_register_board_info() */
 
 /* ov420 selected register addresses */
+#define OV420_RESET                     0x3002        // Reset for Individual Block (0: enable block; 1: reset block)
+#define OV420_CHIP_ID_HI                0x3010  // chip id high byte
+#define OV420_CHIP_ID_LO                0x3011  // chip id low byte
+#define OV420_DVP_CTRL08                0x3708
+
+
+
 #define OV420_CHIP_VERSION            0x00
 #define OV420_ROW_START           0x01
 #define OV420_COLUMN_START            0x02
@@ -38,7 +45,7 @@
 #define OV420_PIXEL_CLOCK_CONTROL     0x0A
 #define OV420_RESTART             0x0B
 #define OV420_SHUTTER_DELAY           0x0C
-#define OV420_RESET               0x0D
+// #define OV420_RESET               0x0D
 #define OV420_PLL_CONTROL         0x10
 #define OV420_PLL_CONFIG_1            0x11
 #define OV420_PLL_CONFIG_2            0x12
@@ -102,7 +109,7 @@
 /*Minimum values*/
 #define OV420_VERTICAL_BLANK_MINIMUM     (0x0008)
 
-#define MT9T031_BUS_PARAM   (SOCAM_PCLK_SAMPLE_RISING | \
+#define OV420_BUS_PARAM   (SOCAM_PCLK_SAMPLE_RISING | \
     SOCAM_PCLK_SAMPLE_FALLING | SOCAM_HSYNC_ACTIVE_HIGH |   \
     SOCAM_VSYNC_ACTIVE_HIGH | SOCAM_DATA_ACTIVE_HIGH |  \
     SOCAM_MASTER | SOCAM_DATAWIDTH_10)
@@ -112,7 +119,7 @@
 #define CEIL(x) ((x - (int)x)==0 ? (int)x : (int)x+1)
 
 /* Debug functions */
-static int debug = 0;
+static int debug = 1;
 
 
 #define dev_dbg(dev, format, arg...)		\
@@ -436,33 +443,34 @@ static int reg_write(struct i2c_client *client, const u16 reg,
         reg_tmp=reg;
         tmp[0]=(0xff00&reg_tmp)>>8;
         tmp[2]=data;
-        //ret = i2c_master_send2(client,  tmp, 2);
+        ret = i2c_master_send2(client,  tmp, 2);
 
         return ret;
 }
 
-static int reg_set(struct i2c_client *client, const u8 reg,
-           const u16 data)
+static int reg_set(struct i2c_client *client, const u16 reg,
+           const u8 data)
 {
     int ret;
 
     ret = reg_read(client, reg);
-    dev_dbg(&client->dev, "ov420.reg_set().read: %8x from %8x", ret, reg);
+    dev_dbg(&client->dev, "ov420.reg_set().read: %2x from %4x\n", ret, reg);
     if (ret < 0)
         return ret;
-    dev_dbg(&client->dev, "ov420.reg_set().write: %8x to %8x\n", data, reg);
+    dev_dbg(&client->dev, "ov420.reg_set().write: %2x to %4x\n", ret | data, reg);
     return reg_write(client, reg, ret | data);
 }
 
-static int reg_clear(struct i2c_client *client, const u8 reg,
-             const u16 data)
+static int reg_clear(struct i2c_client *client, const u16 reg,
+             const u8 data)
 {
     int ret;
 
     ret = reg_read(client, reg);
-    dev_dbg(&client->dev, "ov420.reg_set().read: %8x from %8x", ret, reg);
+    dev_dbg(&client->dev, "ov420.reg_set().read: %2x from %4x", ret, reg);
     if (ret < 0)
         return ret;
+    dev_dbg(&client->dev, "ov420.reg_set().write: %2x to %4x\n", ret & ~data, reg);
     return reg_write(client, reg, ret & ~data);
 }
 
@@ -470,10 +478,10 @@ static int set_shutter(struct v4l2_subdev *sd, const u32 data)
 {
     struct i2c_client *client = v4l2_get_subdevdata(sd);
     int ret;
-    ret = reg_write(client, OV420_SHUTTER_WIDTH_UPPER, data >> 16);
-
-    if (ret >= 0)
-        ret = reg_write(client, OV420_SHUTTER_WIDTH, data & 0xffff);
+//	    ret = reg_write(client, OV420_SHUTTER_WIDTH_UPPER, data >> 16);
+//	
+//	    if (ret >= 0)
+//	        ret = reg_write(client, OV420_SHUTTER_WIDTH, data & 0xffff);
 
     return ret;
 }
@@ -582,61 +590,185 @@ static int ov420_setpll(struct i2c_client *client, unsigned char m_factor,
 {
     int ret;
 
-    ret = reg_write(client, OV420_PLL_CONTROL,
-                  OV420_PLL_CONTROL_POWER_UP);
-
-    if (ret >= 0)
-        ret = reg_write(client, OV420_PLL_CONFIG_1,
-                  (m_factor << 8) | (n_factor & 0x003f));
-    if (ret >= 0)
-        ret = reg_write(client, OV420_PLL_CONFIG_2,
-                  p1_factor & 0x001f);
-
-    msleep(10);
-
-    if (ret >= 0)
-        ret = reg_write(client, OV420_PLL_CONTROL,
-                  OV420_PLL_CONTROL_USE_PLL_CLK);
+//	    ret = reg_write(client, OV420_PLL_CONTROL,
+//	                  OV420_PLL_CONTROL_POWER_UP);
+//	
+//	    if (ret >= 0)
+//	        ret = reg_write(client, OV420_PLL_CONFIG_1,
+//	                  (m_factor << 8) | (n_factor & 0x003f));
+//	    if (ret >= 0)
+//	        ret = reg_write(client, OV420_PLL_CONFIG_2,
+//	                  p1_factor & 0x001f);
+//	
+//	    msleep(10);
+//	
+//	    if (ret >= 0)
+//	        ret = reg_write(client, OV420_PLL_CONTROL,
+//	                  OV420_PLL_CONTROL_USE_PLL_CLK);
 
     return ret >= 0 ? 0 : -EIO;
 }
 
+//	static int ov420_init(struct v4l2_subdev *sd, u32 val)
+//	{
+//	    int ret, shutter;
+//	    struct i2c_client *client = v4l2_get_subdevdata(sd);
+//	    struct v4l2_control ctrl;
+//	    struct ov420 *ov420 = to_ov420(sd);
+//	    u32 i;
+//	    const u16 vblank = OV420_VERTICAL_BLANK_DEFAULT;
+//	
+//	    /* Disable chip output, synchronous option update */
+//	//     ret = reg_write(client, OV420_RESET, 0xff);
+//	//	    if (ret >= 0)
+//	//	        ret = reg_write(client, OV420_RESET, 0);
+//	//	
+//	//	    /*Soft Standby*/
+//	//	    if (ret >= 0)
+//	//	        ret = reg_clear(client, OV420_OUTPUT_CONTROL, 2);
+//	
+//	    /*if (ret >= 0)
+//	        ret = reg_set(client, OV420_OUTPUT_CONTROL, 1);*/
+//	
+//	    /* Set defaults of the controls*/
+//	    for (i = 0; i < ov420_num_controls; i++) {
+//	        if (ov420_controls[i].id == V4L2_CID_EXPOSURE)
+//	            i++;
+//	        ctrl.id = ov420_controls[i].id;
+//	        ctrl.value = ov420_controls[i].default_value;
+//	        ov420_set_control(sd,&ctrl);
+//	    }
+//	    /*if (ret >= 0)
+//	        ret = reg_clear(client, OV420_OUTPUT_CONTROL, 1);*/
+//	    shutter = 479 + vblank;
+//	    ret = set_shutter(sd, shutter);
+//	    calc_shutter(sd, ov420);
+//	    ov420->exposure = shutter * ov420->exp.row_time -
+//	       (ov420->exp.shutter_overlay * 2 * ov420->exp.pix_clock)/1000;
+//	    return ret >= 0 ? 0 : -EIO;
+//	}
+
 static int ov420_init(struct v4l2_subdev *sd, u32 val)
 {
-    int ret, shutter;
+    int ret;
     struct i2c_client *client = v4l2_get_subdevdata(sd);
-    struct v4l2_control ctrl;
     struct ov420 *ov420 = to_ov420(sd);
-    u32 i;
-    const u16 vblank = OV420_VERTICAL_BLANK_DEFAULT;
+    struct v4l2_control ctrl;
 
-    /* Disable chip output, synchronous option update */
-    ret = reg_write(client, OV420_RESET, 1);
-    if (ret >= 0)
-        ret = reg_write(client, OV420_RESET, 0);
+    // reg_write(client, reg, data);
+    reg_write(client, 0x3004, 0x30);
+    reg_write(client, 0x3204, 0x02);
+    reg_write(client, 0x3005, 0x02);
+    reg_write(client, 0x300C, 0x01);
+    reg_write(client, 0x3903, 0x12);
+    reg_write(client, 0x3904, 0x80);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x12);
+    reg_write(client, 0x3904, 0x40);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x1B);
+    reg_write(client, 0x3904, 0x5B);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x13);
+    reg_write(client, 0x3904, 0x11);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x22);
+    reg_write(client, 0x3904, 0x40);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x23);
+    reg_write(client, 0x3904, 0x3B);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x12);
+    reg_write(client, 0x3904, 0x00);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3903, 0x0F);
+    reg_write(client, 0x3904, 0x20);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x331C, 0x5D);
+    reg_write(client, 0x331E, 0xCA);
+    reg_write(client, 0x331F, 0x86);
+    reg_write(client, 0x331B, 0x02);
+    reg_write(client, 0x330B, 0x03);
+    reg_write(client, 0x330C, 0x2A);
+    reg_write(client, 0x4006, 0x20);
+    reg_write(client, 0x4005, 0x01);
+    reg_write(client, 0x400F, 0x01);
+    reg_write(client, 0x4010, 0x94);
+    reg_write(client, 0x4011, 0x01);
+    reg_write(client, 0x4012, 0x92);
+    reg_write(client, 0x4013, 0x21);
+    reg_write(client, 0x4028, 0x01);
+    reg_write(client, 0x4202, 0x00);
+    reg_write(client, 0x4203, 0x02);
+    reg_write(client, 0x4204, 0x01);
+    reg_write(client, 0x4205, 0x90);
+    reg_write(client, 0x4206, 0x01);
+    reg_write(client, 0x4207, 0x90);
+    reg_write(client, 0x3701, 0x00);
+    reg_write(client, 0x3702, 0x01);
+    reg_write(client, 0x3703, 0x00);
+    reg_write(client, 0x3513, 0xC0);
+    reg_write(client, 0x3505, 0x25);
+    reg_write(client, 0x300D, 0x01);
+    reg_write(client, 0x300E, 0x94);
+    reg_write(client, 0x3519, 0x2F);
+    reg_write(client, 0x3517, 0x00);
+    reg_write(client, 0x3518, 0x03);
+    reg_write(client, 0x3603, 0x20);
+    reg_write(client, 0x3905, 0x02);
+    reg_write(client, 0x3500, 0x3A);
+    reg_write(client, 0x350A, 0x00);
+    reg_write(client, 0x350B, 0x6C);
+    reg_write(client, 0x3500, 0x1A);
+    reg_write(client, 0x3404, 0x02);
+    reg_write(client, 0x3106, 0x20);
+    reg_write(client, 0x4080, 0x00);
+    reg_write(client, 0x4081, 0xC8);
+    reg_write(client, 0x4082, 0x00);
+    reg_write(client, 0x4083, 0xC8);
+    reg_write(client, 0x4084, 0x28);
+    reg_write(client, 0x4085, 0x03);
+    reg_write(client, 0x4086, 0xC2);
+    reg_write(client, 0x4087, 0x08);
+    reg_write(client, 0x4088, 0x00);
+    reg_write(client, 0x4089, 0xC8);
+    reg_write(client, 0x408A, 0x00);
+    reg_write(client, 0x408B, 0xC8);
+    reg_write(client, 0x408C, 0x22);
+    reg_write(client, 0x408D, 0x03);
+    reg_write(client, 0x408E, 0xC2);
+    reg_write(client, 0x408F, 0x08);
+    reg_write(client, 0x4090, 0x00);
+    reg_write(client, 0x4091, 0xC8);
+    reg_write(client, 0x4092, 0x00);
+    reg_write(client, 0x4093, 0xC8);
+    reg_write(client, 0x4094, 0x11);
+    reg_write(client, 0x4095, 0x03);
+    reg_write(client, 0x4096, 0xC2);
+    reg_write(client, 0x4097, 0x08);
+    reg_write(client, 0x4098, 0x0C);
+    reg_write(client, 0x4099, 0x80);
+    reg_write(client, 0x409A, 0x06);
+    reg_write(client, 0x409B, 0x0C);
+    reg_write(client, 0x409C, 0x80);
+    reg_write(client, 0x3905, 0x00);
+    reg_write(client, 0x3903, 0x0F);
+    reg_write(client, 0x3904, 0xA8);
+    reg_write(client, 0x3909, 0x37);
+    reg_write(client, 0x3907, 0xA8);
+    reg_write(client, 0x3905, 0x02);
+    reg_write(client, 0x3002, 0x00);
+    reg_write(client, 0x3002, 0x00);
+    reg_write(client, 0x4100, 0x00);
+    msleep(100);
+    reg_write(client, 0x3511, 0xFF);
+    reg_write(client, 0x351B, 0x4A);
+    reg_write(client, 0x350F, 0x48);
+    reg_write(client, 0x3510, 0x38);
+    reg_write(client, 0x351E, 0x36);
+    reg_write(client, 0x351F, 0x00);
+    reg_write(client, 0x4100, 0x30);
 
-    /*Soft Standby*/
-    if (ret >= 0)
-        ret = reg_clear(client, OV420_OUTPUT_CONTROL, 2);
-
-    /*if (ret >= 0)
-        ret = reg_set(client, OV420_OUTPUT_CONTROL, 1);*/
-
-    /* Set defaults of the controls*/
-    for (i = 0; i < ov420_num_controls; i++) {
-        if (ov420_controls[i].id == V4L2_CID_EXPOSURE)
-            i++;
-        ctrl.id = ov420_controls[i].id;
-        ctrl.value = ov420_controls[i].default_value;
-        ov420_set_control(sd,&ctrl);
-    }
-    /*if (ret >= 0)
-        ret = reg_clear(client, OV420_OUTPUT_CONTROL, 1);*/
-    shutter = 479 + vblank;
-    ret = set_shutter(sd, shutter);
-    calc_shutter(sd, ov420);
-    ov420->exposure = shutter * ov420->exp.row_time -
-       (ov420->exp.shutter_overlay * 2 * ov420->exp.pix_clock)/1000;
     return ret >= 0 ? 0 : -EIO;
 }
 
@@ -1014,6 +1146,10 @@ static int ov420_get_chip_id(struct v4l2_subdev *sd,
     struct ov420 *ov420 = to_ov420(sd);
     struct i2c_client *client = v4l2_get_subdevdata(sd);;
 
+//	    printk("ov420_get_chip_id(). id->match.type == %x\n", id->match.type);
+//	    printk("ov420_get_chip_id(). id->match.addr == %x, client->addr == %x\n", id->match.addr, client->addr);
+//	    printk("ov420_get_chip_id(). ov420->model==%d\n", ov420->model);
+
     if (id->match.type != V4L2_CHIP_MATCH_I2C_ADDR)
         return -EINVAL;
 
@@ -1166,16 +1302,20 @@ static int ov420_get_control(struct v4l2_subdev *sd,
 static int ov420_set_control(struct v4l2_subdev *sd,
                    struct v4l2_control *ctrl)
 {
-    struct ov420 *ov420 = to_ov420(sd);
+    struct ov420 *ov420 = to_ov420(sd);	
+    struct i2c_client *client = v4l2_get_subdevdata(sd); // struct i2c_client *client = sd->priv;
     const struct v4l2_queryctrl *qctrl = NULL;
-    int data = 0, ret = 0;
-    struct i2c_client *client = v4l2_get_subdevdata(sd);
-    u32 old, sw;
-    int vbmin;
-    if (NULL == ctrl)
+
+    int data = 0, ret = 0; // data for input and output,  ret is return value
+	
+    u32 old, sw;	// Shutter width
+    int vbmin; // vblank min
+    
+    printk("ov420_set_control()\n");
+	
+	if (NULL == ctrl)
         return -EINVAL;
 
-    ret = reg_set(client, OV420_OUTPUT_CONTROL, 1);
 
     qctrl = ov420_find_qctrl(ctrl->id);
     if (!qctrl) {
@@ -1185,149 +1325,152 @@ static int ov420_set_control(struct v4l2_subdev *sd,
 
     switch (ctrl->id) {
     case V4L2_CID_VFLIP:
-        if (ctrl->value){
-            data = reg_set(client, OV420_READ_MODE_2, 0x8000);
-            ov420->mirror_column = 1;
-        }else{
-            data = reg_clear(client, OV420_READ_MODE_2, 0x8000);
-            ov420->mirror_column = 0;
-        }
-        if (data < 0)
-            return -EIO;
+//	        if (ctrl->value){
+//	            data = reg_set(client, OV420_READ_MODE_2, 0x8000);
+//	            ov420->mirror_column = 1;
+//	        }else{
+//	            data = reg_clear(client, OV420_READ_MODE_2, 0x8000);
+//	            ov420->mirror_column = 0;
+//	        }
+//	        if (data < 0)
+//	            return -EIO;
         break;
     case V4L2_CID_HFLIP:
-        if (ctrl->value){
-            data = reg_set(client, OV420_READ_MODE_2, 0x4000);
-            ov420->mirror_row = 1;
-        }else{
-            data = reg_clear(client, OV420_READ_MODE_2, 0x4000);
-            ov420->mirror_row = 0;
-        }
-        if (data < 0)
-            return -EIO;
+//	        if (ctrl->value){
+//	            data = reg_set(client, OV420_READ_MODE_2, 0x4000);
+//	            ov420->mirror_row = 1;
+//	        }else{
+//	            data = reg_clear(client, OV420_READ_MODE_2, 0x4000);
+//	            ov420->mirror_row = 0;
+//	        }
+//	        if (data < 0)
+//	            return -EIO;
         break;
     case V4L2_CID_GAIN:
-        /* This control will be used to modify Gain. */
-        if (ctrl->value > qctrl->maximum || ctrl->value < qctrl->minimum){
-            printk("I receive a value that exceeds the range:%d\n",(int)ctrl->value);
-            return -EINVAL;
-        }
-        data = calc_gain(ctrl->value);
-        v4l2_dbg(1, debug, sd, "Setting gain from 0x%x to 0x%x\n",
-                 reg_read(client, OV420_GLOBAL_GAIN), data);
-        ret= reg_write(client, OV420_GLOBAL_GAIN, data);
-        if (ret < 0)
-            return -EIO;
-        /* Success */
-        ov420->gain = ctrl->value;
+//	        /* This control will be used to modify Gain. */
+//	        if (ctrl->value > qctrl->maximum || ctrl->value < qctrl->minimum){
+//	            printk("I receive a value that exceeds the range:%d\n",(int)ctrl->value);
+//	            return -EINVAL;
+//	        }
+//	        data = calc_gain(ctrl->value);
+//	        v4l2_dbg(1, debug, sd, "Setting gain from 0x%x to 0x%x\n",
+//	                 reg_read(client, OV420_GLOBAL_GAIN), data);
+//	        ret= reg_write(client, OV420_GLOBAL_GAIN, data);
+//	        if (ret < 0)
+//	            return -EIO;
+//	        /* Success */
+//	        ov420->gain = ctrl->value;
         break;
     case V4L2_CID_EXPOSURE:
-        /* ov420 has maximum == default */
-        if (ctrl->value > qctrl->maximum ||
-            ctrl->value < qctrl->minimum){
-            printk("Exposure range is exceed:%d\n",(int)ctrl->value);
-            return -EINVAL;
-        }else {
-            ov420->autoexposure = 0;
-            get_shutter(sd, &old);
-            /* Shutter width calculation,
-             * ctrl->value must be in a fixed point 24:8 in us*/
-            sw = (ctrl->value + (ov420->exp.shutter_overlay*2*
-                ov420->exp.pix_clock)/1000)/ov420->exp.row_time;
-            /* Shutter width must be greater than 1*/
-            if (sw < 1)
-                sw = 1;
-            vbmin = sw - ov420->height + 1;
-            if (vbmin < 8) {
-                vbmin = ov420->vblank;
-            }
-            if (ov420->vblank < (unsigned int)vbmin){
-                sw = ov420->vblank + ov420->height - 1;
-            }
-            ret = set_shutter(sd, sw);
-            if (ret < 0){
-                printk("I could not write shutter width register\n");
-                return -EIO;
-            } else {
-                if (ov420->vblank < (unsigned int)vbmin){
-                    ov420->exposure = sw * ov420->exp.row_time -
-                        (ov420->exp.shutter_overlay * 2 *
-                        ov420->exp.pix_clock)/1000;
-                    v4l2_dbg(1, debug, sd,
-                        "Limiting exposure to %d\n", ov420->exposure);
-                    return -EINVAL;
-                }
-                else
-                    ov420->exposure = ctrl->value;
-            }
-            v4l2_dbg(1, debug, sd,
-                "Setting shutter width from %u to %u\n",
-                old, ctrl->value);
-        }
+//	        /* ov420 has maximum == default */
+//	        if (ctrl->value > qctrl->maximum ||
+//	            ctrl->value < qctrl->minimum){
+//	            printk("Exposure range is exceed:%d\n",(int)ctrl->value);
+//	            return -EINVAL;
+//	        }else {
+//	            ov420->autoexposure = 0;
+//	            get_shutter(sd, &old);
+//	            /* Shutter width calculation,
+//	             * ctrl->value must be in a fixed point 24:8 in us*/
+//	            sw = (ctrl->value + (ov420->exp.shutter_overlay*2*
+//	                ov420->exp.pix_clock)/1000)/ov420->exp.row_time;
+//	            /* Shutter width must be greater than 1*/
+//	            if (sw < 1)
+//	                sw = 1;
+//	            vbmin = sw - ov420->height + 1;
+//	            if (vbmin < 8) {
+//	                vbmin = ov420->vblank;
+//	            }
+//	            if (ov420->vblank < (unsigned int)vbmin){
+//	                sw = ov420->vblank + ov420->height - 1;
+//	            }
+//	            ret = set_shutter(sd, sw);
+//	            if (ret < 0){
+//	                printk("I could not write shutter width register\n");
+//	                return -EIO;
+//	            } else {
+//	                if (ov420->vblank < (unsigned int)vbmin){
+//	                    ov420->exposure = sw * ov420->exp.row_time -
+//	                        (ov420->exp.shutter_overlay * 2 *
+//	                        ov420->exp.pix_clock)/1000;
+//	                    v4l2_dbg(1, debug, sd,
+//	                        "Limiting exposure to %d\n", ov420->exposure);
+//	                    return -EINVAL;
+//	                }
+//	                else
+//	                    ov420->exposure = ctrl->value;
+//	            }
+//	            v4l2_dbg(1, debug, sd,
+//	                "Setting shutter width from %u to %u\n",
+//	                old, ctrl->value);
+//	        }
         break;
     case V4L2_CID_EXPOSURE_AUTO:
-        if (ctrl->value) {
-            const u16 vblank = OV420_VERTICAL_BLANK_DEFAULT;
-            const u32 shutter_max = OV420_MAX_HEIGHT + vblank;
-            if (set_shutter(sd, ov420->height +
-                    ov420->y_skip_top + vblank) < 0)
-                return -EIO;
-
-            qctrl = ov420_find_qctrl(V4L2_CID_EXPOSURE);
-            ov420->exposure
-             =
-                (shutter_max / 2 + (ov420->height +
-                ov420->y_skip_top + vblank - 1) *
-                (qctrl->maximum - qctrl->minimum)) /
-                shutter_max + qctrl->minimum;
-            ov420->autoexposure = 1;
-        } else{
-            ov420->autoexposure = 0;
-        }break;
+//	        if (ctrl->value) {
+//	            const u16 vblank = OV420_VERTICAL_BLANK_DEFAULT;
+//	            const u32 shutter_max = OV420_MAX_HEIGHT + vblank;
+//	            if (set_shutter(sd, ov420->height +
+//	                    ov420->y_skip_top + vblank) < 0)
+//	                return -EIO;
+//	
+//	            qctrl = ov420_find_qctrl(V4L2_CID_EXPOSURE);
+//	            ov420->exposure
+//	             =
+//	                (shutter_max / 2 + (ov420->height +
+//	                ov420->y_skip_top + vblank - 1) *
+//	                (qctrl->maximum - qctrl->minimum)) /
+//	                shutter_max + qctrl->minimum;
+//	            ov420->autoexposure = 1;
+//	        } 
+//	        else
+//	        {
+//	            ov420->autoexposure = 0;
+//	        }
+        break;
     case V4L2_CID_RED_BALANCE:
     case V4L2_CID_BLUE_BALANCE:
     case V4L2_CID_BRIGHTNESS:
     case V4L2_CID_AUTOGAIN:
-        /* This control will be used to modify Gain */
-        if (ctrl->value > qctrl->maximum || ctrl->value < qctrl->minimum){
-            printk("I receive a value that exceeds the range:%d\n",(int)ctrl->value);
-            return -EINVAL;
-        }
-        data = calc_gain(ctrl->value);
-        v4l2_dbg(1, debug, sd, "Setting gain %d\n", data);
-        switch (ctrl->id) {
-            case V4L2_CID_RED_BALANCE:
-                ret = reg_write(client, OV420_RED_GAIN, data);
-                if (ret < 0){
-                    printk("Fail setting Red Gain register\n");
-                    return -EIO;
-                }
-                break;
-            case V4L2_CID_BLUE_BALANCE:
-                ret = reg_write(client, OV420_BLUE_GAIN, data);
-                if (ret < 0){
-                    printk("Fail setting Blue Gain register\n");
-                    return -EIO;
-                }
-                break;
-            case V4L2_CID_BRIGHTNESS:
-                ret = reg_write(client, OV420_GREEN_1_GAIN, data);
-                if (ret < 0){
-                    printk("Fail setting Green1 Gain register\n");
-                    return -EIO;
-                }
-                break;
-            case V4L2_CID_AUTOGAIN:
-                ret = reg_write(client, OV420_GREEN_2_GAIN, data);
-                if (ret < 0){
-                    printk("Fail setting Green2 Gain register\n");
-                    return -EIO;
-                }
-                break;
-        }
+//	        /* This control will be used to modify Gain */
+//	        if (ctrl->value > qctrl->maximum || ctrl->value < qctrl->minimum){
+//	            printk("I receive a value that exceeds the range:%d\n",(int)ctrl->value);
+//	            return -EINVAL;
+//	        }
+//	        data = calc_gain(ctrl->value);
+//	        v4l2_dbg(1, debug, sd, "Setting gain %d\n", data);
+//	        switch (ctrl->id) {
+//	            case V4L2_CID_RED_BALANCE:
+//	                ret = reg_write(client, OV420_RED_GAIN, data);
+//	                if (ret < 0){
+//	                    printk("Fail setting Red Gain register\n");
+//	                    return -EIO;
+//	                }
+//	                break;
+//	            case V4L2_CID_BLUE_BALANCE:
+//	                ret = reg_write(client, OV420_BLUE_GAIN, data);
+//	                if (ret < 0){
+//	                    printk("Fail setting Blue Gain register\n");
+//	                    return -EIO;
+//	                }
+//	                break;
+//	            case V4L2_CID_BRIGHTNESS:
+//	                ret = reg_write(client, OV420_GREEN_1_GAIN, data);
+//	                if (ret < 0){
+//	                    printk("Fail setting Green1 Gain register\n");
+//	                    return -EIO;
+//	                }
+//	                break;
+//	            case V4L2_CID_AUTOGAIN:
+//	                ret = reg_write(client, OV420_GREEN_2_GAIN, data);
+//	                if (ret < 0){
+//	                    printk("Fail setting Green2 Gain register\n");
+//	                    return -EIO;
+//	                }
+//	                break;
+//	        }
         break;
     }
-    reg_clear(client, OV420_OUTPUT_CONTROL, 1);
+//	    reg_clear(client, OV420_OUTPUT_CONTROL, 1);
 
     return 0;
 }
@@ -1336,7 +1479,7 @@ static int ov420_set_control(struct v4l2_subdev *sd,
  * this wasn't our capture interface, so, we wait for the right one */
 static int ov420_detect(struct i2c_client *client, int *model)
 {
-    s32 data;
+    s32 data, data_tmp;
 
     /* Enable the chip */
 //  data = reg_write(client, OV420_CHIP_ENABLE, 1);
@@ -1344,11 +1487,18 @@ static int ov420_detect(struct i2c_client *client, int *model)
 
     /* Read out the chip version register */
     //data = reg_read(client, OV420_CHIP_VERSION);  // 0x3010--HB, 0x3011--LB
-    data = reg_read(client, 0x3011); 
+    
+//	    data = reg_read(client, 0x3011);  // Chip ID[7:0] low byte
+//	    data_tmp = reg_read(client, 0x3010); // Chip ID[15:8] high byte
+//	    data += (data_tmp<<8);
+
+    data = reg_read(client, OV420_CHIP_ID_LO);  // Chip ID[7:0] low byte
+    data_tmp = reg_read(client, OV420_CHIP_ID_HI); // Chip ID[15:8] high byte
+    data += (data_tmp<<8);
 
     switch (data) {
-    case 0x21:
-        //*model = V4L2_IDENT_OV420;
+    case 0x421:
+        *model = V4L2_IDENT_OV420;
         break;
     default:
         dev_err(&client->dev,
@@ -1367,6 +1517,7 @@ static int ov420_probe(struct i2c_client *client,
     struct v4l2_subdev *sd;
     int pclk_pol;
     int ret;
+    
     if (!i2c_check_functionality(client->adapter,
                      I2C_FUNC_SMBUS_WORD_DATA)) {
         dev_warn(&client->dev,
@@ -1374,12 +1525,21 @@ static int ov420_probe(struct i2c_client *client,
         return -EIO;
     }
 
+//	     if (!i2c_check_functionality(client->adapter,
+//	                     I2C_FUNC_SMBUS_BYTE_DATA)) {
+//	        dev_warn(&client->dev,
+//	             "I2C-Adapter doesn't support I2C_FUNC_SMBUS_BYTE\n");
+//	        return -EIO;
+//	    }
+
+    //printk("ov420_probe(). client->dev.platform_data = %d or %s", client->dev.platform_data);
     if (!client->dev.platform_data) {
         dev_err(&client->dev, "No platform data!!\n");
         return -ENODEV;
     }
 
     pclk_pol = (int)client->dev.platform_data;
+    printk("ov420_probe().pclk_pol = %x", pclk_pol ); // mormally 1
 
     ov420 = kzalloc(sizeof(struct ov420), GFP_KERNEL);
     if (!ov420)
@@ -1412,14 +1572,23 @@ static int ov420_probe(struct i2c_client *client,
     sd = &ov420->sd;
     v4l2_i2c_subdev_init(sd, client, &ov420_ops);
     if (!pclk_pol)
+//	        reg_clear(v4l2_get_subdevdata(sd),
+//	              OV420_PIXEL_CLOCK_CONTROL, 0x8000);
+    {
         reg_clear(v4l2_get_subdevdata(sd),
-              OV420_PIXEL_CLOCK_CONTROL, 0x8000);
+            OV420_DVP_CTRL08, 0x01);
+    }
     else
+//	        reg_set(v4l2_get_subdevdata(sd),
+//	        OV420_PIXEL_CLOCK_CONTROL, 0x8000);
+    {
         reg_set(v4l2_get_subdevdata(sd),
-        OV420_PIXEL_CLOCK_CONTROL, 0x8000);
+            OV420_DVP_CTRL08, 0x01);
+    }
 
     ret = ov420_init(sd,1);
     v4l2_info(sd, "%s decoder driver registered !!\n", sd->name);
+
     return 0;
 
 clean:
@@ -1465,6 +1634,6 @@ static void __exit ov420_mod_exit(void)
 }
 module_exit(ov420_mod_exit);
 
-MODULE_DESCRIPTION("Micron OV420 Camera driver");
-MODULE_AUTHOR("Miguel Aguilar <miguel.aguilar@ridgerun.com>");
+MODULE_DESCRIPTION("OV420 ISP driver");
+MODULE_AUTHOR("Andreas  Zhang <denglitsch@gmail.com>");
 MODULE_LICENSE("GPL");

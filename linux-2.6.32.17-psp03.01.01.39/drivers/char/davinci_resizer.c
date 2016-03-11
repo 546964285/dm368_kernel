@@ -92,12 +92,15 @@ int malloc_buff(struct rsz_reqbufs *reqbuff,
 	unsigned long adr;
 	unsigned long size;
 
+//    printk("davinci.malloc_buff()\n");
+
 	/*
 	 * assigning the buf_ptr to input buffer which is array of void
 	 * pointer
 	 */
 	if (reqbuff->buf_type == RSZ_BUF_IN) {
 		dev_dbg(rsz_device, "Input buffer requested \n");
+//		printk("davinci.malloc_buff().RSZ_BUF_IN\n");
 		buf_ptr = (int *)rsz_conf_chan->input_buffer;
 		buf_size = &rsz_conf_chan->in_bufsize;
 		maxbuffers = MAX_INPUT_BUFFERS;
@@ -109,6 +112,7 @@ int malloc_buff(struct rsz_reqbufs *reqbuff,
 	 */
 	else if (reqbuff->buf_type == RSZ_BUF_OUT) {
 		dev_dbg(rsz_device, "Output buffer requested \n");
+//		printk("davinci.malloc_buff().RSZ_BUF_OUT\n");
 		buf_ptr = (int *)rsz_conf_chan->output_buffer;
 		buf_size = &rsz_conf_chan->out_bufsize;
 		maxbuffers = MAX_OUTPUT_BUFFERS;
@@ -1277,6 +1281,8 @@ static int rsz_ioctl(struct inode *inode, struct file *file,
 	struct rsz_status *status;
 	struct rsz_resize *resize;
 
+//	printk("davinci_resizer.rsz_ioctl()\n");
+
 	ret = down_trylock(&(rsz_conf_chan->chanprotection_sem));
 	if (ret != 0) {
 		dev_dbg(rsz_device, "Channel in use");
@@ -1313,7 +1319,8 @@ static int rsz_ioctl(struct inode *inode, struct file *file,
 	case RSZ_REQBUF:
 
 		/* Function to allocate the memory to input or output buffer */
-		ret = malloc_buff((struct rsz_reqbufs *)arg, rsz_conf_chan);
+//		printk("rsz_ioctl().RSZ_REQBUF\n");
+		ret = malloc_buff((struct rsz_reqbufs *)arg, rsz_conf_chan);	
 		break;
 
 		/*
@@ -1407,6 +1414,7 @@ static int rsz_ioctl(struct inode *inode, struct file *file,
 	case RSZ_RESIZE:
 
 		dev_dbg(rsz_device, "Beofre rsz_resize: PCR =%x", regr(PCR));
+//		printk("rsz_ioctl().RSZ_RESIZE\n");
 		resize = (struct rsz_resize *) arg;
 
 		ret = rsz_start((struct rsz_resize *) arg, rsz_conf_chan);

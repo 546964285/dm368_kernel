@@ -424,6 +424,20 @@ static struct davinci_gen_prgb_pdata gen_prgb_data = {
 	.vsync_len = 5,
 	.flags = 0,
 	.clock_set_function = NULL,
+
+//		.xres = 400,
+//		.yres = 640,
+//		.fps = {60, 1},
+//		.pixel_clock_khz = 2000000,
+//		.left_margin = 20,
+//		.right_margin = 10,
+//		.upper_margin = 80,
+//		.lower_margin = 40,
+//		.hsync_len = 30,
+//		.vsync_len = 40,
+//		.flags = 0,
+//		.clock_set_function = NULL,
+
 };
 
 static struct platform_device gen_prgb_device = {

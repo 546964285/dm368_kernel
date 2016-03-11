@@ -708,7 +708,7 @@ static int vpif_enum_fmt_vid_out(struct file *file, void  *priv,
 					struct v4l2_fmtdesc *fmt)
 {
 	if (fmt->index != 0) {
-		vpif_err("Invalid format index\n");
+		vpif_err("Invalid format index @ Vpif_display\n");
 		return -EINVAL;
 	}
 

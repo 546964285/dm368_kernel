@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32-17-ridgerun
- * Tue Dec 22 13:37:17 2015
+ * Thu Mar 10 13:43:00 2016
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_USB_MUSB_HDRC 1
@@ -152,6 +152,7 @@
 #define CONFIG_GENERIC_HARDIRQS_NO__DO_IRQ 1
 #define CONFIG_GROUP_SCHED 1
 #define CONFIG_HAVE_IDE 1
+#define CONFIG_LOCKD_V4 1
 #define CONFIG_BLK_DEV_RAM 1
 #define CONFIG_VM_EVENT_COUNTERS 1
 #define CONFIG_CPU_32v5 1
@@ -332,6 +333,7 @@
 #define CONFIG_FORCE_MAX_ZONEORDER 13
 #define CONFIG_HID_A4TECH_MODULE 1
 #define CONFIG_SND_DAVINCI_SOC_EVM 1
+#define CONFIG_NFS_V3 1
 #define CONFIG_JBD 1
 #define CONFIG_USB_ARCH_HAS_HCD 1
 #define CONFIG_DEFAULT_TCP_CONG "cubic"
