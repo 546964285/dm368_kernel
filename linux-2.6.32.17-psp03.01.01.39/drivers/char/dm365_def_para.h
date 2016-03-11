@@ -15,6 +15,7 @@ extern struct prev_gbce dm365_gbce_defaults;
 extern struct prev_yee dm365_yee_defaults;
 extern struct prev_car dm365_car_defaults;
 extern struct prev_cgs dm365_cgs_defaults;
+extern struct prev_bsc dm365_bsc_defaults;
 extern struct ipipe_params dm365_ipipe_defs;
 extern struct prev_single_shot_config dm365_prev_ss_config_defs;
 extern struct prev_continuous_config dm365_prev_cont_config_defs;

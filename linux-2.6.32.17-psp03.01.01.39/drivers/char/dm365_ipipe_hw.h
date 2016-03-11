@@ -51,6 +51,10 @@
 #define D3L_TB2_START_ADDR	(0xA000)
 #define D3L_TB3_START_ADDR	(0xA400)
 
+/* RAM table for bsc vectors*/
+#define IPIPE_BSC_TB0		(0x1C74000)
+#define IPIPE_BSC_TB1		(0x6000)
+#define IPIPE_BSC_TB_SIZE	(0x4000)
 /* IPIPE Register Offsets from the base address */
 #define IPIPE_SRC_EN 		(0x0000)
 #define IPIPE_SRC_MODE 		(0x0004)
@@ -254,6 +258,27 @@
 #define CGS_GN2_L_GAN		(0x374)
 #define CGS_GN2_L_SHF		(0x378)
 #define CGS_GN2_L_MIN		(0x37C)
+
+/* Boundary Signal Calculator */
+#define BSC_EN  			(0x400)
+#define BSC_MODE	  		(0x404)
+#define BSC_TYP  			(0x408)
+#define BSC_ROW_VCT  		(0x40C)
+#define BSC_ROW_SHF  		(0x410)
+#define BSC_ROW_VPOS  		(0x414)
+#define BSC_ROW_VNUM  		(0x418)
+#define BSC_ROW_VSKIP  		(0x41C)
+#define BSC_ROW_HPOS  		(0x420)
+#define BSC_ROW_HNUM  		(0x424)
+#define BSC_ROW_HSKIP  		(0x428)
+#define BSC_COL_VCT  		(0x42C)
+#define BSC_COL_SHF  		(0x430)
+#define BSC_COL_VPOS  		(0x434)
+#define BSC_COL_VNUM  		(0x438)
+#define BSC_COL_VSKIP  		(0x43C)
+#define BSC_COL_HPOS  		(0x440)
+#define BSC_COL_HNUM  		(0x444)
+#define BSC_COL_HSKIP  		(0x448)
 
 /* Resizer */
 #define RSZ_SRC_EN		(0x0)
@@ -465,6 +490,16 @@
 
 /* CGS */
 #define CAR_SHIFT_MASK			(3)
+
+/* Boundary Signal Calculator */
+#define BSC_CEN_SHIFT	(3)
+#define BSC_REN_SHIFT	(2)
+#define BSC_COL_MASK	(0x3)
+#define BSC_VCT_MASK	(0x3)
+#define BSC_SHF_MASK	(0x7)
+#define BSC_POS_MASK	(0xFFF)
+#define BSC_NUM_MASK	(0xFFF)
+#define BSC_SKIP_MASK	(0x1F)
 
 /* Resizer */
 #define RSZ_BYPASS_SHIFT		(1)

@@ -122,8 +122,10 @@
 #define PREV_CGS		17
 /* Global brighness and contrast control */
 #define PREV_GBCE		18
+/* Boundary Signal Calculator */
+#define PREV_BSC		19
 /* Last module ID */
-#define PREV_MAX_MODULES	18
+#define PREV_MAX_MODULES	19
 
 struct ipipe_float_u16 {
 	unsigned short integer;
@@ -693,6 +695,43 @@ struct prev_cgs {
 	unsigned char h_shft;
 	/* gain1 bright side minimum gain */
 	unsigned char h_min;
+};
+
+enum ipipe_bsc_input{
+	IPIPE_BSC_IN_Y,
+	IPIPE_BSC_IN_CB,
+	IPIPE_BSC_IN_CR
+};
+/* structure for Boundary Signal Calculator */
+struct prev_bsc {
+	/* enable/disable */
+	unsigned char en;
+
+	unsigned char mode;
+	unsigned char col_en;
+	unsigned char row_en;
+	enum ipipe_bsc_input y_cb_cr;
+
+	unsigned int row_vct;
+	unsigned int row_shf;
+	unsigned int row_vpos;
+	unsigned int row_vnum;
+	unsigned int row_vskip;
+	unsigned int row_hpos;
+	unsigned int row_hnum;
+	unsigned int row_hskip;
+
+	unsigned int col_vct;
+	unsigned int col_shf;
+	unsigned int col_vpos;
+	unsigned int col_vnum;
+	unsigned int col_vskip;
+	unsigned int col_hpos;
+	unsigned int col_hnum;
+	unsigned int col_hskip;
+
+	void* tb_ptr;
+
 };
 
 /* various pixel formats supported */
@@ -1347,6 +1386,7 @@ int ipipe_set_gbce_regs(struct prev_gbce *gbce);
 int ipipe_set_ee_regs(struct prev_yee *ee);
 int ipipe_set_car_regs(struct prev_car *car);
 int ipipe_set_cgs_regs(struct prev_cgs *cgs);
+int ipipe_set_bsc_regs(struct prev_bsc *bsc);
 int rsz_enable(int rsz_id, int enable);
 void rsz_src_enable(int enable);
 int rsz_set_output_address(struct ipipe_params *params,

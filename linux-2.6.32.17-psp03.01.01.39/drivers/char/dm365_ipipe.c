@@ -70,7 +70,6 @@ struct ipipe_oper_state {
 
 /* Operation mode of image processor (imp) */
 static u32 oper_mode = IMP_MODE_SINGLE_SHOT;
-module_param(oper_mode, uint, S_IRUGO);
 /* enable/disable serializer */
 static u32 en_serializer;
 module_param(en_serializer, uint, S_IRUGO);
@@ -164,6 +163,11 @@ static int get_car_params(struct device *dev, void *param, int len);
 static struct prev_cgs cgs;
 static int set_cgs_params(struct device *dev, void *param, int len);
 static int get_cgs_params(struct device *dev, void *param, int len);
+
+/* Boundary Signal Calculator, BSC */
+static struct prev_bsc bsc;
+static int set_bsc_params(struct device *dev, void *param, int len);
+static int get_bsc_params(struct device *dev, void *param, int len);
 
 /* Tables for various tuning modules */
 struct ipipe_lutdpc_entry ipipe_lutdpc_table[MAX_SIZE_DPC];
@@ -336,13 +340,24 @@ static struct prev_module_if prev_modules[PREV_MAX_MODULES] = {
 		.path = IMP_RAW2YUV | IMP_YUV2YUV,
 		.set = set_cgs_params,
 		.get = get_cgs_params
+	},
+	{
+		.version = "5.1",
+		.module_id = PREV_BSC,
+		.module_name = "Boundary Signal Calculator",
+		.control = 1,
+		.path = IMP_RAW2YUV,
+		.set = set_bsc_params,
+		.get = get_bsc_params
 	}
 };
 
 /* function prototypes */
 static struct prev_module_if *prev_enum_preview_cap(struct device *dev,
 						    int index);
+static unsigned int bsc_get_state(void);
 static unsigned int prev_get_oper_mode(void);
+static void  prev_set_oper_mode(unsigned int);
 static unsigned int ipipe_get_oper_state(void);
 static void ipipe_set_oper_state(unsigned int state);
 static unsigned int ipipe_rsz_chain_state(void);
@@ -383,7 +398,8 @@ static int ipipe_set_ipipe_if_address(void *config, unsigned int address);
 #define IPIPE_MAX_OUTPUT_WIDTH_B	640
 
 /* Based on max resolution supported. QXGA */
-#define IPIPE_MAX_OUTPUT_HEIGHT_A	1536
+//#define IPIPE_MAX_OUTPUT_HEIGHT_A	1536
+#define IPIPE_MAX_OUTPUT_HEIGHT_A	2197
 /* Based on max resolution supported. VGA */
 #define IPIPE_MAX_OUTPUT_HEIGHT_B	480
 
@@ -439,8 +455,11 @@ struct imp_hw_interface dm365_ipipe_interface = {
 	.name = "DM365 IPIPE",
 	.owner = THIS_MODULE,
 	.prev_enum_modules = prev_enum_preview_cap,
+	.get_bsc_state = bsc_get_state,
 	.get_preview_oper_mode = prev_get_oper_mode,
 	.get_resize_oper_mode = prev_get_oper_mode,
+	.set_resize_oper_mode = prev_set_oper_mode,
+	.set_preview_oper_mode = prev_set_oper_mode,
 	.get_hw_state = ipipe_get_oper_state,
 	.set_hw_state = ipipe_set_oper_state,
 	.resizer_chain = ipipe_rsz_chain_state,
@@ -450,7 +469,7 @@ struct imp_hw_interface dm365_ipipe_interface = {
 	.alloc_config_block = ipipe_alloc_config_block,
 	.dealloc_config_block = ipipe_dealloc_config_block,
 	.alloc_user_config_block = ipipe_alloc_user_config_block,
-	.dealloc_config_block = ipipe_dealloc_user_config_block,
+	.dealloc_user_config_block = ipipe_dealloc_user_config_block,
 	.set_user_config_defaults = ipipe_set_user_config_defaults,
 	.set_preview_config = ipipe_set_preview_config,
 	.set_resizer_config = ipipe_set_resize_config,
@@ -623,7 +642,8 @@ static int ipipe_do_hw_setup(struct device *dev, void *config)
 static void ipipe_get_irq(struct irq_numbers *irq)
 {
 	irq->sdram = IRQ_PRVUINT;
-	irq->update = -1;
+	irq->update = 4;
+	irq->ipipe_bsc = 2;
 }
 
 static unsigned int ipipe_rsz_chain_state(void)
@@ -2264,6 +2284,81 @@ static int get_cgs_params(struct device *dev, void *param, int len)
 	return 0;
 }
 
+static int validate_bsc_params(struct device *dev)
+{
+#ifdef CONFIG_IPIPE_PARAM_VALIDATION
+	if (bsc.en > 1 || bsc.mode > 1 || bsc.col_en > 1 || bsc.row_en >1 )
+	    return -1;
+
+	if (bsc.row_vct > BSC_VCT_MASK ||
+	    bsc.row_shf > BSC_SHF_MASK ||
+	    bsc.row_vpos > BSC_POS_MASK ||
+	    bsc.row_vnum > BSC_NUM_MASK ||
+	    bsc.row_vskip > BSC_SKIP_MASK ||
+	    bsc.row_hpos > BSC_POS_MASK ||
+	    bsc.row_hnum > BSC_NUM_MASK ||
+	    bsc.row_hskip > BSC_SKIP_MASK ||
+	    bsc.col_vct > BSC_VCT_MASK ||
+	    bsc.col_shf > BSC_SHF_MASK ||
+	    bsc.col_vpos > BSC_POS_MASK ||
+	    bsc.col_vnum > BSC_NUM_MASK ||
+	    bsc.col_vskip > BSC_SKIP_MASK ||
+	    bsc.col_hpos > BSC_POS_MASK ||
+	    bsc.col_hnum > BSC_NUM_MASK ||
+	    bsc.col_hskip > BSC_SKIP_MASK)
+		return -1;
+	if (bsc.y_cb_cr > IPIPE_BSC_IN_CR)
+	    return -1;
+#endif
+	return 0;
+}
+
+static int set_bsc_params(struct device *dev, void *param, int len)
+{
+	struct prev_bsc *bsc_param = (struct prev_bsc *)param;
+	if (ISNULL(bsc_param)) {
+		/* Copy defaults for ns */
+		memcpy((void *)&bsc,
+		       (void *)&dm365_bsc_defaults,
+		       sizeof(struct prev_bsc));
+	} else {
+		if (len != sizeof(struct prev_bsc)) {
+			dev_err(dev,
+				"set_bsc_params: param struct"
+				" length mismatch\n");
+			return -EINVAL;
+		}
+		if (copy_from_user(&bsc, bsc_param, sizeof(struct prev_bsc))) {
+			dev_err(dev,
+				"set_bsc_params: Error in copy from user\n");
+			return -EFAULT;
+		}
+		if (validate_bsc_params(dev) < 0)
+			return -EINVAL;
+	}
+	return ipipe_set_bsc_regs(&bsc);
+}
+static int get_bsc_params(struct device *dev, void *param, int len)
+{
+	struct prev_bsc *bsc_param = (struct prev_bsc *)param;
+
+	if (ISNULL(bsc_param)) {
+		dev_err(dev, "get_bsc_params: invalid user ptr");
+		return -EINVAL;
+	}
+	if (len != sizeof(struct prev_bsc)) {
+		dev_err(dev,
+			"get_bsc_params: param struct"
+			" length mismatch\n");
+		return -EINVAL;
+	}
+	if (copy_to_user(bsc_param, &bsc, sizeof(struct prev_bsc))) {
+		dev_err(dev, "get_bsc_params: Error in copy from kernel\n");
+		return -EFAULT;
+	}
+	return 0;
+}
+
 static struct prev_module_if *prev_enum_preview_cap(struct device *dev,
 						    int index)
 {
@@ -2274,6 +2369,18 @@ static struct prev_module_if *prev_enum_preview_cap(struct device *dev,
 	return &prev_modules[index];
 }
 
+static unsigned int bsc_get_state(void)
+{
+	return ((bsc.en & bsc.col_en) | (bsc.en & bsc.row_en));
+}
+
+static void prev_set_oper_mode (unsigned int mode)
+{
+    if ((oper_state.rsz_config_state == STATE_NOT_CONFIGURED) &&
+       (oper_state.prev_config_state == STATE_NOT_CONFIGURED)){
+        oper_mode = mode;
+    }
+}
 static unsigned int prev_get_oper_mode(void)
 {
 	return oper_mode;
@@ -3708,7 +3815,7 @@ static int ipipe_set_preview_config(struct device *dev,
 {
 	int ret = 0;
 	struct ipipe_params *param = (struct ipipe_params *)config;
-	dev_err(dev, "ipipe_set_preview_config\n");
+	dev_dbg(dev, "ipipe_set_preview_config\n");
 
 	if ((ISNULL(user_config)) || (ISNULL(config))) {
 		dev_err(dev, "Invalid user_config or config ptr\n");
@@ -3977,6 +4084,10 @@ static int dm365_ipipe_init(void)
 	memcpy(&dm365_ipipe_defs.ipipeif_param.var.if_5_1,
 		&ipipeif_5_1_defaults,
 		sizeof(struct ipipeif_5_1));
+	/*Making bsc tables visible to kernel, getting virtual address*/
+	dm365_ipipe_interface.bsc_tb_ptr = ioremap(IPIPE_BSC_TB0,
+	    IPIPE_BSC_TB_SIZE);
+	memset(dm365_ipipe_interface.bsc_tb_ptr, 0, 0x4000);
 	lutdpc.table = ipipe_lutdpc_table;
 	lut_3d.table = ipipe_3d_lut_table;
 	gbce.table = ipipe_gbce_table;

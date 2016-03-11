@@ -624,13 +624,13 @@ static int __init vpss_probe(struct platform_device *pdev)
 		 */
 		isp5_write((isp5_read(0x4) | 0x0000007f), 0x4);
 		isp5_write((isp5_read(0x8) | 0x00000002), 0x8);
-		/* INT0, INT1, AF */
-		isp5_write((isp5_read(0x10) | 0x0b1f0100), 0x10);
-		/* AEW, RSZ_INT_DMA */
-		isp5_write((isp5_read(0x14) | 0x1f0a0f1f), 0x14);
-		/* VENC */
+		/* INTSEL1 => AF_INT | IPIPE_INT_BSC | ISF_INT1 | ISF_INT0 */
+		isp5_write((isp5_read(0x10) | 0x0b070100), 0x10);
+		/* INTSEL2 => FREE | AEW_INT | RESERVED | RSZ_INT_REG */
+		isp5_write((isp5_read(0x14) | 0x1f0a0f0d), 0x14);
+		/* INTSEL3 => VENC_INT */
 		isp5_write((isp5_read(0x18) | 0x00000015), 0x18);
-		/* No event selected */
+		/* EVTSEL  => No event selected */
 		isp5_write((isp5_read(0x1c) | 0x00000000), 0x1c);
 	}
 

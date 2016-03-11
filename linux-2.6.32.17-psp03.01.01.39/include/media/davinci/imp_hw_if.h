@@ -50,12 +50,16 @@ struct imp_hw_interface {
 	 */
 	struct prev_module_if *(*prev_enum_modules) (struct device *dev,
 						     int index);
+	unsigned int (*get_bsc_state) (void);
+	void* bsc_tb_ptr;
 	/*
 	 *  get preview operation mode
 	 */
 	unsigned int (*get_preview_oper_mode) (void);
 	/* get resize operation mode */
 	unsigned int (*get_resize_oper_mode) (void);
+	void (*set_resize_oper_mode) (unsigned int mode);
+	void (*set_preview_oper_mode) (unsigned int mode);
 	/* check if hw is busy in continuous mode.
 	 * Used for checking if hw is used by ccdc driver in
 	 * continuous mode. If streaming is ON, this will be

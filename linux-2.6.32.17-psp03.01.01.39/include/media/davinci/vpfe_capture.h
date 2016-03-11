@@ -43,6 +43,10 @@
 
 #define CAPTURE_DRV_NAME		"vpfe-capture"
 
+//comment to remove print messages by dev_notice()
+#define V4L2_INFO
+
+
 struct vpfe_pixel_format {
 	struct v4l2_fmtdesc fmtdesc;
 	/* bytes per pixel */
@@ -171,6 +175,10 @@ struct vpfe_device {
 	int std_index;
 	/* IRQ number for DMA transfer completion at the image processor */
 	unsigned int imp_dma_irq;
+	/* IRQ number for Update resizer imp registers */
+	unsigned int imp_update_irq;
+	/* IRQ number for bsc calculation completion */
+	unsigned int imp_bsc_irq;
 	/* CCDC IRQs used when CCDC/ISIF output to SDRAM */
 	unsigned int ccdc_irq0;
 	unsigned int ccdc_irq1;
@@ -213,6 +221,9 @@ struct vpfe_device {
 	 * buffer for field seperated YCbCr formats
 	 */
 	u32 field_off;
+
+	unsigned char buffer_complete;
+	unsigned char bsc_ready;
 };
 
 /* File handle structure */

@@ -519,7 +519,6 @@ int rsz_set_output_address(struct ipipe_params *params,
 	struct ipipe_rsz_rescale_param *rsc_param =
 		&params->rsz_rsc_param[resize_no];
 
-	printk(KERN_DEBUG "rsz_set_output_address %d\n", resize_no);
 	if (resize_no == RSZ_A)
 		rsz_start_add = RSZ_EN_A;
 	else
@@ -1167,6 +1166,41 @@ int ipipe_set_cgs_regs(struct prev_cgs *cgs)
 		regw_ip(cgs->h_slope, CGS_GN1_H_GAN);
 		regw_ip(cgs->h_shft & CAR_SHIFT_MASK, CGS_GN1_H_SHF);
 		regw_ip(cgs->h_min, CGS_GN1_H_MIN);
+	}
+	return 0;
+}
+
+/* Boundary Signal Calculation */
+int ipipe_set_bsc_regs(struct prev_bsc *bsc)
+{
+	u32 utemp;
+
+	ipipe_clock_enable();
+	regw_ip(bsc->en, BSC_EN);
+	if (bsc->en) {
+		/* Set the acquisition parameters */
+		regw_ip(bsc->mode,		BSC_MODE);
+		utemp = bsc->y_cb_cr & BSC_COL_MASK;
+		utemp |= (bsc->col_en << BSC_CEN_SHIFT);
+		utemp |= (bsc->row_en << BSC_REN_SHIFT);
+		regw_ip(utemp, 		BSC_TYP);
+		regw_ip(bsc->row_vct & BSC_VCT_MASK, 	BSC_ROW_VCT);
+		regw_ip(bsc->row_shf & BSC_SHF_MASK, 	BSC_ROW_SHF);
+		regw_ip(bsc->row_vpos & BSC_POS_MASK, 	BSC_ROW_VPOS);
+		regw_ip(bsc->row_vnum & BSC_NUM_MASK, 	BSC_ROW_VNUM);
+		regw_ip(bsc->row_vskip & BSC_SKIP_MASK,	BSC_ROW_VSKIP);
+		regw_ip(bsc->row_hpos & BSC_POS_MASK, 	BSC_ROW_HPOS);
+		regw_ip(bsc->row_hnum & BSC_NUM_MASK, 	BSC_ROW_HNUM);
+		regw_ip(bsc->row_hskip & BSC_SKIP_MASK,	BSC_ROW_HSKIP);
+
+		regw_ip(bsc->col_vct & BSC_VCT_MASK, 	BSC_COL_VCT);
+		regw_ip(bsc->col_shf & BSC_SHF_MASK, 	BSC_COL_SHF);
+		regw_ip(bsc->col_vpos & BSC_POS_MASK, 	BSC_COL_VPOS);
+		regw_ip(bsc->col_vnum & BSC_NUM_MASK, 	BSC_COL_VNUM);
+		regw_ip(bsc->col_vskip & BSC_SKIP_MASK,	BSC_COL_VSKIP);
+		regw_ip(bsc->col_hpos & BSC_POS_MASK,	BSC_COL_HPOS);
+		regw_ip(bsc->col_hnum & BSC_NUM_MASK, 	BSC_COL_HNUM);
+		regw_ip(bsc->col_hskip & BSC_SKIP_MASK,	BSC_COL_HSKIP);
 	}
 	return 0;
 }

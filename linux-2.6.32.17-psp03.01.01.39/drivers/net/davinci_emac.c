@@ -72,6 +72,21 @@ static int debug_level;
 module_param(debug_level, int, 0);
 MODULE_PARM_DESC(debug_level, "DaVinci EMAC debug level (NETIF_MSG bits)");
 
+/* Defines the behavior to set the kernel MAC address, below are the
+ * supported values.
+ *
+ * davinci_emac.ethaddr=ab.cd.ef.gh.ij: Sets the MAC address to an address
+ * defined by the user on U-boot.
+ *
+ * davinci_emac.ethaddr=keep: Reads the EMAC subsystem registers that contain
+ * the MAC address. The user must ensure that the subsystem isn't set to a
+ * reset state.
+ *
+ */
+static char *ethaddr;
+module_param(ethaddr, charp, 0);
+MODULE_PARM_DESC(ethaddr, "DaVinci EMAC kernel ethaddr");
+
 /* Netif debug messages possible */
 #define DAVINCI_EMAC_DEBUG	(NETIF_MSG_DRV | \
 				NETIF_MSG_PROBE | \
@@ -2622,6 +2637,7 @@ static int __devinit davinci_emac_probe(struct platform_device *pdev)
 	unsigned long size;
 	struct emac_platform_data *pdata;
 	struct device *emac_dev;
+	int i = 0, mac_addr[6], macaddr_hi, macaddr_lo;
 
 	/* obtain emac clock from kernel */
 	emac_clk = clk_get(&pdev->dev, NULL);
@@ -2655,7 +2671,9 @@ static int __devinit davinci_emac_probe(struct platform_device *pdev)
 		return -ENODEV;
 	}
 
-	/* MAC addr and PHY mask , RMII enable info from platform_data */
+	/* MAC addr and PHY mask , RMII enable info from platform_data.
+	 * The MAC address is not on the platform data structure defined
+	 * at file dm365.c */
 	memcpy(priv->mac_addr, pdata->mac_addr, 6);
 	priv->phy_mask = pdata->phy_mask;
 	priv->rmii_en = pdata->rmii_en;
@@ -2700,7 +2718,35 @@ static int __devinit davinci_emac_probe(struct platform_device *pdev)
 	}
 	ndev->irq = res->start;
 
-	if (!is_valid_ether_addr(priv->mac_addr)) {
+	/* This logic adds support to use the MAC address used on u-boot's
+	 * envionment. It works with the kernel cmdline using parameter
+	 * 'davinci_emac.ethaddr'.
+	 */
+	if (ethaddr)
+	{
+		if (strcmp(ethaddr,"keep")==0)
+		{
+			macaddr_hi=emac_read(EMAC_MACADDRHI);
+			macaddr_lo=emac_read(EMAC_MACADDRLO);
+			priv->mac_addr[0]=(macaddr_hi>>0)&0xFF;
+			priv->mac_addr[1]=(macaddr_hi>>8)&0xFF;
+			priv->mac_addr[2]=(macaddr_hi>>16)&0xFF;
+			priv->mac_addr[3]=(macaddr_hi>>24)&0xFF;
+			priv->mac_addr[4]=(macaddr_lo>>0)&0xFF;
+			priv->mac_addr[5]=(macaddr_lo>>8)&0xFF;
+			printk("Keeping existing ethaddr='%02x:%02x:%02x:%02x:%02x:%02x'\n",
+			priv->mac_addr[0],priv->mac_addr[1],priv->mac_addr[2],priv->mac_addr[3],priv->mac_addr[4],priv->mac_addr[5]);
+		}
+		else
+		{
+			printk("Using ethaddr passed from u-boot='%s'\n",ethaddr);
+			sscanf(ethaddr,"%02x:%02x:%02x:%02x:%02x:%02x",mac_addr+0,mac_addr+1,mac_addr+2,mac_addr+3,mac_addr+4,mac_addr+5);
+			for(i=0;i<6;i++) {
+				priv->mac_addr[i]=mac_addr[i];
+			}
+		}
+	}
+	else if (!is_valid_ether_addr(priv->mac_addr)) {
 		/* Use random MAC if none passed */
 		random_ether_addr(priv->mac_addr);
 		printk(KERN_WARNING "%s: using random MAC addr: %pM\n",

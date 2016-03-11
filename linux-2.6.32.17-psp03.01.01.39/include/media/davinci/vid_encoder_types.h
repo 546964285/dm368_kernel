@@ -108,6 +108,7 @@ enum vid_enc_if_type {
 #define VID_ENC_STD_640x350      "640x350"
 #define VID_ENC_STD_480x272      "480x272"
 #define VID_ENC_STD_800x480      "800x480"
+#define VID_ENC_STD_PRGB_DEFAULT "PRGB"
 #define VID_ENC_STD_NON_STANDARD "NON-STANDARD"
 
 /**
@@ -145,6 +146,8 @@ enum vid_enc_ctrl_id {
 #define	VID_ENC_OUTPUT_COMPONENT1 "COMPONENT1"
 #define VID_ENC_OUTPUT_LCD        "LCD"
 #define VID_ENC_OUTPUT_LCD1       "LCD1"
+#define VID_ENC_OUTPUT_PRGB       "PRGB"
+#define VID_ENC_OUTPUT_PRGB1      "PRGB1"
 
 /**
  * struct vid_enc_fract

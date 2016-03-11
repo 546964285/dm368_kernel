@@ -35,7 +35,8 @@
 static int tvp7002_set_format_params(struct v4l2_subdev *sd,
 				struct tvp7002_format_params *tvpformats);
 static int tvp7002_setstd(struct v4l2_subdev *sd, v4l2_std_id id);
-
+static int tvp7002_querycontrol(struct v4l2_subdev *sd,
+                struct v4l2_queryctrl *qctrl);
 /* Debug functions */
 static int debug;
 module_param(debug, bool, 0644);
@@ -634,6 +635,18 @@ static int tvp7002_initialize(struct v4l2_subdev *sd)
 	v4l2_dbg(1, debug, sd, "End of tvp7002_init.\n");
 	return err;
 }
+
+/* tvp7002_querycontrol :
+ * Function to query control
+ */
+static int tvp7002_querycontrol(struct v4l2_subdev *sd,
+                struct v4l2_queryctrl *qctrl)
+{
+	v4l2_dbg(1, debug, sd,
+		"TVP7002 has no control parameters to return..\n");
+	return -EINVAL;
+}
+
 
 #if 0
 /* tvp7002_setcontrol : Function to set the control parameter
@@ -1357,6 +1370,7 @@ static int tvp7002_s_stream(struct v4l2_subdev *sd, int enable)
 
 static const struct v4l2_subdev_core_ops tvp7002_core_ops = {
 	.s_std = tvp7002_setstd,
+	.queryctrl = tvp7002_querycontrol,
 };
 
 static const struct v4l2_subdev_video_ops tvp7002_video_ops = {
@@ -1401,6 +1415,7 @@ tvp7002_probe(struct i2c_client *client, const struct i2c_device_id *id)
 	struct tvp7002_decoder *decoder;
 	struct v4l2_subdev *sd;
 	/*int polarity;*/
+	u32 val;
 	int err;
 
 	/* Check if the adapter supports the needed features */
@@ -1409,6 +1424,13 @@ tvp7002_probe(struct i2c_client *client, const struct i2c_device_id *id)
 
 	if (!client->dev.platform_data) {
 		v4l2_err(client, "No platform data!!\n");
+		return -ENODEV;
+	}
+
+	/* Lets try with the only value we can */
+	val = i2c_smbus_read_byte_data(client, 0x0);
+	if (val != 0x2){
+		v4l2_err(client,"Unable to detect a valid revision of the tvp7002\n");
 		return -ENODEV;
 	}
 

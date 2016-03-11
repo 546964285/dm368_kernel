@@ -240,6 +240,7 @@ enum imp_log_chan_t {
 struct irq_numbers {
 	int sdram;
 	int update;
+	int ipipe_bsc;
 };
 
 /* IMP channel structure */

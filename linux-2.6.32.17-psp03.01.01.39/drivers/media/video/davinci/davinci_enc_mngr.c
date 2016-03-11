@@ -74,6 +74,7 @@ struct class display_class = {
 	.owner	= THIS_MODULE,
 	.dev_release = display_class_release,
 };
+EXPORT_SYMBOL(display_class);
 
 static ssize_t output_show(struct device *cdev, struct device_attribute *attr, char *buf)
 {

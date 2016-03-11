@@ -374,6 +374,12 @@ static struct clk timer3_clk = {
 	.lpsc		= DM365_LPSC_TIMER3,
 };
 
+static struct clk adc_clk = {
+	.name		= "adc",
+	.parent		= &pll1_aux_clk,
+	.lpsc		= DM365_LPSC_ADC,
+};
+
 static struct clk usb_clk = {
 	.name		= "usb",
 	.parent		= &pll1_aux_clk,
@@ -460,9 +466,10 @@ static struct davinci_clk dm365_clks[] = {
 	CLK(NULL, "timer1", &timer1_clk),
 	CLK("watchdog", NULL, &timer2_clk),
 	CLK(NULL, "timer3", &timer3_clk),
+	CLK(NULL, "adc", &adc_clk),
 	CLK(NULL, "usb", &usb_clk),
 	CLK("davinci_emac.1", NULL, &emac_clk),
-	CLK("voice_codec", NULL, &voicecodec_clk),
+	CLK("davinci_voicecodec", NULL, &voicecodec_clk),
 	CLK("davinci-asp.0", NULL, &asp0_clk),
 	CLK(NULL, "rto", &rto_clk),
 	CLK(NULL, "mjcp", &mjcp_clk),
@@ -580,10 +587,25 @@ MUX_CFG(DM365,	SPI4_SDENA1,	4,   16,    3,    2,	 false)
 MUX_CFG(DM365,	GPIO20,		3,   21,    3,    0,	 false)
 MUX_CFG(DM365,	GPIO33,		4,   12,    3,	  0,	 false)
 MUX_CFG(DM365,	GPIO40,		4,   26,    3,	  0,	 false)
+MUX_CFG(DM365,	GPIO66,		2,   0,     3,	  0,	 false)
 MUX_CFG(DM365,	GPIO80,		1,   20,    3,	  1,	 false)
 MUX_CFG(DM365,	GPIO82,		1,   17,    1,    1,     false)
 MUX_CFG(DM365,	VCLK,		1,   22,    1,    0,     false)
 
+MUX_CFG(DM365,	CLKOUT1,	4,   16,    3,    3,	 false)
+
+MUX_CFG(DM365,	VOUT_B0,	4,   0,     3,    3,     false)
+MUX_CFG(DM365,	VOUT_B1,	4,   2,     3,    3,     false)
+MUX_CFG(DM365,	VOUT_B2,	1,   20,    3,    2,     false)
+
+MUX_CFG(DM365,	VOUT_G0,	4,   4,     3,    3,     false)
+MUX_CFG(DM365,	VOUT_G1,	4,   6,     3,    3,     false)
+
+MUX_CFG(DM365,	VOUT_R0,	4,   10,    3,    3,     false)
+MUX_CFG(DM365,	VOUT_R1,	4,   12,    3,    3,     false)
+MUX_CFG(DM365,	VOUT_R2,	1,   18,    3,    2,     false)
+
+MUX_CFG(DM365,	VOUT_LCD_OE,	1,   17,    1,	  0,	 false)
 MUX_CFG(DM365,	VOUT_FIELD,	1,   18,    3,	  1,	 false)
 MUX_CFG(DM365,	VOUT_FIELD_G81,	1,   18,    3,	  0,	 false)
 MUX_CFG(DM365,	VOUT_HVSYNC,	1,   16,    1,	  0,	 false)
@@ -616,6 +638,8 @@ INT_CFG(DM365,  INT_NSF_DISABLE,     25,    1,    0,     false)
 
 EVT_CFG(DM365,	EVT2_ASP_TX,         0,     1,    0,     false)
 EVT_CFG(DM365,	EVT3_ASP_RX,         1,     1,    0,     false)
+EVT_CFG(DM365,	EVT2_VC_TX,          0,     1,    1,     false)
+EVT_CFG(DM365,	EVT3_VC_RX,          1,     1,    1,     false)
 #endif
 };
 
@@ -996,6 +1020,31 @@ static struct platform_device dm365_asp_device = {
 	.resource	= dm365_asp_resources,
 };
 
+static struct resource dm365_vc_resources[] = {
+	{
+		.start	= DAVINCI_DM365_VC_BASE,
+		.end	= DAVINCI_DM365_VC_BASE + SZ_1K - 1,
+		.flags	= IORESOURCE_MEM,
+	},
+	{
+		.start	= DAVINCI_DMA_VC_TX,
+		.end	= DAVINCI_DMA_VC_TX,
+		.flags	= IORESOURCE_DMA,
+	},
+	{
+		.start	= DAVINCI_DMA_VC_RX,
+		.end	= DAVINCI_DMA_VC_RX,
+		.flags	= IORESOURCE_DMA,
+	},
+};
+
+static struct platform_device dm365_vc_device = {
+	.name		= "davinci_voicecodec",
+	.id		= -1,
+	.num_resources	= ARRAY_SIZE(dm365_vc_resources),
+	.resource	= dm365_vc_resources,
+};
+
 static struct resource dm365_rtc_resources[] = {
 	{
 		.start = DM365_RTC_BASE,
@@ -1150,6 +1199,14 @@ void __init dm365_init_asp(struct snd_platform_data *pdata)
 	davinci_cfg_reg(DM365_EVT3_ASP_RX);
 	dm365_asp_device.dev.platform_data = pdata;
 	platform_device_register(&dm365_asp_device);
+}
+
+void __init dm365_init_vc(struct snd_platform_data *pdata)
+{
+	davinci_cfg_reg(DM365_EVT2_VC_TX);
+	davinci_cfg_reg(DM365_EVT3_VC_RX);
+	dm365_vc_device.dev.platform_data = pdata;
+	platform_device_register(&dm365_vc_device);
 }
 
 void __init dm365_init_ks(struct davinci_ks_platform_data *pdata)
