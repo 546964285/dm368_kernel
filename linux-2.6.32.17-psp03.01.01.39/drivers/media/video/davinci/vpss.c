@@ -117,7 +117,6 @@ static inline void bl_regw(u32 val, u32 offset)
 
 static inline u32 isp5_read(u32 offset)
 {
-    //printk("*****isp5_read(%x)",oper_cfg.vpss_regs_base0 + offset);
 	return __raw_readl(oper_cfg.vpss_regs_base0 + offset);
 }
 

@@ -26,8 +26,6 @@
 #include <asm/atomic.h>
 #include <asm/device.h>
 
-//#define DEBUG 1
-
 struct device;
 struct device_private;
 struct device_driver;

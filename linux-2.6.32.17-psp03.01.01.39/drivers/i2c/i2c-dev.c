@@ -376,9 +376,6 @@ static long i2cdev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	dev_dbg(&client->adapter->dev, "ioctl, cmd=0x%02x, arg=0x%02lx\n",
 		cmd, arg);
 
-//        // TODO: delete me
-//        printk("*****in i2cdev_ioctl*****cmd=0x%02x, arg=0x%02lx\n",cmd, arg);
-
 	switch ( cmd ) {
 	case I2C_SLAVE:
 	case I2C_SLAVE_FORCE:

@@ -31,8 +31,6 @@ struct videobuf_dma_contig_memory {
 };
 
 #define MAGIC_DC_MEM 0x0733ac61
-//#define MAGIC_DC_MEM 0x0733ac51//try
-
 #define MAGIC_CHECK(is, should)						    \
 	if (unlikely((is) != (should)))	{				    \
 		pr_err("magic mismatch: %x expected %x\n", (is), (should)); \

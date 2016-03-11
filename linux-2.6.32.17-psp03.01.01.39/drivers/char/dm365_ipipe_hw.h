@@ -27,7 +27,6 @@
 #define IPIPE_IOBASE_VADDR 		IO_ADDRESS(0x01C70800)
 #define RSZ_IOBASE_VADDR		IO_ADDRESS(0x01C70400)
 #define IPIPE_INT_TABLE_IOBASE_VADDR	IO_ADDRESS(0x01C70000)
-#define CONFIG_IMP_DEBUG 1
 
 #define SET_LOW_ADD     0x0000FFFF
 #define SET_HIGH_ADD    0xFFFF0000
@@ -547,7 +546,7 @@ static inline u32 regr_ip(u32 offset)
 
 static inline u32 regw_ip(u32 val, u32 offset)
 {
-    printk("regw_ip(%x to %x)\n", val, IPIPE_IOBASE_VADDR + offset);
+//    printk("regw_ip(%x to %x)\n", val, IPIPE_IOBASE_VADDR + offset);
 	__raw_writel(val, IPIPE_IOBASE_VADDR + offset);
 	return val;
 }
@@ -570,7 +569,7 @@ static inline u32 regr_rsz(u32 offset)
 
 static inline u32 regw_rsz(u32 val, u32 offset)
 {
-    printk("regw_rsz(%x to %x)\n", val, RSZ_IOBASE_VADDR + offset);
+//    printk("regw_rsz(%x to %x)\n", val, RSZ_IOBASE_VADDR + offset);
 	__raw_writel(val, RSZ_IOBASE_VADDR + offset);
 	return val;
 }

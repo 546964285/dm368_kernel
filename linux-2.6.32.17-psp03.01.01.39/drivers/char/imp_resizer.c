@@ -40,14 +40,6 @@
 
 #define	DRIVER_NAME	"DaVinciResizer"
 
-/* Debug functions */
-static int debug = 1;
-
-
-#define dev_dbg(dev, format, arg...)		\
-	dev_printk(KERN_DEBUG , dev , format , ## arg)
-
-
 /*device structure shared across all instances*/
 struct rsz_device rsz_dev;
 
@@ -292,17 +284,6 @@ static int rsz_doioctl(struct inode *inode, struct file *file,
 				mutex_unlock(&(rsz_conf_chan->lock));
 			}
 		}
- 
-#if 0
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.oper_mode=%d*****\n", ((struct rsz_channel_config *)arg)->oper_mode);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.chain=%d*****\n", ((struct rsz_channel_config *)arg)->chain);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.len=%d*****\n", ((struct rsz_channel_config *)arg)->len);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.config.chroma_sample_even=%d*****\n",  ((struct rsz_continuous_config *)((struct rsz_channel_config *)arg)->config)->chroma_sample_even);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.config.yuv_c_max=%d*****\n", ((struct rsz_continuous_config *) ((struct rsz_channel_config *)arg)->config)->yuv_c_max);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.config.yuv_c_min=%d*****\n", ((struct rsz_continuous_config *) ((struct rsz_channel_config *)arg)->config)->yuv_c_min);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.config.yuv_y_max=%d*****\n", ((struct rsz_continuous_config *) ((struct rsz_channel_config *)arg)->config)->yuv_y_max);
-        printk("*****imp_resizer.rsz_doioctl(), rsz_channel_config.config.yuv_y_min=%d*****\n", ((struct rsz_continuous_config *) ((struct rsz_channel_config *)arg)->config)->yuv_y_min);
-#endif
 		break;
 
 	case RSZ_G_CONFIG:

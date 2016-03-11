@@ -112,7 +112,7 @@
 #define CEIL(x) ((x - (int)x)==0 ? (int)x : (int)x+1)
 
 /* Debug functions */
-static int debug = 1;
+static int debug = 0;
 
 
 #define dev_dbg(dev, format, arg...)		\
@@ -412,7 +412,7 @@ static int reg_read(struct i2c_client *client, const u16 reg)
     i2c_master_recv2(client,  tmp, &data, 2);
     //return data < 0 ? data : swab16(data);
 
-    printk("\n*****ov420.reg_read(%8x)=%x*****\n", reg,data&0xff);
+    //printk("\n*****ov420.reg_read(%8x)=%x*****\n", reg,data&0xff);
     return data&0xff;
 }
 
@@ -429,7 +429,7 @@ static int reg_write(struct i2c_client *client, const u16 reg,
         u16 reg_tmp;
         int ret;
 
-        printk("\n*****ov420.reg_write(%8x, %4x)*****\n", reg, data);
+        //printk("\n*****ov420.reg_write(%8x, %4x)*****\n", reg, data);
 
         reg_tmp=reg;
         tmp[1]=(0x00ff&reg_tmp);
@@ -687,13 +687,13 @@ static void recalculate_limits(struct ov420 *ov420,
     ov420->width_max = OV420_MAX_WIDTH / xskip;
     ov420->height_max = OV420_MAX_HEIGHT / yskip;
 
-    printk("\nin recalculate_limits()\n");
-    printk("ov420->x_min=%d\n",ov420->x_min);
-    printk("ov420->y_min=%d\n",ov420->y_min);
-    printk("ov420->width_min=%d\n",ov420->width_min);
-    printk("ov420->height_min=%d\n",ov420->height_min);
-    printk("ov420->width_max=%d\n",ov420->width_max);
-    printk("ov420->height_max=%d\n",ov420->height_max);
+    //printk("\nin recalculate_limits()\n");
+    //printk("ov420->x_min=%d\n",ov420->x_min);
+    //printk("ov420->y_min=%d\n",ov420->y_min);
+    //printk("ov420->width_min=%d\n",ov420->width_min);
+    //printk("ov420->height_min=%d\n",ov420->height_min);
+    //printk("ov420->width_max=%d\n",ov420->width_max);
+    //printk("ov420->height_max=%d\n",ov420->height_max);
 }
 
 const struct v4l2_queryctrl *ov420_find_qctrl(u32 id)
@@ -842,12 +842,12 @@ static int ov420_set_params(struct v4l2_subdev *sd,
         ov420->exposure = shutter * ov420->exp.row_time -
             (ov420->exp.shutter_overlay * 2 * ov420->exp.pix_clock)/1000;
 
-        printk("ov420->vblank=%d\n",ov420->vblank);
-        printk("ov420->exposure=%d\n",ov420->exposure);
-        printk("shutter=%d\n",shutter);
-        printk("ov420->exp.row_time=%d\n",ov420->exp.row_time);
-        printk("ov420->exp.shutter_overlay=%d\n",ov420->exp.shutter_overlay);
-        printk("ov420->exp.pix_clock=%d\n",ov420->exp.pix_clock);
+        //printk("ov420->vblank=%d\n",ov420->vblank);
+        //printk("ov420->exposure=%d\n",ov420->exposure);
+        //printk("shutter=%d\n",shutter);
+        //printk("ov420->exp.row_time=%d\n",ov420->exp.row_time);
+        //printk("ov420->exp.shutter_overlay=%d\n",ov420->exp.shutter_overlay);
+        //printk("ov420->exp.pix_clock=%d\n",ov420->exp.pix_clock);
         
 
     }
@@ -865,20 +865,20 @@ static int ov420_set_fmt(struct v4l2_subdev *sd,
     int ret;
     u16 xskip, yskip;
 
-    printk("\nov420->x_current=%d\n",ov420->x_current);
-    printk("ov420->y_current=%d\n",ov420->y_current);
-    printk("f->fmt.pix.width=%d\n",f->fmt.pix.width);
-    printk("f->fmt.pix.height=%d\n",f->fmt.pix.height);
+    //printk("\nov420->x_current=%d\n",ov420->x_current);
+    //printk("ov420->y_current=%d\n",ov420->y_current);
+    //printk("f->fmt.pix.width=%d\n",f->fmt.pix.width);
+    //printk("f->fmt.pix.height=%d\n",f->fmt.pix.height);
 
-    printk("\nThen reset params\n");
+    //printk("\nThen reset params\n");
     ov420->x_current = 16;
     ov420->y_current = 54;
     f->fmt.pix.width = 384;
     f->fmt.pix.height = 384;
-    printk("\nov420->x_current=%d\n",ov420->x_current);
-    printk("ov420->y_current=%d\n",ov420->y_current);
-    printk("f->fmt.pix.width=%d\n",f->fmt.pix.width);
-    printk("f->fmt.pix.height=%d\n",f->fmt.pix.height);
+    //printk("\nov420->x_current=%d\n",ov420->x_current);
+    //printk("ov420->y_current=%d\n",ov420->y_current);
+    //printk("f->fmt.pix.width=%d\n",f->fmt.pix.width);
+    //printk("f->fmt.pix.height=%d\n",f->fmt.pix.height);
 
     struct v4l2_rect rect = {
         .left   = ov420->x_current,
@@ -908,8 +908,8 @@ static int ov420_set_fmt(struct v4l2_subdev *sd,
 			yskip = xskip;
 	}
 
-    printk("\nxskip=%d\n",xskip);
-    printk("\nyskip=%d\n",yskip);
+    //printk("\nxskip=%d\n",xskip);
+    //printk("\nyskip=%d\n",yskip);
     
     recalculate_limits(ov420, xskip, yskip);
     ret = ov420_set_params(sd, &rect, xskip, yskip);

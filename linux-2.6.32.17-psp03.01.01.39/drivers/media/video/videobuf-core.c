@@ -29,7 +29,7 @@
 	printk(KERN_ERR "magic mismatch: %x (expected %x)\n", is, should); \
 	BUG(); } } while (0)
 
-static int debug = 1;
+static int debug;
 module_param(debug, int, 0644);
 
 MODULE_DESCRIPTION("helper module to manage video4linux buffers");
@@ -70,8 +70,6 @@ void *videobuf_alloc(struct videobuf_queue *q)
 				vb->state != VIDEOBUF_QUEUED)
 int videobuf_waiton(struct videobuf_buffer *vb, int non_blocking, int intr)
 {
-    printk("\nvideobuf-core.videobuf_waiton()\n");
-    
 	MAGIC_CHECK(vb->magic, MAGIC_BUFFER);
 
 	if (non_blocking) {
@@ -269,7 +267,6 @@ static void videobuf_status(struct videobuf_queue *q, struct v4l2_buffer *b,
 	if (vb->map)
 		b->flags |= V4L2_BUF_FLAG_MAPPED;
 
-    printk("\nvb->state = %d\n", vb->state);
 	switch (vb->state) {
 	case VIDEOBUF_PREPARED:
 	case VIDEOBUF_QUEUED:
