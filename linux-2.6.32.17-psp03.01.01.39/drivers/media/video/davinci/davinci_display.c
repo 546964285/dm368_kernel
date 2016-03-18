@@ -679,6 +679,9 @@ static int vpbe_get_mode_timeperframe(unsigned char *mode_info_name,
 	} else if (!strcmp(davinci_dm.mode_info.name, VID_ENC_STD_800x480)) {
 		frVal->numerator   = 60;
 		frVal->denominator = 1;
+	} else if (!strcmp(davinci_dm.mode_info.name, VID_ENC_STD_LCD_AOHUA)) {
+		frVal->numerator   = 60;
+		frVal->denominator = 1;
 	} else {
 		dev_err(davinci_display_dev, "unknown video mode\n");
 		ret = -EINVAL;

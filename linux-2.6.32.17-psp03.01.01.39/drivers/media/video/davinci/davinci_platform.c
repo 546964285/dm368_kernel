@@ -136,6 +136,7 @@ char *davinci_modes[] = {
 	VID_ENC_STD_480x272,
 	VID_ENC_STD_800x480,
 	VID_ENC_STD_PRGB_DEFAULT,
+	VID_ENC_STD_LCD_AOHUA,
 	""
 };
 
@@ -1228,7 +1229,8 @@ void davinci_enc_priv_setmode(struct vid_enc_device_mgr *mgr)
 			davinci_enc_set_basep(0, 0xd0, 10);
 		} else
 			davinci_enc_set_1080i(&mgr->current_mode);
-	} else if (strcmp(mgr->current_mode.name, VID_ENC_STD_PRGB_DEFAULT) == 0) {
+	} else if (strcmp(mgr->current_mode.name, VID_ENC_STD_PRGB_DEFAULT) == 0 || 
+	           strcmp(mgr->current_mode.name, VID_ENC_STD_LCD_AOHUA) == 0 ) {
 		davinci_enc_set_prgb(&mgr->current_mode);
 	}
 

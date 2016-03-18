@@ -109,6 +109,7 @@ enum vid_enc_if_type {
 #define VID_ENC_STD_480x272      "480x272"
 #define VID_ENC_STD_800x480      "800x480"
 #define VID_ENC_STD_PRGB_DEFAULT "PRGB"
+#define VID_ENC_STD_LCD_AOHUA    "LCD480x640"
 #define VID_ENC_STD_NON_STANDARD "NON-STANDARD"
 
 /**
