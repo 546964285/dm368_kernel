@@ -373,8 +373,10 @@ static void dm368leopard_prgb_out_configure(void)
 	 * Further details are available at the DM365 ARM
 	 * Subsystem Users Guide(sprufg5.pdf) pages 118, 128 - 131
 	 */
-	davinci_cfg_reg(DM365_VOUT_B0);
-	davinci_cfg_reg(DM365_VOUT_B1);
+//	davinci_cfg_reg(DM365_VOUT_B0);
+//	davinci_cfg_reg(DM365_VOUT_B1);
+    davinci_cfg_reg(DM365_GPIO26);
+    davinci_cfg_reg(DM365_GPIO27);
 	davinci_cfg_reg(DM365_VOUT_B2);
 	davinci_cfg_reg(DM365_VOUT_R0);
 	davinci_cfg_reg(DM365_VOUT_R1);
