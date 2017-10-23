@@ -93,6 +93,8 @@ int videobuf_iolock(struct videobuf_queue *q, struct videobuf_buffer *vb,
 	MAGIC_CHECK(vb->magic, MAGIC_BUFFER);
 	MAGIC_CHECK(q->int_ops->magic, MAGIC_QTYPE_OPS);
 
+	//printk("q->int_ops->iolock = %pf\n", q->int_ops->iolock);
+    
 	return CALL(q, iolock, q, vb, fbuf);
 }
 
@@ -490,35 +492,42 @@ int videobuf_qbuf(struct videobuf_queue *q,
 	retval = -EBUSY;
 	if (q->reading) {
 		dprintk(1, "qbuf: Reading running...\n");
+//		printk("qbuf: Reading running...\n");
 		goto done;
 	}
 	retval = -EINVAL;
 	if (b->type != q->type) {
 		dprintk(1, "qbuf: Wrong type.\n");
+//		printk("qbuf: Wrong type.\n");
 		goto done;
 	}
 	if (b->index >= VIDEO_MAX_FRAME) {
 		dprintk(1, "qbuf: index out of range.\n");
+//		printk("qbuf: index out of range.\n");
 		goto done;
 	}
 	buf = q->bufs[b->index];
 	if (NULL == buf) {
 		dprintk(1, "qbuf: buffer is null.\n");
+//		printk("qbuf: buffer is null.\n");
 		goto done;
 	}
 	MAGIC_CHECK(buf->magic, MAGIC_BUFFER);
 	if (buf->memory != b->memory) {
 		dprintk(1, "qbuf: memory type is wrong.\n");
+//		printk("qbuf: memory type is wrong.\n");
 		goto done;
 	}
 	if (buf->state != VIDEOBUF_NEEDS_INIT && buf->state != VIDEOBUF_IDLE) {
 		dprintk(1, "qbuf: buffer is already queued or active.\n");
+//		printk("qbuf: buffer is already queued or active.\n");
 		goto done;
 	}
 
 	if (b->flags & V4L2_BUF_FLAG_INPUT) {
 		if (b->input >= q->inputs) {
 			dprintk(1, "qbuf: wrong input.\n");
+//			printk("qbuf: wrong input.\n");
 			goto done;
 		}
 		buf->input = b->input;
@@ -531,14 +540,18 @@ int videobuf_qbuf(struct videobuf_queue *q,
 		if (0 == buf->baddr) {
 			dprintk(1, "qbuf: mmap requested "
 				   "but buffer addr is zero!\n");
+//		    printk("qbuf: mmap requested "
+//				   "but buffer addr is zero!\n");
 			goto done;
 		}
 		break;
 	case V4L2_MEMORY_USERPTR:
-		if (b->length < buf->bsize) {
-			dprintk(1, "qbuf: buffer length is not enough\n");
-			goto done;
-		}
+			if (b->length < buf->bsize) {
+				dprintk(1, "qbuf: buffer length is not enough\n");
+//			printk("qbuf: buffer length is not enough, b->length = %d, buf->bsize = %d\n", b->length, buf->bsize);
+				goto done;
+			}
+		printk("qbuf: b->length = %d, buf->bsize = %d\n", b->length, buf->bsize);
 		if (VIDEOBUF_NEEDS_INIT != buf->state &&
 		    buf->baddr != b->m.userptr)
 			q->ops->buf_release(q, buf);
@@ -549,14 +562,18 @@ int videobuf_qbuf(struct videobuf_queue *q,
 		break;
 	default:
 		dprintk(1, "qbuf: wrong memory type\n");
+//		printk("qbuf: wrong memory type\n");
 		goto done;
 	}
 
 	dprintk(1, "qbuf: requesting next field\n");
+//	printk("qbuf: requesting next field\n");
 	field = videobuf_next_field(q);
 	retval = q->ops->buf_prepare(q, buf, field);
+//	printk("qbuf: call %pf\n", q->ops->buf_prepare);
 	if (0 != retval) {
 		dprintk(1, "qbuf: buffer_prepare returned %d\n", retval);
+//		printk("qbuf: buffer_prepare returned %d\n", retval);
 		goto done;
 	}
 
@@ -567,6 +584,7 @@ int videobuf_qbuf(struct videobuf_queue *q,
 		spin_unlock_irqrestore(q->irqlock, flags);
 	}
 	dprintk(1, "qbuf: succeded\n");
+//	printk("qbuf: succeded\n");
 	retval = 0;
 	wake_up_interruptible_sync(&q->wait);
 

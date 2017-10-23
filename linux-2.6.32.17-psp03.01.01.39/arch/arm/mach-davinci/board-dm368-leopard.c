@@ -75,7 +75,7 @@ static struct i2c_board_info i2c_info[] = {
 };
 
 static struct davinci_i2c_platform_data i2c_pdata = {
-	.bus_freq	= 400	/* kHz */,
+	.bus_freq	= 200	/* kHz */,
 	.bus_delay	= 0	/* usec */,
 	.sda_pin        = 21,
 	.scl_pin        = 20,
@@ -385,6 +385,9 @@ static void dm368leopard_prgb_out_configure(void)
 	davinci_cfg_reg(DM365_VOUT_COUTH_EN);
 	davinci_cfg_reg(DM365_VOUT_LCD_OE);
 	davinci_cfg_reg(DM365_VOUT_HVSYNC);
+    davinci_cfg_reg(DM365_GPIO23);
+    gpio_request(23,"backlight");
+    gpio_direction_output(23,1);
 }
 
 void enable_lcd(void)
@@ -424,6 +427,20 @@ static struct davinci_gen_prgb_pdata gen_prgb_data = {
 	.vsync_len = 5,
 	.flags = 0,
 	.clock_set_function = NULL,
+
+//		.xres = 400,
+//		.yres = 640,
+//		.fps = {60, 1},
+//		.pixel_clock_khz = 2000000,
+//		.left_margin = 20,
+//		.right_margin = 10,
+//		.upper_margin = 80,
+//		.lower_margin = 40,
+//		.hsync_len = 30,
+//		.vsync_len = 40,
+//		.flags = 0,
+//		.clock_set_function = NULL,
+
 };
 
 static struct platform_device gen_prgb_device = {

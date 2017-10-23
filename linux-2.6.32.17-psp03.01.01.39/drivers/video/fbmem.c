@@ -915,6 +915,8 @@ fb_set_var(struct fb_info *info, struct fb_var_screeninfo *var)
 	int flags = info->flags;
 	int ret = 0;
 
+//    printk("\n\tin fbmem.c fb_set_var()\n");
+    
 	if (var->activate & FB_ACTIVATE_INV_MODE) {
 		struct fb_videomode mode1, mode2;
 
@@ -1013,9 +1015,11 @@ fb_blank(struct fb_info *info, int blank)
  	if (blank > FB_BLANK_POWERDOWN)
  		blank = FB_BLANK_POWERDOWN;
 
-	if (info->fbops->fb_blank)
+	if (info->fbops->fb_blank)  // davincifb_blank()  @ davincifb.c
  		ret = info->fbops->fb_blank(blank, info);
-
+ 		
+//    printk("\n\tcall %pf\n", info->fbops->fb_blank); // print func name which been called by func-pointer
+    
  	if (!ret) {
 		struct fb_event event;
 
@@ -1023,7 +1027,8 @@ fb_blank(struct fb_info *info, int blank)
 		event.data = &blank;
 		fb_notifier_call_chain(FB_EVENT_BLANK, &event);
 	}
-
+	
+//    printk("\n\tin fbmem.c fb_blank() ret=%d\n", ret);
  	return ret;
 }
 
@@ -1135,11 +1140,14 @@ static long do_fb_ioctl(struct fb_info *info, unsigned int cmd,
 		unlock_fb_info(info);
 		break;
 	case FBIOBLANK:
+	    //printk("\n\t\tin fbmem.c do_fb_ioctl case FBIOBLANK step 1");
 		if (!lock_fb_info(info))
 			return -ENODEV;
+	    //printk("\n\t\tin fbmem.c do_fb_ioctl case FBIOBLANK step 2");
 		acquire_console_sem();
 		info->flags |= FBINFO_MISC_USEREVENT;
 		ret = fb_blank(info, arg);
+		//printk("\n\tin fbmem.c do_fb_ioctl case FBIOBLANK ret=%d", ret);
 		info->flags &= ~FBINFO_MISC_USEREVENT;
 		release_console_sem();
 		unlock_fb_info(info);
@@ -1161,6 +1169,8 @@ static long fb_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
 	struct inode *inode = file->f_path.dentry->d_inode;
 	int fbidx = iminor(inode);
+//	printk("\n\tfbmem.c fb_ioctl() fbidx=%d\n", fbidx);
+	
 	struct fb_info *info = registered_fb[fbidx];
 
 	return do_fb_ioctl(info, cmd, arg);
@@ -1285,6 +1295,9 @@ static long fb_compat_ioctl(struct file *file, unsigned int cmd,
 {
 	struct inode *inode = file->f_path.dentry->d_inode;
 	int fbidx = iminor(inode);
+
+    printk("\n\tfbmem.c fb_compat_ioctl() fbidx=%d", fbidx);
+	
 	struct fb_info *info = registered_fb[fbidx];
 	struct fb_ops *fb = info->fbops;
 	long ret = -ENOIOCTLCMD;

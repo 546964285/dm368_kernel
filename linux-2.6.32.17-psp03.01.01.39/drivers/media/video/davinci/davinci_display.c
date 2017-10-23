@@ -133,10 +133,10 @@ static int davinci_buffer_prepare(struct videobuf_queue *q,
 		vb->size = layer->pix_fmt.sizeimage;
 		vb->field = field;
 
+//        printk("vb->width=%d, vb->height=%d, vb->size=%d\n", vb->width, vb->height, vb->size);
 		ret = videobuf_iolock(q, vb, NULL);
 		if (ret < 0) {
-			dev_err(davinci_display_dev, "Failed to map \
-				user address\n");
+			dev_err(davinci_display_dev, "Failed to map user address\n");
 			goto buf_align_exit;
 		}
 
@@ -144,8 +144,7 @@ static int davinci_buffer_prepare(struct videobuf_queue *q,
 
 		if (q->streaming) {
 			if (!ISALIGNED(addr)) {
-				dev_err(davinci_display_dev, "buffer_prepare:offset is \
-					not aligned to 32 bytes\n");
+				dev_err(davinci_display_dev, "buffer_prepare:offset is not aligned to 32 bytes\n");
 				goto buf_align_exit;
 			}
 		}
@@ -1328,9 +1327,12 @@ static int vpbe_qbuf(struct file *file, void *priv,
 	dev_dbg(davinci_display_dev, "VIDIOC_QBUF, layer id = %d\n",
 		layer->device_id);
 
+    //printk("VIDIOC_QBUF, layer id = %d\n", layer->device_id);
+
 	/* If this file handle is not allowed to do IO, return error */
 	if (!fh->io_allowed) {
 		dev_err(davinci_display_dev, "No io_allowed\n");
+		//printk("No io_allowed\n");
 		return -EACCES;
 	}
 
@@ -1569,7 +1571,7 @@ static int vpbe_enum_fmt(struct file *file, void  *priv,
 		layer->device_id);
 	if (fmt->index > 0) {
 		dev_err(davinci_display_dev,
-			"Invalid format index\n");
+			"Invalid format index @ Davinci_display.c\n");
 		return -EINVAL;
 	}
 	/* Fill in the information about format */

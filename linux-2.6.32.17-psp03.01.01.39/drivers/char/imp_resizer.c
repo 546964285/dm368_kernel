@@ -40,6 +40,9 @@
 
 #define	DRIVER_NAME	"DaVinciResizer"
 
+#define dev_dbg(dev, format, arg...)		\
+	dev_printk(KERN_DEBUG , dev , format , ## arg)
+
 /*device structure shared across all instances*/
 struct rsz_device rsz_dev;
 
@@ -200,28 +203,58 @@ static int rsz_doioctl(struct inode *inode, struct file *file,
 	struct imp_logical_channel *rsz_conf_chan =
 	    (struct imp_logical_channel *)file->private_data;
 
+
+//	printk("imp_resizer.rsz_doioctl()\n");
+
 	if (ISNULL(rsz_conf_chan)) {
 		dev_err(rsz_device, "channel ptr is null\n");
+//		printk("imp_resizer.channel ptr is null\n");
 		return -EFAULT;
 	}
 
 	if (ISNULL((void *)arg)) {
 		dev_err(rsz_device, "arg ptr is null\n");
+//		printk("imp_resizer.arg ptr is null\n");
 		return -EFAULT;
 	}
 
 	mode = imp_hw_if->get_resize_oper_mode();
+//	printk("resize_oper_mode = %x\n", mode);
+
+//	printk("imp_resizer.rsz_doioctl().cmd = %x\n", cmd);
+
+//		printk("imp_resizer.rsz_doioctl().RSZ_QUERYBUF = %x\n", RSZ_QUERYBUF);
+//		printk("imp_resizer.rsz_doioctl().RSZ_REQBUF = %x\n", RSZ_REQBUF);
+//		printk("imp_resizer.rsz_doioctl().RSZ_RESIZE = %x\n", RSZ_RESIZE);
+//		printk("imp_resizer.rsz_doioctl().RSZ_RECONFIG = %x\n", RSZ_RECONFIG);
+	
 	switch (cmd) {
 	case RSZ_QUERYBUF:
 	case RSZ_REQBUF:
+//	        printk("rsz_doioctl().RSZ_REQBUF.1\n");
+//	     break;
 	case RSZ_RESIZE:
 	case RSZ_RECONFIG:
 		{
+//		    printk("rsz_doioctl().RSZ_RECONFIG.1\n");
 			if (mode == IMP_MODE_CONTINUOUS)
+			{
+//			    printk("RSZ_RECONFIG permission denied\n");
 				return -EACCES;
+			}
 		}
 		break;
 	}
+
+
+//		printk("imp_resizer.rsz_doioctl().RSZ_S_OPER_MODE = %x\n", RSZ_S_OPER_MODE);
+//		printk("imp_resizer.rsz_doioctl().RSZ_G_OPER_MODE = %x\n", RSZ_G_OPER_MODE);
+//	    printk("imp_resizer.rsz_doioctl().RSZ_S_CONFIG = %x\n", RSZ_S_CONFIG);
+//	    printk("imp_resizer.rsz_doioctl().RSZ_G_CONFIG = %x\n", RSZ_G_CONFIG);
+//	    printk("imp_resizer.rsz_doioctl().RSZ_S_PRIORITY = %x\n", RSZ_S_PRIORITY);
+//	    printk("imp_resizer.rsz_doioctl().RSZ_G_PRIORITY = %x\n", RSZ_G_PRIORITY);
+//	    printk("imp_resizer.rsz_doioctl().RSZ_QUERYBUF = %x\n", RSZ_QUERYBUF);
+//	    printk("imp_resizer.rsz_doioctl().RSZ_REQBUF = %x\n",RSZ_REQBUF);
 
 	switch (cmd) {
 	case RSZ_S_OPER_MODE:
@@ -323,6 +356,7 @@ static int rsz_doioctl(struct inode *inode, struct file *file,
 	case RSZ_REQBUF:
 		{
 			dev_dbg(rsz_device, "RSZ_REQBUF:\n");
+//			printk("rsz_doioctl().RSZ_REQBUF\n");
 			ret = mutex_lock_interruptible(&(rsz_conf_chan->lock));
 			if (!ret) {
 				ret = imp_common_request_buffer(rsz_device,
@@ -368,6 +402,7 @@ static int rsz_doioctl(struct inode *inode, struct file *file,
 	case RSZ_RESIZE:
 		{
 			dev_dbg(rsz_device, "RSZ_RESIZE: \n");
+//			printk("rsz_doioctl(). RSZ_RESIZE\n");
 			ret = mutex_lock_interruptible(&(rsz_conf_chan->lock));
 			if (!ret) {
 				ret = imp_common_start_resize(rsz_device,
@@ -423,6 +458,7 @@ static int rsz_ioctl(struct inode *inode, struct file *file,
 	void *parg = NULL;
 
 	dev_dbg(rsz_device, "Start of resizer ioctl\n");
+//	printk("imp_resizer.rsz_ioctl().cmd = %x\n", cmd);
 
 	/*  Copy arguments into temp kernel buffer  */
 	switch (_IOC_DIR(cmd)) {
@@ -451,6 +487,7 @@ static int rsz_ioctl(struct inode *inode, struct file *file,
 	}
 
 	/* call driver */
+//	printk("imp_resizer.rsz_ioctl()..cmd = %x\n", cmd);
 	ret = rsz_doioctl(inode, file, cmd, (unsigned long)parg);
 	if (ret == -ENOIOCTLCMD)
 		ret = -EINVAL;

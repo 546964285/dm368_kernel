@@ -175,6 +175,14 @@ int previewer_doioctl(struct inode *inode, struct file *file,
 
 	mode = imp_hw_if->get_preview_oper_mode();
 
+//	    printk("imp_previewer.previewer_doioctl().cmd = %x\n", cmd);
+//	
+//	    printk("imp_previewer.previewer_doioctl().PREV_QUERYBUF = %x\n", PREV_QUERYBUF);
+//	    printk("imp_previewer.previewer_doioctl().PREV_REQBUF = %x\n", PREV_REQBUF);
+//	    printk("imp_previewer.previewer_doioctl().PREV_S_PARAM = %x\n", PREV_S_PARAM);
+//	    printk("imp_previewer.previewer_doioctl().PREV_PREVIEW = %x\n", PREV_PREVIEW);
+//	    printk("imp_previewer.previewer_doioctl().PREV_S_CONFIG = %x\n", PREV_S_CONFIG);
+    
 	switch (cmd) {
 	case PREV_QUERYBUF:
 	case PREV_REQBUF:
@@ -188,6 +196,10 @@ int previewer_doioctl(struct inode *inode, struct file *file,
 		break;
 	}
 
+//	    printk("imp_previewer.previewer_doioctl().PREV_QUERYBUF = %x\n", PREV_QUERYBUF);
+//	    printk("imp_previewer.previewer_doioctl().PREV_REQBUF = %x\n", PREV_REQBUF);
+//	    printk("imp_previewer.previewer_doioctl().PREV_PREVIEW = %x\n", PREV_PREVIEW);
+
 	switch (cmd) {
 	case PREV_QUERYBUF:
 	case PREV_REQBUF:
@@ -198,6 +210,10 @@ int previewer_doioctl(struct inode *inode, struct file *file,
 		}
 		break;
 	}
+
+//	    printk("imp_previewer.previewer_doioctl().PREV_S_OPER_MODE = %x\n", PREV_S_OPER_MODE);
+//	    printk("imp_previewer.previewer_doioctl().PREV_G_OPER_MODE = %x\n", PREV_G_OPER_MODE);
+//	    printk("imp_previewer.previewer_doioctl().PREV_ENUM_CAP = %x\n", PREV_ENUM_CAP);
 
 	/* switch according value of cmd */
 	switch (cmd) {

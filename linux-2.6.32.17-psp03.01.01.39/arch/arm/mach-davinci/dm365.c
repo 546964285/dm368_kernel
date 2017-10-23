@@ -585,6 +585,7 @@ MUX_CFG(DM365,	SPI4_SDENA0,	4,   20,    3,    1,	 false)
 MUX_CFG(DM365,	SPI4_SDENA1,	4,   16,    3,    2,	 false)
 
 MUX_CFG(DM365,	GPIO20,		3,   21,    3,    0,	 false)
+MUX_CFG(DM365,	GPIO23,	    3,   26,    3,    0,	 false)
 MUX_CFG(DM365,	GPIO33,		4,   12,    3,	  0,	 false)
 MUX_CFG(DM365,	GPIO40,		4,   26,    3,	  0,	 false)
 MUX_CFG(DM365,	GPIO66,		2,   0,     3,	  0,	 false)

@@ -293,6 +293,7 @@ enum davinci_dm365_index {
 
 	/* GPIO */
 	DM365_GPIO20,
+	DM365_GPIO23,
 	DM365_GPIO33,
 	DM365_GPIO40,
 	DM365_GPIO66,

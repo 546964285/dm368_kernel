@@ -1201,8 +1201,8 @@ static long vpfe_param_handler(struct file *file, void *priv,
 
 	switch (cmd) {
 	case VPFE_CMD_S_CCDC_RAW_PARAMS:
-		v4l2_warn(&vpfe_dev->v4l2_dev,
-			  "VPFE_CMD_S_CCDC_RAW_PARAMS: experimental ioctl\n");
+//		v4l2_warn(&vpfe_dev->v4l2_dev,
+//			  "VPFE_CMD_S_CCDC_RAW_PARAMS: experimental ioctl\n");
 		ret = mutex_lock_interruptible(&vpfe_dev->lock);
 		if (ret)
 			return ret;
@@ -1222,8 +1222,8 @@ unlock_out:
 		mutex_unlock(&vpfe_dev->lock);
 		break;
 	case VPFE_CMD_G_CCDC_RAW_PARAMS:
-		v4l2_warn(&vpfe_dev->v4l2_dev,
-			  "VPFE_CMD_G_CCDC_RAW_PARAMS: experimental ioctl\n");
+//		v4l2_warn(&vpfe_dev->v4l2_dev,
+//			  "VPFE_CMD_G_CCDC_RAW_PARAMS: experimental ioctl\n");
 		if (!ccdc_dev->hw_ops.get_params) {
 			ret = -EINVAL;
 			break;
@@ -1497,7 +1497,7 @@ static int vpfe_config_imp_image_format(struct vpfe_device *vpfe_dev)
 		goto imp_exit;
 	}
 
-    printk("*****vpfe_dev->fmt.fmt.pix.pixelformat = %x****\n",vpfe_dev->fmt.fmt.pix.pixelformat);
+//    printk("*****vpfe_dev->fmt.fmt.pix.pixelformat = %x****\n",vpfe_dev->fmt.fmt.pix.pixelformat);
     //vpfe_dev->fmt.fmt.pix.pixelformat=0x32525942;
 	if (vpfe_dev->fmt.fmt.pix.pixelformat == V4L2_PIX_FMT_SBGGR16)
 		imp_pix = IMP_BAYER;
@@ -2699,6 +2699,7 @@ static const struct v4l2_ioctl_ops vpfe_ioctl_ops = {
 	.vidioc_g_parm		 = vpfe_g_parm,
 	.vidioc_enum_framesizes	 = vpfe_enum_framesizes,
 	.vidioc_enum_frameintervals = vpfe_enum_frameintervals,
+//	.vidioc_g_chip_ident = vpfe_g_chip_ident,
 };
 
 static struct vpfe_device *vpfe_initialize(void)

@@ -962,6 +962,7 @@ static long __video_do_ioctl(struct file *file,
 	{
 		struct v4l2_buffer *p = arg;
 
+//        printk("in v4l2-ioctl.c __video_do_ioctl() case VIDIOC_QBUF\n");
 		if (!ops->vidioc_qbuf)
 			break;
 		ret = check_fmt(ops, p->type);
@@ -1708,7 +1709,10 @@ static long __video_do_ioctl(struct file *file,
 		struct v4l2_dbg_chip_ident *p = arg;
 
 		if (!ops->vidioc_g_chip_ident)
+                  {      
+                          // printk("ops->vidioc_g_chip_ident == 0");
 			break;
+                  }
 		p->ident = V4L2_IDENT_NONE;
 		p->revision = 0;
 		ret = ops->vidioc_g_chip_ident(file, fh, p);

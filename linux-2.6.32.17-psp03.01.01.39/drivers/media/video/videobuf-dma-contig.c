@@ -153,11 +153,20 @@ static int videobuf_dma_contig_user_get(struct videobuf_dma_contig_memory *mem,
 
 	vma = find_vma(mm, vb->baddr);
 	if (!vma)
+	{
+//	    printk("\tret in videobuf_dma_contig_user_get(), !vma\n");
 		goto out_up;
+    }
 
 	if ((vb->baddr + mem->size) > vma->vm_end)
+	{
+//	    printk("\t(vb->baddr + mem->size) > vma->vm_end\n");
+//	    printk("\t(vb->baddr + mem->size)=%d, vma->vm_end=%d\n", (vb->baddr + mem->size), vma->vm_end);
+//	    printk("\tvb->baddr=%d, vma->vm_start=%d\n", vb->baddr, vma->vm_start);
+//	    printk("\tmem->size=%d, vb->size=%d, (vma->vm_end - vma->vm_start)=%d\n", mem->size, vb->size, (vma->vm_end - vma->vm_start));
 		goto out_up;
-
+    }
+    
 	pages_done = 0;
 	prev_pfn = 0; /* kill warning */
 	user_address = vb->baddr;
@@ -185,7 +194,7 @@ static int videobuf_dma_contig_user_get(struct videobuf_dma_contig_memory *mem,
 
  out_up:
 	up_read(&current->mm->mmap_sem);
-
+//    printk("\tret in videobuf_dma_contig_user_get(), ret = %d\n", ret);
 	return ret;
 }
 
@@ -222,18 +231,23 @@ static int __videobuf_iolock(struct videobuf_queue *q,
 	BUG_ON(!mem);
 	MAGIC_CHECK(mem->magic, MAGIC_DC_MEM);
 
+//	printk("\t__videobuf_iolock @ videobuf-dma-config.c\n");
+
 	switch (vb->memory) {
 	case V4L2_MEMORY_MMAP:
 		dev_dbg(q->dev, "%s memory method MMAP\n", __func__);
+//		printk("%s memory method MMAP\n", __func__);
 
 		/* All handling should be done by __videobuf_mmap_mapper() */
 		if (!mem->vaddr) {
 			dev_err(q->dev, "memory is not alloced/mmapped.\n");
+//			printk("memory is not alloced/mmapped.\n");
 			return -EINVAL;
 		}
 		break;
 	case V4L2_MEMORY_USERPTR:
 		dev_dbg(q->dev, "%s memory method USERPTR\n", __func__);
+//			printk("%s memory method USERPTR\n", __func__);
 
 		/* handle pointer from user space */
 		if (vb->baddr)
@@ -246,16 +260,19 @@ static int __videobuf_iolock(struct videobuf_queue *q,
 		if (!mem->vaddr) {
 			dev_err(q->dev, "dma_alloc_coherent %ld failed\n",
 					 mem->size);
+//		    printk("dma_alloc_coherent %ld failed\n", mem->size);
 			return -ENOMEM;
 		}
 
 		dev_dbg(q->dev, "dma_alloc_coherent data is at %p (%ld)\n",
 			mem->vaddr, mem->size);
+//		printk("dma_alloc_coherent data is at %p (%ld)\n",	mem->vaddr, mem->size);
 		break;
 	case V4L2_MEMORY_OVERLAY:
 	default:
 		dev_dbg(q->dev, "%s memory method OVERLAY/unknown\n",
 			__func__);
+//		printk("%s memory method OVERLAY/unknown\n", __func__);
 		return -EINVAL;
 	}
 

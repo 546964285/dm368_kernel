@@ -736,6 +736,8 @@ struct vm_area_struct *find_vma(struct mm_struct *mm, unsigned long addr)
 	struct vm_area_struct *vma;
 	struct rb_node *n = mm->mm_rb.rb_node;
 
+//	printk("find_vma() @ nommu.c\n");
+
 	/* check the cache first */
 	vma = mm->mmap_cache;
 	if (vma && vma->vm_start <= addr && vma->vm_end > addr)
