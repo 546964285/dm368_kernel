@@ -270,7 +270,7 @@
 
 /*-------------------------------------------------------------------------*/
 
-#define DRIVER_DESC		"File-backed Storage Gadget"
+#define DRIVER_DESC		"Aohua Endoscope Storage"
 #define DRIVER_NAME		"g_file_storage"
 #define DRIVER_VERSION		"20 November 2008"
 
@@ -2011,8 +2011,8 @@ static int do_inquiry(struct fsg_dev *fsg, struct fsg_buffhd *bh)
 {
 	u8	*buf = (u8 *) bh->buf;
 
-	static char vendor_id[] = "Linux   ";
-	static char product_disk_id[] = "File-Stor Gadget";
+	static char vendor_id[] = "Aohua   ";
+	static char product_disk_id[] = "Endo Storage";
 	static char product_cdrom_id[] = "File-CD Gadget  ";
 
 	if (!fsg->curlun) {		// Unsupported LUNs are okay
