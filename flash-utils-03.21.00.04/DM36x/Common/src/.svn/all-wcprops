@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src
+END
+device.c
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device.c
+END
+device_nand.c
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device_nand.c
+END
+device_name.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device_name.cs
+END
+device_sdmmc.c
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device_sdmmc.c
+END
+device_async_mem.c
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device_async_mem.c
+END
+device_spi.c
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device_spi.c
+END
+device_uart.c
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/device_uart.c
+END
+tags
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/Common/src/tags
+END

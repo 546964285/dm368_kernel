@@ -1,0 +1,22 @@
+---------------------------  UBL_SD_MMC.pjt - Debug  ---------------------------
+[Linking...] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -@"Debug.lkf"
+<Linking>
+
+..\..\GNU\AISUtils\HexAIS_OMAP-L138.exe -ini ..\..\GNU\AISUtils\OMAP-L138-uart.ini -o F:\TEMP\ccs\OMAP-L138\CCS\UBL_ARM\UBL_SDMMC.ais F:\TEMP\ccs\OMAP-L138\CCS\UBL_ARM\SDMMC\UBL_SDMMC.out
+-----------------------------------------------------
+   TI AIS Hex File Generator for OMAP-L138
+   (C) 2011, Texas Instruments, Inc.
+   Ver. 1.24
+-----------------------------------------------------
+
+
+Begining the AIS file generation.
+AIS file being generated for bootmode: UART.
+Parsing the input object file, F:\TEMP\ccs\OMAP-L138\CCS\UBL_ARM\SDMMC\UBL_SDMMC.out.
+AIS file generation was successful.
+Wrote 9648 bytes to file F:\TEMP\ccs\OMAP-L138\CCS\UBL_ARM\UBL_SDMMC.ais.
+Conversion is complete.
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.
+  Please view the build output for errors and warnings for any custom steps.

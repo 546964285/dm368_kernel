@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter
+END
+SPIWriter_DSP.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/SPIWriter_DSP.cmd
+END
+Debug.lkf
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/Debug.lkf
+END
+SPIWriter_ARM.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/SPIWriter_ARM.pjt
+END
+SPIWriter_ARM.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/SPIWriter_ARM.sbl
+END
+SPIWriter_ARM.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/SPIWriter_ARM.cmd
+END
+SPIWriter_DSP.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/SPIWriter_DSP.pjt
+END
+cc_build_Debug.log
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/cc_build_Debug.log
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/makefile
+END
+SPIWriter_ARM.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SPIWriter/SPIWriter_ARM.paf2
+END

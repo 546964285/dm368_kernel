@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/Common/arm_vectors
+END
+arm_idle_vectors.asm
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/Common/arm_vectors/arm_idle_vectors.asm
+END
+arm_rom_vectors.asm
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/Common/arm_vectors/arm_rom_vectors.asm
+END
+arm_vectors.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/Common/arm_vectors/arm_vectors.cmd
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/Common/arm_vectors/makefile
+END

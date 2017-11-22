@@ -1,0 +1,29 @@
+-------------------------  NANDWriter_DSP.pjt - Debug  -------------------------
+[debug.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../../OMAP-L138/CCS/NANDWriter/Debug.lkf" "debug.c"
+"debug.c", line 85: warning: variable "s" was declared but never referenced
+"debug.c", line 86: warning: variable "len" was declared but never referenced
+"debug.c", line 86: warning: variable "j" was declared but never referenced
+"debug.c", line 87: warning: variable "val" was declared but never referenced
+"debug.c", line 87: warning: variable "baseFactor" was declared but never referenced
+
+[async_mem.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../../OMAP-L138/CCS/NANDWriter/Debug.lkf" "async_mem.c"
+
+[nand.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../../OMAP-L138/CCS/NANDWriter/Debug.lkf" "nand.c"
+
+[util.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../OMAP-L138/CCS/NANDWriter/Debug.lkf" "util.c"
+
+[device.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../CCS/NANDWriter/Debug.lkf" "device.c"
+"device.c", line 172: warning: variable "deviceOPP" was declared but never referenced
+"device.c", line 949: warning: function "LOCAL_getOPP" was declared but never referenced
+
+[device_async_mem.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../CCS/NANDWriter/Debug.lkf" "device_async_mem.c"
+
+[device_nand.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../../CCS/NANDWriter/Debug.lkf" "device_nand.c"
+
+[nandwriter.c] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -g -fr"F:/test/ccs/OMAP-L138/CCS/NANDWriter/Debug" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/ccs/include" -i"F:/test/ccs/OMAP-L138/CCS/NANDWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -mv6400+ -@"../Debug.lkf" "nandwriter.c"
+
+[Linking...] "C:\Program Files\Texas Instruments\C6000 Code Generation Tools 6.1.11\bin\cl6x" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 7 Warnings, 0 Remarks.

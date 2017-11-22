@@ -1,0 +1,18 @@
+#############################################################
+# Device and Flash types for Makefile use                   #
+#############################################################
+#
+
+# Generic string for device family
+DEVSTRING=DM36x
+
+#Architecture types
+ARCHTYPES:=ARM
+
+# Particular device types of the family
+
+DEVICETYPES:=DM365_297_DDR243 DM365_270_DDR216 DM365_216_DDR173 DM365_297_DDR270 DM365_297_DDR277 DM365_297_DDR173_OSC24 DM365_432_DDR340
+
+# Supported flash memory types for booting
+#FLASHTYPES:=NAND 
+FLASHTYPES:=NAND SDMMC

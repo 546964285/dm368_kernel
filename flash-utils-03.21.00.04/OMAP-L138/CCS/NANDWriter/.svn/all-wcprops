@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter
+END
+NANDWriter_DSP.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_DSP.pjt
+END
+Debug.lkf
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/Debug.lkf
+END
+NANDWriter_DSP.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_DSP.sbl
+END
+NANDWriter_ARM.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_ARM.paf2
+END
+NANDWriter_DSP.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_DSP.cmd
+END
+NANDWriter_ARM.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_ARM.pjt
+END
+cc_build_Debug.log
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/cc_build_Debug.log
+END
+NANDWriter_DSP.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_DSP.paf2
+END
+NANDWriter_ARM.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_ARM.sbl
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/makefile
+END
+NANDWriter_ARM.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NANDWriter/NANDWriter_ARM.cmd
+END

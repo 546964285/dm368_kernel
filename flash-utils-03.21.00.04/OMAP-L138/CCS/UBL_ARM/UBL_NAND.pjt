@@ -1,0 +1,60 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="F:\Omap-L138&DM36x\OMAP-L138\CCS\UBL_ARM\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="Linker"
+Tool="XDC"
+Config="OMAPL138"
+Config="AM1808"
+Config="INTDEV0"
+
+[Source Files]
+Source="..\..\..\Common\arch\arm926ejs\src\boot.c"
+Source="..\..\..\Common\drivers\src\async_mem.c"
+Source="..\..\..\Common\drivers\src\i2c.c"
+Source="..\..\..\Common\drivers\src\nand.c"
+Source="..\..\..\Common\drivers\src\uart.c"
+Source="..\..\..\Common\gnu\src\debug.c"
+Source="..\..\..\Common\src\util.c"
+Source="..\..\..\Common\ubl\src\nandboot.c"
+Source="..\..\..\Common\ubl\src\uartboot.c"
+Source="..\..\..\Common\ubl\src\ubl.c"
+Source="..\..\Common\src\device.c"
+Source="..\..\Common\src\device_async_mem.c"
+Source="..\..\Common\src\device_nand.c"
+Source="..\..\Common\src\device_uart.c"
+Source="..\..\Common\src\tps65070.c"
+Source="UBL.cmd"
+
+["OMAPL138" Settings]
+FinalBuildCmd=HexAIS.exe -ini ..\..\GNU\AISUtils\OMAP-L138-uart.ini -o $(Proj_dir)\UBL_NAND\ubl_OMAPL138_NAND.ais $(Proj_dir)\NAND\UBL_OMAPL138_NAND.out;Run=Always
+
+["AM1808" Settings]
+FinalBuildCmd=HexAIS.exe -ini ..\..\GNU\AISUtils\OMAP-L138-uart.ini -o $(Proj_dir)\UBL_NAND\ubl_AM1808_NAND.ais $(Proj_dir)\NAND\UBL_AM1808_NAND.out;Run=Always
+
+["INTDEV0" Settings]
+FinalBuildCmd=HexAIS.exe -ini ..\..\GNU\AISUtils\OMAP-L138-uart.ini -o $(Proj_dir)\UBL_NAND\ubl_INTDEV0_NAND.ais $(Proj_dir)\NAND\UBL_INTDEV0_NAND.out;Run=Always
+
+
+
+["Compiler" Settings: "OMAPL138"]
+Options=-g -o3 -fr"$(Proj_dir)\NAND" -fs"$(Proj_dir)\NAND" -i"$(Proj_dir)\include" -i"$(Proj_dir)\..\..\..\Common\arch\arm926ejs\include" -i"$(Proj_dir)\..\..\..\Common\ubl\include" -i"$(Proj_dir)\..\..\..\Common\gnu\include" -i"$(Proj_dir)\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\drivers\include" -me -mv5e --abi=eabi --define="UBL_NAND" --define="UBL" --define="USE_IN_ROM" -define="DEVICE_UART2_FOR_DEBUG" --define="OPERATING_POINT" --define="CONFIG_MACH_DAVINCI_DA850_EVM" --cmd_file="$(Proj_dir)\devtype.txt"
+
+["Compiler" Settings: "AM1808"]
+Options=-g -o3 -fr"$(Proj_dir)\NAND" -fs"$(Proj_dir)\NAND" -i"$(Proj_dir)\include" -i"$(Proj_dir)\..\..\..\Common\arch\arm926ejs\include" -i"$(Proj_dir)\..\..\..\Common\ubl\include" -i"$(Proj_dir)\..\..\..\Common\gnu\include" -i"$(Proj_dir)\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\drivers\include" -me -mv5e --abi=eabi --define="UBL_NAND" --define="UBL" --define="USE_IN_ROM" -define="DEVICE_UART2_FOR_DEBUG" --define="OPERATING_POINT" --define="CONFIG_MACH_DAVINCI_DA850_EVM" --define="AM1808" --cmd_file="$(Proj_dir)\devtype.txt"
+
+["Compiler" Settings: "INTDEV0"]
+Options=-g -o3 -fr"$(Proj_dir)\NAND" -fs"$(Proj_dir)\NAND" -i"$(Proj_dir)\include" -i"$(Proj_dir)\..\..\..\Common\arch\arm926ejs\include" -i"$(Proj_dir)\..\..\..\Common\ubl\include" -i"$(Proj_dir)\..\..\..\Common\gnu\include" -i"$(Proj_dir)\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\drivers\include" -me -mv5e --abi=eabi --define="UBL_NAND" --define="UBL" --define="USE_IN_ROM" -define="DEVICE_UART2_FOR_DEBUG" --define="OPERATING_POINT" --define="CONFIG_MACH_DAVINCI_DA850_EVM" --define="INTDEV0" --cmd_file="$(Proj_dir)\devtype.txt"
+
+["Linker" Settings: "OMAPL138"]
+Options=--abi=eabi -q -f0xFF -m"$(Proj_dir)\NAND\UBL_NAND.map" -o"$(Proj_dir)\NAND\UBL_OMAPL138_NAND.out" -x --retain="*(.selfcopy)"
+
+["Linker" Settings: "AM1808"]
+Options=--abi=eabi -q -f0xFF -m"$(Proj_dir)\NAND\UBL_NAND.map" -o"$(Proj_dir)\NAND\UBL_AM1808_NAND.out" -x --retain="*(.selfcopy)"
+
+["Linker" Settings: "INTDEV0"]
+Options=--abi=eabi -q -f0xFF -m"$(Proj_dir)\NAND\UBL_NAND.map" -o"$(Proj_dir)\NAND\UBL_INTDEV0_NAND.out" -x --retain="*(.selfcopy)"

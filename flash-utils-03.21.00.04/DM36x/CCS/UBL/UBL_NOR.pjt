@@ -1,0 +1,36 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\pristine\trunk\DM36x\CCS\UBL\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="Linker"
+Tool="XDC"
+Config="Debug"
+
+[Source Files]
+Source="..\..\..\Common\arch\arm926ejs\src\boot.c"
+Source="..\..\..\Common\arch\arm926ejs\src\selfcopy.c"
+Source="..\..\..\Common\drivers\src\async_mem.c"
+Source="..\..\..\Common\drivers\src\nor.c"
+Source="..\..\..\Common\drivers\src\uart.c"
+Source="..\..\..\Common\gnu\src\debug.c"
+Source="..\..\..\Common\src\util.c"
+Source="..\..\..\Common\ubl\src\norboot.c"
+Source="..\..\..\Common\ubl\src\ubl.c"
+Source="..\..\Common\src\device.c"
+Source="..\..\Common\src\device_async_mem.c"
+Source="..\..\Common\src\device_uart.c"
+Source="UBL.cmd"
+
+["Debug" Settings]
+FinalBuildCmd=hex470.exe $(Proj_dir)\ubl2bin.cmd -o=$(Proj_dir)\UBL.bin $(Proj_dir)\NOR\UBL_NOR.out;Run=Always
+
+["Compiler" Settings: "Debug"]
+Options=-o3 -fr"$(Proj_dir)\NOR" -fs"$(Proj_dir)\NOR" -i"$(Proj_dir)\include" -i"$(Proj_dir)\..\..\..\Common\arch\arm926ejs\include" -i"$(Proj_dir)\..\..\..\Common\ubl\include" -i"$(Proj_dir)\..\..\..\Common\gnu\include" -i"$(Proj_dir)\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\drivers\include" --define="UBL_NOR" --cmd_file="$(Proj_dir)\devtype.txt" -mv5e --abi=eabi --symdebug:none
+
+["Linker" Settings: "Debug"]
+Options=--abi=eabi -q -f0xFF -m"$(Proj_dir)\NOR\UBL_NOR.map" -o"$(Proj_dir)\NOR\UBL_NOR.out" -x --retain="*(.selfcopy)"
+

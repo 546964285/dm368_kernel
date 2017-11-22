@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL
+END
+UBL_NOR.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_NOR.sbl
+END
+ubl2bin_mmcsd.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/ubl2bin_mmcsd.cmd
+END
+UBL_SDMMC.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_SDMMC.sbl
+END
+UBL.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL.cmd
+END
+UBL_SPI_MEM.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_SPI_MEM.pjt
+END
+UBL_NOR.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_NOR.paf2
+END
+cc_build_Debug.log
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/cc_build_Debug.log
+END
+cc_build_BOOT_SDMMC.log
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/cc_build_BOOT_SDMMC.log
+END
+UBL_NOR.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_NOR.pjt
+END
+UBL_SDMMC.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_SDMMC.paf2
+END
+devtype.txt
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/devtype.txt
+END
+ubl2bin.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/ubl2bin.cmd
+END
+hex470.exe
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/hex470.exe
+END
+Debug.lkf
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/Debug.lkf
+END
+UBL_NAND.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_NAND.sbl
+END
+UBL_SDMMC.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_SDMMC.pjt
+END
+BOOT_SDMMC.lkf
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/BOOT_SDMMC.lkf
+END
+ubl_mmcsd.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/ubl_mmcsd.cmd
+END
+UBL_NAND.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_NAND.paf2
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/makefile
+END
+UBL_NAND.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cat_flashutils/!svn/ver/796/branches/03.21.00.03/DM36x/CCS/UBL/UBL_NAND.pjt
+END

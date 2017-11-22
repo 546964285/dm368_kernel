@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter
+END
+SDMMCWriter_ARM.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/SDMMCWriter_ARM.cmd
+END
+SDMMCWriter_DSP.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/SDMMCWriter_DSP.pjt
+END
+SDMMCWriter_ARM.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/SDMMCWriter_ARM.paf2
+END
+SDMMCWriter_DSP.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/SDMMCWriter_DSP.cmd
+END
+SDMMCWriter_ARM.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/SDMMCWriter_ARM.pjt
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/makefile
+END
+SDMMCWriter_ARM.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/SDMMCWriter/SDMMCWriter_ARM.sbl
+END

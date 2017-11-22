@@ -1,0 +1,375 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ClockControl	device.c	/^  static Uint32 ClockControl  = 0x243F04FC;$/;"	v	file:
+ClockControl	device.c	/^  static const Uint32 ClockControl  = 0x0BFF05FC;$/;"	v	file:
+ClockControl	device.c	/^  static const Uint32 ClockControl  = 0x0BFF077C;  $/;"	v	file:
+ClockControl	device.c	/^  static const Uint32 ClockControl  = 0x243F04FC;  $/;"	v	file:
+ClockControl	device.c	/^  static const Uint32 ClockControl  = 0x243F04FC;$/;"	v	file:
+ClockControl	deviceTest.c	/^  static const Uint32 ClockControl  = 0x0BFF05FC;$/;"	v	file:
+ClockControl	deviceTest.c	/^  static const Uint32 ClockControl  = 0x0BFF077C;  $/;"	v	file:
+ClockControl	deviceTest.c	/^  static const Uint32 ClockControl  = 0x243F04FC;  $/;"	v	file:
+ClockControl	deviceTest.c	/^  static const Uint32 ClockControl  = 0x243F04FC;$/;"	v	file:
+ClockControl	deviceTest.c	/^  static const Uint32 ClockControl  = 0x36ED04FC;$/;"	v	file:
+DDR_PBBPR	device.c	/^  static const Uint32 DDR_PBBPR     = 0x000000FE;$/;"	v	file:
+DDR_PBBPR	deviceTest.c	/^  static const Uint32 DDR_PBBPR     = 0x000000FE;$/;"	v	file:
+DDR_PHYCR	device.c	/^  static const Uint32 DDR_PHYCR     = 0x000000C5;$/;"	v	file:
+DDR_PHYCR	device.c	/^  static const Uint32 DDR_PHYCR     = 0x000000C6;$/;"	v	file:
+DDR_PHYCR	device.c	/^ static const Uint32 DDR_PHYCR     = 0x000000C6;$/;"	v	file:
+DDR_PHYCR	deviceTest.c	/^  static const Uint32 DDR_PHYCR     = 0x000000C5;$/;"	v	file:
+DDR_PHYCR	deviceTest.c	/^  static const Uint32 DDR_PHYCR     = 0x000000C6;$/;"	v	file:
+DDR_PHYCR	deviceTest.c	/^ static const Uint32 DDR_PHYCR     = 0x000000C6;$/;"	v	file:
+DDR_SDBCR	device.c	/^   static const Uint32 DDR_SDBCR     = 0x08534832;$/;"	v	file:
+DDR_SDBCR	device.c	/^  static const Uint32 DDR_SDBCR     = 0x00534A32;$/;"	v	file:
+DDR_SDBCR	device.c	/^  static const Uint32 DDR_SDBCR     = 0x08534832;$/;"	v	file:
+DDR_SDBCR	device.c	/^  static const Uint32 DDR_SDBCR     = 0x08534A32;$/;"	v	file:
+DDR_SDBCR	deviceTest.c	/^  static const Uint32 DDR_SDBCR     = 0x00534A32;$/;"	v	file:
+DDR_SDBCR	deviceTest.c	/^  static const Uint32 DDR_SDBCR     = 0x008534A32;        \/\/0x08534A32;$/;"	v	file:
+DDR_SDBCR	deviceTest.c	/^  static const Uint32 DDR_SDBCR     = 0x08534832;$/;"	v	file:
+DDR_SDBCR	deviceTest.c	/^  static const Uint32 DDR_SDBCR     = 0x08534A32;$/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 0x00000546;$/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 0x00000695;  $/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 0x00000768;$/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 0x0000083A;    $/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 0x0000083A;$/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 0x0000090D; $/;"	v	file:
+DDR_SDRCR	device.c	/^  static const Uint32 DDR_SDRCR     = 2652;$/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 0x00000546;$/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 0x00000695;  $/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 0x00000768;$/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 0x0000083A;    $/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 0x0000083A;$/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 0x0000090D; $/;"	v	file:
+DDR_SDRCR	deviceTest.c	/^  static const Uint32 DDR_SDRCR     = 2652;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 0x2C923251;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 0x2CDA3AC9;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 0x369342D1;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 0x3C934B51;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 0x45245392;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 0x4ADC5C1A;$/;"	v	file:
+DDR_SDTIMR	device.c	/^  static const Uint32 DDR_SDTIMR    = 1471511963;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 0x2C923251;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 0x2CDA3AC9;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 0x369342D1;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 0x3C934B51;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 0x45245392;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 0x4ADC5C1A;$/;"	v	file:
+DDR_SDTIMR	deviceTest.c	/^  static const Uint32 DDR_SDTIMR    = 1471511963;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4217C722;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 0x421DC702;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4221C702;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4225C742;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4ADC5C1A;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 0x9C17C723;$/;"	v	file:
+DDR_SDTIMR2	device.c	/^  static const Uint32 DDR_SDTIMR2   = 3559835459;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4217C722;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 0x421DC702;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4221C702;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4225C742;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 0x4ADC5C1A;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 0x9C17C723;$/;"	v	file:
+DDR_SDTIMR2	deviceTest.c	/^  static const Uint32 DDR_SDTIMR2   = 3559835459;$/;"	v	file:
+DEVICE_ASYNC_MEM_Init	device_async_mem.c	/^static void DEVICE_ASYNC_MEM_Init(ASYNC_MEM_InfoHandle hAsyncMemInfo)$/;"	f	file:
+DEVICE_ASYNC_MEM_IsNandReadyPin	device_async_mem.c	/^static Uint8 DEVICE_ASYNC_MEM_IsNandReadyPin(ASYNC_MEM_InfoHandle hAsyncMemInfo)$/;"	f	file:
+DEVICE_ASYNC_MEM_info	device_async_mem.c	/^const ASYNC_MEM_DEVICE_InfoObj DEVICE_ASYNC_MEM_info = $/;"	v
+DEVICE_ASYNC_MEM_interfaces	device_async_mem.c	/^const ASYNC_MEM_DEVICE_InterfaceObj DEVICE_ASYNC_MEM_interfaces[DEVICE_ASYNC_MEM_INTERFACE_CNT] =$/;"	v
+DEVICE_ASYNC_MEM_regionSizes	device_async_mem.c	/^const Uint32 DEVICE_ASYNC_MEM_regionSizes[DEVICE_ASYNC_MEM0_REGION_CNT] =$/;"	v
+DEVICE_ASYNC_MEM_regionStarts	device_async_mem.c	/^const Uint32 DEVICE_ASYNC_MEM_regionStarts[DEVICE_ASYNC_MEM0_REGION_CNT] =$/;"	v
+DEVICE_AsyncMemInit	device.c	/^Uint32 DEVICE_AsyncMemInit( Uint8 interfaceNum )$/;"	f
+DEVICE_AsyncMemInit	deviceTest.c	/^Uint32 DEVICE_AsyncMemInit( Uint8 interfaceNum )$/;"	f
+DEVICE_EMIFInit	device.c	/^Uint32 DEVICE_EMIFInit(void)$/;"	f
+DEVICE_EMIFInit	deviceTest.c	/^Uint32 DEVICE_EMIFInit(void)$/;"	f
+DEVICE_ExternalMemInit	device.c	/^Uint32 DEVICE_ExternalMemInit()$/;"	f
+DEVICE_ExternalMemInit	deviceTest.c	/^Uint32 DEVICE_ExternalMemInit()$/;"	f
+DEVICE_I2C0Init	device.c	/^Uint32 DEVICE_I2C0Init(void)$/;"	f
+DEVICE_I2C0Init	deviceTest.c	/^Uint32 DEVICE_I2C0Init(void)$/;"	f
+DEVICE_I2CInit	device.c	/^Uint32 DEVICE_I2CInit(Uint8 peripheralNum)$/;"	f
+DEVICE_I2CInit	deviceTest.c	/^Uint32 DEVICE_I2CInit(Uint8 peripheralNum)$/;"	f
+DEVICE_LPSCTransition	device.c	/^void DEVICE_LPSCTransition(Uint8 module, Uint8 domain, Uint8 state)$/;"	f
+DEVICE_LPSCTransition	deviceTest.c	/^void DEVICE_LPSCTransition(Uint8 module, Uint8 domain, Uint8 state)$/;"	f
+DEVICE_NAND_BB_checkSpareBytes	device_nand.c	/^static Uint32 DEVICE_NAND_BB_checkSpareBytes(NAND_InfoHandle hNandInfo, Uint8 *spareBytes)$/;"	f	file:
+DEVICE_NAND_BB_info	device_nand.c	/^const NAND_BB_InfoObj DEVICE_NAND_BB_info = $/;"	v
+DEVICE_NAND_BB_markSpareBytes	device_nand.c	/^static void DEVICE_NAND_BB_markSpareBytes(NAND_InfoHandle hNandInfo, Uint8 *spareBytes)$/;"	f	file:
+DEVICE_NAND_CHIP_infoTable	device_nand.c	/^const NAND_CHIP_InfoObj DEVICE_NAND_CHIP_infoTable[] = $/;"	v
+DEVICE_NAND_ECC_START_OFFSET	device_nand.c	32;"	d	file:
+DEVICE_NAND_ECC_calculate	device_nand.c	/^static void DEVICE_NAND_ECC_calculate(NAND_InfoHandle hNandInfo, Uint8 *data, Uint8 *calcECC)$/;"	f	file:
+DEVICE_NAND_ECC_correct	device_nand.c	/^static Uint32 DEVICE_NAND_ECC_correct(NAND_InfoHandle hNandInfo, Uint8 *data, Uint8 *readECC)$/;"	f	file:
+DEVICE_NAND_ECC_disable	device_nand.c	/^static void DEVICE_NAND_ECC_disable(NAND_InfoHandle hNandInfo)$/;"	f	file:
+DEVICE_NAND_ECC_enable	device_nand.c	/^static void DEVICE_NAND_ECC_enable(NAND_InfoHandle hNandInfo)$/;"	f	file:
+DEVICE_NAND_ECC_info	device_nand.c	/^const NAND_ECC_InfoObj DEVICE_NAND_ECC_info = $/;"	v
+DEVICE_NAND_ECC_read	device_nand.c	/^static void DEVICE_NAND_ECC_read(NAND_InfoHandle hNandInfo, Uint8 *spareBytes, Uint8 opNum, Uint8 *readECC)$/;"	f	file:
+DEVICE_NAND_ECC_store	device_nand.c	/^static void DEVICE_NAND_ECC_store(NAND_InfoHandle hNandInfo, Uint8 *spareBytes, Uint8 opNum, Uint8 *calcECC)$/;"	f	file:
+DEVICE_NAND_PAGE_layout	device_nand.c	/^const NAND_PAGE_LayoutObj DEVICE_NAND_PAGE_layout = $/;"	v
+DEVICE_PLL1Init	device.c	/^Uint32 DEVICE_PLL1Init()$/;"	f
+DEVICE_PLL1Init	deviceTest.c	/^Uint32 DEVICE_PLL1Init()$/;"	f
+DEVICE_PLL2Init	device.c	/^Uint32 DEVICE_PLL2Init()$/;"	f
+DEVICE_PLL2Init	deviceTest.c	/^Uint32 DEVICE_PLL2Init()$/;"	f
+DEVICE_PSCInit	device.c	/^void DEVICE_PSCInit()$/;"	f
+DEVICE_PSCInit	deviceTest.c	/^void DEVICE_PSCInit()$/;"	f
+DEVICE_SDMMCInit	device.c	/^Uint32 DEVICE_SDMMCInit(Uint8 peripheralNum)$/;"	f
+DEVICE_SDMMCInit	deviceTest.c	/^Uint32 DEVICE_SDMMCInit(Uint8 peripheralNum)$/;"	f
+DEVICE_SPIInit	device.c	/^Uint32 DEVICE_SPIInit(Uint8 periphNum)$/;"	f
+DEVICE_SPIInit	deviceTest.c	/^Uint32 DEVICE_SPIInit(Uint8 periphNum)$/;"	f
+DEVICE_SPI_MEM_params	device_spi.c	/^const SPI_MEM_ParamsObj DEVICE_SPI_MEM_params = $/;"	v
+DEVICE_SPI_baseAddr	device_spi.c	/^const Uint32 DEVICE_SPI_baseAddr[SPI_PERIPHERAL_CNT] =$/;"	v
+DEVICE_SPI_config	device_spi.c	/^const SPI_ConfigObj DEVICE_SPI_config = $/;"	v
+DEVICE_TIMER0Init	device.c	/^Uint32 DEVICE_TIMER0Init()$/;"	f
+DEVICE_TIMER0Init	deviceTest.c	/^Uint32 DEVICE_TIMER0Init()$/;"	f
+DEVICE_TIMER0Start	device.c	/^void DEVICE_TIMER0Start(void)$/;"	f
+DEVICE_TIMER0Start	deviceTest.c	/^void DEVICE_TIMER0Start(void)$/;"	f
+DEVICE_TIMER0Status	device.c	/^Uint32 DEVICE_TIMER0Status(void)$/;"	f
+DEVICE_TIMER0Status	deviceTest.c	/^Uint32 DEVICE_TIMER0Status(void)$/;"	f
+DEVICE_TIMER0Stop	device.c	/^void DEVICE_TIMER0Stop(void)$/;"	f
+DEVICE_TIMER0Stop	deviceTest.c	/^void DEVICE_TIMER0Stop(void)$/;"	f
+DEVICE_UARTInit	device.c	/^Uint32 DEVICE_UARTInit(Uint8 peripheralNum)$/;"	f
+DEVICE_UARTInit	deviceTest.c	/^Uint32 DEVICE_UARTInit(Uint8 peripheralNum)$/;"	f
+DEVICE_UART_baseAddr	device_uart.c	/^const Uint32 DEVICE_UART_baseAddr[UART_PERIPHERAL_CNT] =$/;"	v
+DEVICE_UART_config	device_uart.c	/^const UART_ConfigObj DEVICE_UART_config = $/;"	v
+DEVICE_bootMode	device.c	/^DEVICE_BootMode DEVICE_bootMode( void )$/;"	f
+DEVICE_bootMode	deviceTest.c	/^DEVICE_BootMode DEVICE_bootMode( void )$/;"	f
+DEVICE_bootPeripheral	device.c	/^DEVICE_BootPeripheral DEVICE_bootPeripheral(void)$/;"	f
+DEVICE_bootPeripheral	deviceTest.c	/^DEVICE_BootPeripheral DEVICE_bootPeripheral(void)$/;"	f
+DEVICE_emifBusWidth	device.c	/^DEVICE_BusWidth DEVICE_emifBusWidth( void )$/;"	f
+DEVICE_emifBusWidth	deviceTest.c	/^DEVICE_BusWidth DEVICE_emifBusWidth( void )$/;"	f
+DEVICE_init	device.c	/^Uint32 DEVICE_init()$/;"	f
+DEVICE_init	deviceTest.c	/^Uint32 DEVICE_init()$/;"	f
+DEVICE_pinmuxControl	device.c	/^void DEVICE_pinmuxControl(Uint32 regOffset, Uint32 mask, Uint32 value)$/;"	f
+DEVICE_pinmuxControl	deviceTest.c	/^void DEVICE_pinmuxControl(Uint32 regOffset, Uint32 mask, Uint32 value)$/;"	f
+FLAG_FLGOFF	device.c	44;"	d	file:
+FLAG_FLGON	device.c	43;"	d	file:
+FLAG_PORRST	device.c	41;"	d	file:
+FLAG_WDTRST	device.c	42;"	d	file:
+GPINT_GPEN	device.c	36;"	d	file:
+GPINT_GPEN	deviceTest.c	35;"	d	file:
+GPTDAT_GPDIR	device.c	37;"	d	file:
+GPTDAT_GPDIR	deviceTest.c	36;"	d	file:
+LOCAL_porReset	device.c	/^static void LOCAL_porReset()$/;"	f	file:
+LOCAL_porReset	deviceTest.c	/^static void LOCAL_porReset()$/;"	f	file:
+LOCAL_vpssSyncReset	device.c	/^static void LOCAL_vpssSyncReset()$/;"	f	file:
+LOCAL_vpssSyncReset	deviceTest.c	/^static void LOCAL_vpssSyncReset()$/;"	f	file:
+PLL1_Div1	device.c	/^  static Uint32 PLL1_Div1     = 0x1B;            $/;"	v	file:
+PLL1_Div1	device.c	/^  static Uint32 PLL1_Div1     = 0xD;$/;"	v	file:
+PLL1_Div1	device.c	/^  static const Uint32 PLL1_Div1     = 0;    $/;"	v	file:
+PLL1_Div1	device.c	/^  static const Uint32 PLL1_Div1     = 0;    \/\/              = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div1	device.c	/^  static const Uint32 PLL1_Div1     = 0;    \/\/ ARM          = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div1	device.c	/^  static const Uint32 PLL1_Div1     = 0;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL1_Div2	device.c	/^  static Uint32 PLL1_Div2     = 1;            $/;"	v	file:
+PLL1_Div2	device.c	/^  static Uint32 PLL1_Div2     = 1;$/;"	v	file:
+PLL1_Div2	device.c	/^  static const Uint32 PLL1_Div2     = 1;    $/;"	v	file:
+PLL1_Div2	device.c	/^  static const Uint32 PLL1_Div2     = 1;    \/\/              = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div2	device.c	/^  static const Uint32 PLL1_Div2     = 1;    \/\/ ARM          = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div2	device.c	/^  static const Uint32 PLL1_Div2     = 1;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL1_Div2	deviceTest.c	/^  static const Uint32 PLL1_Div2     = 1;            $/;"	v	file:
+PLL1_Div2	deviceTest.c	/^  static const Uint32 PLL1_Div2     = 1;    $/;"	v	file:
+PLL1_Div2	deviceTest.c	/^  static const Uint32 PLL1_Div2     = 1;    \/\/              = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div2	deviceTest.c	/^  static const Uint32 PLL1_Div2     = 1;    \/\/ ARM          = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div2	deviceTest.c	/^  static const Uint32 PLL1_Div2     = 1;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL1_Div2	deviceTest.c	/^  static const Uint32 PLL1_Div2     = 1;$/;"	v	file:
+PLL1_Div3	device.c	/^  static Uint32 PLL1_Div3     = 1;    $/;"	v	file:
+PLL1_Div3	device.c	/^  static Uint32 PLL1_Div3     = 1;   $/;"	v	file:
+PLL1_Div3	device.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div3	device.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 486\/2   = 243 MHz$/;"	v	file:
+PLL1_Div3	device.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div3	device.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 594\/2   = 297 MHz$/;"	v	file:
+PLL1_Div3	deviceTest.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div3	deviceTest.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 486\/2   = 243 MHz$/;"	v	file:
+PLL1_Div3	deviceTest.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div3	deviceTest.c	/^  static const Uint32 PLL1_Div3     = 1;    \/\/ MJCP\/HDVICP  = 594\/2   = 297 MHz$/;"	v	file:
+PLL1_Div3	deviceTest.c	/^  static const Uint32 PLL1_Div3     = 1;   \/\/ MJCP\/HDVICP  = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div4	device.c	/^  static Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div4	device.c	/^  static Uint32 PLL1_Div4     = 3;   $/;"	v	file:
+PLL1_Div4	device.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 432\/4   = 108 MHz$/;"	v	file:
+PLL1_Div4	device.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 486\/4   = 121.5 MHz$/;"	v	file:
+PLL1_Div4	device.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div4	device.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 594\/4   = 148.5 MHz$/;"	v	file:
+PLL1_Div4	deviceTest.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 432\/4   = 108 MHz$/;"	v	file:
+PLL1_Div4	deviceTest.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 486\/4   = 121.5 MHz$/;"	v	file:
+PLL1_Div4	deviceTest.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div4	deviceTest.c	/^  static const Uint32 PLL1_Div4     = 3;    \/\/ EDMA         = 594\/4   = 148.5 MHz$/;"	v	file:
+PLL1_Div4	deviceTest.c	/^  static const Uint32 PLL1_Div4     = 3;   \/\/ EDMA         = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div5	device.c	/^  static Uint32 PLL1_Div5     = 1;    \/\/ VPSS         = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div5	device.c	/^  static Uint32 PLL1_Div5     = 1;   $/;"	v	file:
+PLL1_Div5	device.c	/^  static const Uint32 PLL1_Div5     = 1;    \/\/ VPSS         = 486\/2   = 243 MHz$/;"	v	file:
+PLL1_Div5	device.c	/^  static const Uint32 PLL1_Div5     = 1;    \/\/ VPSS         = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div5	device.c	/^  static const Uint32 PLL1_Div5     = 3;    \/\/ VPSS         = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div5	device.c	/^  static const Uint32 PLL1_Div5     = 3;    \/\/ VPSS         = 594\/4   = 148.5 MHz$/;"	v	file:
+PLL1_Div5	deviceTest.c	/^  static const Uint32 PLL1_Div5     = 1;    \/\/ VPSS         = 486\/2   = 243 MHz$/;"	v	file:
+PLL1_Div5	deviceTest.c	/^  static const Uint32 PLL1_Div5     = 1;    \/\/ VPSS         = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div5	deviceTest.c	/^  static const Uint32 PLL1_Div5     = 1;   \/\/ VPSS         = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div5	deviceTest.c	/^  static const Uint32 PLL1_Div5     = 3;    \/\/ VPSS         = 432\/2   = 216 MHz$/;"	v	file:
+PLL1_Div5	deviceTest.c	/^  static const Uint32 PLL1_Div5     = 3;    \/\/ VPSS         = 594\/4   = 148.5 MHz$/;"	v	file:
+PLL1_Div6	device.c	/^  static Uint32 PLL1_Div6     = 0xc;  \/\/ VENC         = 540\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	device.c	/^  static Uint32 PLL1_Div6     = 8;   $/;"	v	file:
+PLL1_Div6	device.c	/^  static const Uint32 PLL1_Div6     = 15;   \/\/ VENC         = 432\/16  = 27 MHz$/;"	v	file:
+PLL1_Div6	device.c	/^  static const Uint32 PLL1_Div6     = 17;   \/\/ VENC         = 486\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	device.c	/^  static const Uint32 PLL1_Div6     = 19;   \/\/ VENC         = 540\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	device.c	/^  static const Uint32 PLL1_Div6     = 21;   \/\/ VENC         = 594\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	deviceTest.c	/^  static const Uint32 PLL1_Div6     = 0xc;  \/\/ VENC         = 540\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	deviceTest.c	/^  static const Uint32 PLL1_Div6     = 15;   \/\/ VENC         = 432\/16  = 27 MHz$/;"	v	file:
+PLL1_Div6	deviceTest.c	/^  static const Uint32 PLL1_Div6     = 17;   \/\/ VENC         = 486\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	deviceTest.c	/^  static const Uint32 PLL1_Div6     = 19;   \/\/ VENC         = 540\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	deviceTest.c	/^  static const Uint32 PLL1_Div6     = 21;   \/\/ VENC         = 594\/18  = 27 MHz$/;"	v	file:
+PLL1_Div6	deviceTest.c	/^  static const Uint32 PLL1_Div6     = 8;   \/\/ VENC         = 540\/18  = 27 MHz$/;"	v	file:
+PLL1_Div7	device.c	/^  static Uint32 PLL1_Div7     = 1;    \/\/ DDR          = 540\/1   = 540 MHz ==> DDR270$/;"	v	file:
+PLL1_Div7	device.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/              = 432\/1   = 432 MHz$/;"	v	file:
+PLL1_Div7	device.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/              = 594\/1   = 594 MHz$/;"	v	file:
+PLL1_Div7	device.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/ DDR          = 432\/1   = 432 MHz ==> DDR216$/;"	v	file:
+PLL1_Div7	device.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/ DDR          = 486\/1   = 486 MHz ==> DDR243$/;"	v	file:
+PLL1_Div7	device.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/ DDR          = 540\/1   = 540 MHz ==> DDR270$/;"	v	file:
+PLL1_Div7	device.c	/^ static Uint32 PLL1_Div7      = 0; $/;"	v	file:
+PLL1_Div7	device.c	/^ static VUint32 PLL1_Div7      = 0; $/;"	v	file:
+PLL1_Div7	deviceTest.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/              = 432\/1   = 432 MHz$/;"	v	file:
+PLL1_Div7	deviceTest.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/              = 594\/1   = 594 MHz$/;"	v	file:
+PLL1_Div7	deviceTest.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/ DDR          = 432\/1   = 432 MHz ==> DDR216$/;"	v	file:
+PLL1_Div7	deviceTest.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/ DDR          = 486\/1   = 486 MHz ==> DDR243$/;"	v	file:
+PLL1_Div7	deviceTest.c	/^  static const Uint32 PLL1_Div7     = 0;    \/\/ DDR          = 540\/1   = 540 MHz ==> DDR270$/;"	v	file:
+PLL1_Div7	deviceTest.c	/^  static const Uint32 PLL1_Div7     = 0;   \/\/ DDR          = 540\/1   = 540 MHz ==> DDR270$/;"	v	file:
+PLL1_Div8	device.c	/^  static Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div8	device.c	/^  static Uint32 PLL1_Div8     = 6;  $/;"	v	file:
+PLL1_Div8	device.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 432\/4   = 108 MHz$/;"	v	file:
+PLL1_Div8	device.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 486\/4   = 121.5 MHz$/;"	v	file:
+PLL1_Div8	device.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div8	device.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 594\/4   = 148.5 MHz$/;"	v	file:
+PLL1_Div8	deviceTest.c	/^  static const Uint32 PLL1_Div8     = 13;  \/\/ SDMMC        = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div8	deviceTest.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 432\/4   = 108 MHz$/;"	v	file:
+PLL1_Div8	deviceTest.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 486\/4   = 121.5 MHz$/;"	v	file:
+PLL1_Div8	deviceTest.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 540\/4   = 135 MHz$/;"	v	file:
+PLL1_Div8	deviceTest.c	/^  static const Uint32 PLL1_Div8     = 3;    \/\/ SDMMC        = 594\/4   = 148.5 MHz$/;"	v	file:
+PLL1_Div9	device.c	/^  static Uint32 PLL1_Div9     = 0x1;    \/\/ CLKOUT       = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div9	device.c	/^  static Uint32 PLL1_Div9     = 0x1B;$/;"	v	file:
+PLL1_Div9	device.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 432\/2   = 216 MHz  $/;"	v	file:
+PLL1_Div9	device.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 486\/2   = 243 MHz  $/;"	v	file:
+PLL1_Div9	device.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 540\/2   = 270 MHz  $/;"	v	file:
+PLL1_Div9	device.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 594\/2   = 294 MHz  $/;"	v	file:
+PLL1_Div9	deviceTest.c	/^  static const Uint32 PLL1_Div9     = 0x1B;    \/\/ CLKOUT       = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div9	deviceTest.c	/^  static const Uint32 PLL1_Div9     = 0x1B;\/\/ CLKOUT       = 540\/2   = 270 MHz$/;"	v	file:
+PLL1_Div9	deviceTest.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 432\/2   = 216 MHz  $/;"	v	file:
+PLL1_Div9	deviceTest.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 486\/2   = 243 MHz  $/;"	v	file:
+PLL1_Div9	deviceTest.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 540\/2   = 270 MHz  $/;"	v	file:
+PLL1_Div9	deviceTest.c	/^  static const Uint32 PLL1_Div9     = 1;    \/\/ CLKOUT       = 594\/2   = 294 MHz  $/;"	v	file:
+PLL1_Mult	device.c	/^  static Uint32 PLL1_Mult     = 0x73;$/;"	v	file:
+PLL1_Mult	device.c	/^  static Uint32 PLL1_Mult     = 85;$/;"	v	file:
+PLL1_Mult	device.c	/^  static const Uint32 PLL1_Mult     = 44;$/;"	v	file:
+PLL1_Mult	device.c	/^  static const Uint32 PLL1_Mult     = 45;$/;"	v	file:
+PLL1_Mult	device.c	/^  static const Uint32 PLL1_Mult     = 81;$/;"	v	file:
+PLL1_Mult	device.c	/^  static const Uint32 PLL1_Mult     = 9;$/;"	v	file:
+PLL1_Mult	deviceTest.c	/^  static const Uint32 PLL1_Mult     = 0x73;$/;"	v	file:
+PLL1_Mult	deviceTest.c	/^  static const Uint32 PLL1_Mult     = 44;$/;"	v	file:
+PLL1_Mult	deviceTest.c	/^  static const Uint32 PLL1_Mult     = 45;$/;"	v	file:
+PLL1_Mult	deviceTest.c	/^  static const Uint32 PLL1_Mult     = 81;$/;"	v	file:
+PLL1_Mult	deviceTest.c	/^  static const Uint32 PLL1_Mult     = 85 ;$/;"	v	file:
+PLL1_Mult	deviceTest.c	/^  static const Uint32 PLL1_Mult     = 9;$/;"	v	file:
+PLL1_PreDiv	device.c	/^  static Uint32 PLL1_PreDiv   = 0x0f;  $/;"	v	file:
+PLL1_PreDiv	device.c	/^  static Uint32 PLL1_PreDiv   = 5;   $/;"	v	file:
+PLL1_PreDiv	device.c	/^  static const Uint32 PLL1_PreDiv   = 0;$/;"	v	file:
+PLL1_PreDiv	device.c	/^  static const Uint32 PLL1_PreDiv   = 3;$/;"	v	file:
+PLL1_PreDiv	device.c	/^  static const Uint32 PLL1_PreDiv   = 7;$/;"	v	file:
+PLL1_PreDiv	deviceTest.c	/^  static const Uint32 PLL1_PreDiv   = 0;$/;"	v	file:
+PLL1_PreDiv	deviceTest.c	/^  static const Uint32 PLL1_PreDiv   = 0x0f;  $/;"	v	file:
+PLL1_PreDiv	deviceTest.c	/^  static const Uint32 PLL1_PreDiv   = 3;$/;"	v	file:
+PLL1_PreDiv	deviceTest.c	/^  static const Uint32 PLL1_PreDiv   = 5;   $/;"	v	file:
+PLL1_PreDiv	deviceTest.c	/^  static const Uint32 PLL1_PreDiv   = 7;$/;"	v	file:
+PLL2_Div1	device.c	/^  static Uint32 PLL2_Div1     = 0x11;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL2_Div1	device.c	/^  static Uint32 PLL2_Div1     = 0x11; $/;"	v	file:
+PLL2_Div1	device.c	/^  static const Uint32 PLL2_Div1     = 0;    \/\/              = 344.064 = 344.064 MHz$/;"	v	file:
+PLL2_Div1	device.c	/^  static const Uint32 PLL2_Div1     = 0;    \/\/              = 552.96\/1   = 552.96 MHz   $/;"	v	file:
+PLL2_Div1	device.c	/^  static const Uint32 PLL2_Div1     = 0;    \/\/ ARM          = 270\/1   = 270 MHz$/;"	v	file:
+PLL2_Div1	device.c	/^  static const Uint32 PLL2_Div1     = 0;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL2_Div2	device.c	/^  static Uint32 PLL2_Div2     = 0x1;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL2_Div2	device.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/              = 344.064 = 344.064 MHz$/;"	v	file:
+PLL2_Div2	device.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/              = 552.96\/1   = 552.96 MHz   $/;"	v	file:
+PLL2_Div2	device.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/ ARM          = 270\/1   = 270 MHz$/;"	v	file:
+PLL2_Div2	device.c	/^  static const Uint32 PLL2_Div2     = 1;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL2_Div2	device.c	/^ static Uint32 PLL2_Div2    = 0;    $/;"	v	file:
+PLL2_Div2	device.c	/^ static VUint32 PLL2_Div2    = 0;    $/;"	v	file:
+PLL2_Div2	deviceTest.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/              = 344.064 = 344.064 MHz$/;"	v	file:
+PLL2_Div2	deviceTest.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/              = 552.96\/1   = 552.96 MHz   $/;"	v	file:
+PLL2_Div2	deviceTest.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/ ARM          = 270\/1   = 270 MHz$/;"	v	file:
+PLL2_Div2	deviceTest.c	/^  static const Uint32 PLL2_Div2     = 0;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL2_Div2	deviceTest.c	/^  static const Uint32 PLL2_Div2     = 1;    \/\/ ARM          = 594\/2   = 297 MHz$/;"	v	file:
+PLL2_Div3	device.c	/^  static Uint32 PLL2_Div3     = 1;    $/;"	v	file:
+PLL2_Div3	device.c	/^  static Uint32 PLL2_Div3     = 1;    \/\/              = 594\/1   = 594 MHz$/;"	v	file:
+PLL2_Div3	device.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/              = 270\/1   = 270 MHz$/;"	v	file:
+PLL2_Div3	device.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/              = 594\/1   = 594 MHz$/;"	v	file:
+PLL2_Div3	device.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/ DDR          = 344.064 = 344.064 MHz ==> DDR172.032$/;"	v	file:
+PLL2_Div3	device.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/ DDR          = 552.96\/2   = 552.96 MHz ==> DDR276.48$/;"	v	file:
+PLL2_Div3	deviceTest.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/              = 270\/1   = 270 MHz$/;"	v	file:
+PLL2_Div3	deviceTest.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/              = 594\/1   = 594 MHz$/;"	v	file:
+PLL2_Div3	deviceTest.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/ DDR          = 344.064 = 344.064 MHz ==> DDR172.032$/;"	v	file:
+PLL2_Div3	deviceTest.c	/^  static const Uint32 PLL2_Div3     = 0;    \/\/ DDR          = 552.96\/2   = 552.96 MHz ==> DDR276.48$/;"	v	file:
+PLL2_Div3	deviceTest.c	/^  static const Uint32 PLL2_Div3     = 1;    \/\/              = 594\/1   = 594 MHz$/;"	v	file:
+PLL2_Div4	device.c	/^  static Uint32 PLL2_Div4     = 0x14;    \/\/ Voice        = 594\/29  = 20.4872 MHz$/;"	v	file:
+PLL2_Div4	device.c	/^  static Uint32 PLL2_Div4     = 0x14; $/;"	v	file:
+PLL2_Div4	device.c	/^  static const Uint32 PLL2_Div4     = 28;   \/\/ Voice        = 594\/29  = 20.4872 MHz$/;"	v	file:
+PLL2_Div4	device.c	/^  static const Uint32 PLL2_Div4     = 5;    \/\/ Voice        = 270\/6   = 45 MHz$/;"	v	file:
+PLL2_Div4	device.c	/^  static const Uint32 PLL2_Div4     = 6;    \/\/ Voice        = 594\/29  = 20.4872 MHz$/;"	v	file:
+PLL2_Div4	device.c	/^  static const Uint32 PLL2_Div4     = 8;    \/\/              = 552.96\/9   = 61.44 MHz$/;"	v	file:
+PLL2_Div4	deviceTest.c	/^  static const Uint32 PLL2_Div4     = 0x14; \/\/ Voice        = 594\/29  = 20.4872 MHz$/;"	v	file:
+PLL2_Div4	deviceTest.c	/^  static const Uint32 PLL2_Div4     = 28;   \/\/ Voice        = 594\/29  = 20.4872 MHz$/;"	v	file:
+PLL2_Div4	deviceTest.c	/^  static const Uint32 PLL2_Div4     = 5;    \/\/ Voice        = 270\/6   = 45 MHz$/;"	v	file:
+PLL2_Div4	deviceTest.c	/^  static const Uint32 PLL2_Div4     = 6;    \/\/ Voice        = 594\/29  = 20.4872 MHz$/;"	v	file:
+PLL2_Div4	deviceTest.c	/^  static const Uint32 PLL2_Div4     = 8;    \/\/              = 552.96\/9   = 61.44 MHz$/;"	v	file:
+PLL2_Div5	device.c	/^  static Uint32 PLL2_Div5     = 0x0F;  \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	device.c	/^  static Uint32 PLL2_Div5     = 0x0f; $/;"	v	file:
+PLL2_Div5	device.c	/^  static const Uint32 PLL2_Div5     = 0;    \/\/              = 552.96\/1   = 552.96 MHz$/;"	v	file:
+PLL2_Div5	device.c	/^  static const Uint32 PLL2_Div5     = 0;    \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	device.c	/^  static const Uint32 PLL2_Div5     = 7;    \/\/ VideoHD      = 594\/8   = 74.25 MHz  $/;"	v	file:
+PLL2_Div5	device.c	/^  static const Uint32 PLL2_Div5     = 7;    \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	device.c	/^  static const Uint32 PLL2_Div5     = 9;    \/\/ VENC         = 270\/10  = 27 MHz$/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 0;    \/\/              = 552.96\/1   = 552.96 MHz$/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 0;    \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 0x0;  \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 0x0e; \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 7;    \/\/ VideoHD      = 594\/8   = 74.25 MHz  $/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 7;    \/\/ VideoHD      = 594\/8   = 74.25 MHz$/;"	v	file:
+PLL2_Div5	deviceTest.c	/^  static const Uint32 PLL2_Div5     = 9;    \/\/ VENC         = 270\/10  = 27 MHz$/;"	v	file:
+PLL2_Mult	device.c	/^  static Uint32 PLL2_Mult     = 0x12;$/;"	v	file:
+PLL2_Mult	device.c	/^  static Uint32 PLL2_Mult     = 0x9;$/;"	v	file:
+PLL2_Mult	device.c	/^  static const Uint32 PLL2_Mult     = 224;$/;"	v	file:
+PLL2_Mult	device.c	/^  static const Uint32 PLL2_Mult     = 256;$/;"	v	file:
+PLL2_Mult	device.c	/^  static const Uint32 PLL2_Mult     = 45;$/;"	v	file:
+PLL2_Mult	device.c	/^  static const Uint32 PLL2_Mult     = 99;$/;"	v	file:
+PLL2_Mult	deviceTest.c	/^  static const Uint32 PLL2_Mult     = 0x87;$/;"	v	file:
+PLL2_Mult	deviceTest.c	/^  static const Uint32 PLL2_Mult     = 0xE0;$/;"	v	file:
+PLL2_Mult	deviceTest.c	/^  static const Uint32 PLL2_Mult     = 224;$/;"	v	file:
+PLL2_Mult	deviceTest.c	/^  static const Uint32 PLL2_Mult     = 256;$/;"	v	file:
+PLL2_Mult	deviceTest.c	/^  static const Uint32 PLL2_Mult     = 45;$/;"	v	file:
+PLL2_Mult	deviceTest.c	/^  static const Uint32 PLL2_Mult     = 99;$/;"	v	file:
+PLL2_PreDiv	device.c	/^  static Uint32 PLL2_PreDiv   = 0x1;$/;"	v	file:
+PLL2_PreDiv	device.c	/^  static const Uint32 PLL2_PreDiv   = 24;$/;"	v	file:
+PLL2_PreDiv	device.c	/^  static const Uint32 PLL2_PreDiv   = 7;$/;"	v	file:
+PLL2_PreDiv	device.c	/^ static Uint32 PLL2_PreDiv  = 0x0;$/;"	v	file:
+PLL2_PreDiv	device.c	/^ static VUint32 PLL2_PreDiv  = 0x0;$/;"	v	file:
+PLL2_PreDiv	deviceTest.c	/^  static const Uint32 PLL2_PreDiv   = 0x0f;$/;"	v	file:
+PLL2_PreDiv	deviceTest.c	/^  static const Uint32 PLL2_PreDiv   = 0x18;$/;"	v	file:
+PLL2_PreDiv	deviceTest.c	/^  static const Uint32 PLL2_PreDiv   = 24;$/;"	v	file:
+PLL2_PreDiv	deviceTest.c	/^  static const Uint32 PLL2_PreDiv   = 7;$/;"	v	file:
+Program	device_name.cs	/^  partial class Program$/;"	c	namespace:TIBootAndFlash
+TIBootAndFlash	device_name.cs	/^namespace TIBootAndFlash$/;"	n
+TMPBUF	device.c	39;"	d	file:
+TMPSTATUS	device.c	40;"	d	file:
+WDT_FLAG_ON	device.c	/^void WDT_FLAG_ON()$/;"	f
+devString	device.c	/^  const char devString[] = "DM365_216";  \/\/ 19.2 MHz oscillator$/;"	v
+devString	device.c	/^  const char devString[] = "DM365_270";  \/\/ 24 MHz oscillator$/;"	v
+devString	device.c	/^  const char devString[] = "DM365_297";  \/\/ 24 MHz Oscillator$/;"	v
+devString	device.c	/^  const char devString[] = "DM365_297";  \/\/ 27 MHz Oscillator$/;"	v
+devString	device.c	/^  const char devString[] = "DM365_297"; \/\/ Default is DM365_297_DDR243$/;"	v
+devString	device.c	/^  const char devString[] = "DM365_297_OSC24";  \/\/ 24 MHz Oscillator$/;"	v
+devString	device.c	/^  const char devString[] = "DM365_432 DDR 340";  \/\/ 24 MHz Oscillator$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_216";  \/\/ 19.2 MHz oscillator$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_270";  \/\/ 24 MHz oscillator$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_297";  \/\/ 24 MHz Oscillator$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_297";  \/\/ 27 MHz Oscillator$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_297"; \/\/ Default is DM365_297_DDR243$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_297_OSC24";  \/\/ 24 MHz Oscillator$/;"	v
+devString	deviceTest.c	/^  const char devString[] = "DM365_432";  \/\/ 24 MHz Oscillator$/;"	v
+devString	device_name.cs	/^    public static String devString = "DM36x";$/;"	f	class:TIBootAndFlash.Program
+deviceTypes	device_name.cs	/^    public static String[] deviceTypes = { "DM365_297_DDR243", "DM365_270_DDR216", "DM365_216_DDR173", "DM365_297_DDR270", "DM365_297_DDR277" };$/;"	f	class:TIBootAndFlash.Program
+externalRAMStart	device_name.cs	/^    public static UInt32 externalRAMStart = 0x80000000;$/;"	f	class:TIBootAndFlash.Program
+flashTypes	device_name.cs	/^    public static String[] flashTypes = {"NAND", "NOR", "SDMMC", "SPI_MEM"};$/;"	f	class:TIBootAndFlash.Program
+hDEVICE_SPI_MEM_params	device_spi.c	/^SPI_MEM_ParamsHandle const hDEVICE_SPI_MEM_params = (SPI_MEM_ParamsHandle) &DEVICE_SPI_MEM_params;$/;"	v
+hDEVICE_SPI_config	device_spi.c	/^SPI_ConfigHandle const hDEVICE_SPI_config = (SPI_ConfigHandle) &DEVICE_SPI_config;$/;"	v
+hDEVICE_UART_config	device_uart.c	/^UART_ConfigHandle const hDEVICE_UART_config = (UART_ConfigHandle) &DEVICE_UART_config;$/;"	v

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="device">
+</Property><Property Name="Solution File" Value="F:\test\ccs\DM36x\device.sln">
+</Property><Property Name="Date" Value="Thursday, February 17, 2011">
+</Property><Property Name="Time" Value="12:15:09 PM">
+</Property></Properties><Event ErrorLevel="2" Project="F:\test\ccs\DM36x\device.mak" Source="device" Description="Cannot load the project due to a corrupt project file.">
+</Event><Event ErrorLevel="2" Project="device" Source="device.mak" Description="Project upgrade failed.">
+</Event><Event ErrorLevel="3" Project="device" Source="device.mak" Description="Not Converted">
+</Event></UpgradeLog>

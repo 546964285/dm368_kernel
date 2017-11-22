@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include
+END
+spi_mem.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/spi_mem.h
+END
+uart_irda.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/uart_irda.h
+END
+async_mem.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/async_mem.h
+END
+i2c_mem.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/i2c_mem.h
+END
+spi.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/spi.h
+END
+uart.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/uart.h
+END
+i2c.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/i2c.h
+END
+nor.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/nor.h
+END
+nand.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/nand.h
+END
+sdmmc_mem.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/sdmmc_mem.h
+END
+spi24.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/spi24.h
+END
+sdmmc.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/drivers/include/sdmmc.h
+END

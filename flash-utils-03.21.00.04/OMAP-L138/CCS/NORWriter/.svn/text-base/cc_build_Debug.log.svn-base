@@ -1,0 +1,32 @@
+-------------------------  NORWriter_ARM.pjt - Debug  -------------------------
+[debug.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../../../OMAP-L138/CCS/NORWriter/Debug.lkf" "debug.c"
+"debug.c", line 85: warning: variable "s" was declared but never referenced
+"debug.c", line 86: warning: variable "len" was declared but never referenced
+"debug.c", line 86: warning: variable "j" was declared but never referenced
+"debug.c", line 87: warning: variable "val" was declared but never referenced
+"debug.c", line 87: warning: variable "baseFactor" was declared but never referenced
+
+[async_mem.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../../../OMAP-L138/CCS/NORWriter/Debug.lkf" "async_mem.c"
+
+[nor.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../../../OMAP-L138/CCS/NORWriter/Debug.lkf" "nor.c"
+"nor.c", line 748: warning: function "LOCAL_IntelSetLock" was declared but never referenced
+
+[util.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../../OMAP-L138/CCS/NORWriter/Debug.lkf" "util.c"
+
+[device.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../../CCS/NORWriter/Debug.lkf" "device.c"
+"device.c", line 172: warning: variable "deviceOPP" was declared but never referenced
+"device.c", line 949: warning: function "LOCAL_getOPP" was declared but never referenced
+
+[device_async_mem.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../../CCS/NORWriter/Debug.lkf" "device_async_mem.c"
+
+[norwriter.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -g -fr"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/Debug" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/ccs/include" -i"F:/Omap-L138&DM36x/OMAP-L138/CCS/NORWriter/../../../Common/drivers/include" -d"_DEBUG" -d"SKIP_LOW_LEVEL_INIT" -me -mv5e --abi=eabi -@"../Debug.lkf" "norwriter.c"
+
+[Linking...] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -@"Debug.lkf"
+<Linking>
+"F:\\Omap-L138&DM36x\\OMAP-L138\\CCS\\NORWriter\\NORWriter_ARM.cmd", line 46: warning: 
+   symbol "NORStart" from file
+   "F:\\Omap-L138&DM36x\\OMAP-L138\\CCS\\NORWriter\\Debug\\norwriter.obj" being
+   redefined
+
+Build Complete,
+  0 Errors, 9 Warnings, 0 Remarks.

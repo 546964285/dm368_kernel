@@ -1,0 +1,39 @@
+These features are new in version 2.00 (released 2010-01-7):
+  * Now uses gcc compiler for ARM targets
+  * Builds UBL from GNU directory without need for CCS
+  * Added support for NAND flashing
+
+
+These features are new in version 2.10 (released 2010-01-12):
+  * Added support for NOR flashing
+  * Moved to only L2 memory for DSP boot devices
+
+
+These features are new in version 2.11 (released 2010-01-20):
+  * Fixed issue with status bar display
+
+
+These features are new in version 2.23 (released 2010-04-29):
+  * Added delay loop to fix issue with DSP boot devices
+
+
+These features are new in version 2.26 (released 2010-07-26):
+  * Fixed issue with delay by adding extra synchronization step
+  * Added support for boards that do no have pullup on UART_TX, by ignoring initial null characters
+  * Added support for internal AM1808 development board
+
+
+These features are new in version 2.27 (released 2010-08-03):
+  * Added additional device type
+  * Now uses gcc compiler for all tools built in package
+
+
+These features are new in version 2.28 (released 2010-08-25):
+  * Fixed AIS generation when input executable has multiple sections of the same name
+  * Converted AISExtra build to use ARM GCC instead of TI TMS470 tools
+  
+These features are new in version 2.29 (released 2010-09-29):
+  * Fixed issues related to compiling in Linux
+
+These features are new in version 2.30 (released 2010-11-19):
+  * Fixed compatibility issue with UBL from new PSP release

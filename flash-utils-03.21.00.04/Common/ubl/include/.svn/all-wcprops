@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include
+END
+spi_memboot.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/spi_memboot.h
+END
+i2c_memboot.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/i2c_memboot.h
+END
+uartboot.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/uartboot.h
+END
+norboot.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/norboot.h
+END
+ubl.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/ubl.h
+END
+nandboot.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/nandboot.h
+END
+sdmmcboot.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/ubl/include/sdmmcboot.h
+END

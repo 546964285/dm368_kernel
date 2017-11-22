@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl
+END
+ubl_nor_hexais.ini
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl/ubl_nor_hexais.ini
+END
+ubl_hexais.ini
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl/ubl_hexais.ini
+END
+ARM_ubl.lds
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl/ARM_ubl.lds
+END
+ARM_ubl.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl/ARM_ubl.cmd
+END
+DSP_ubl.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl/DSP_ubl.cmd
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/ubl/makefile
+END

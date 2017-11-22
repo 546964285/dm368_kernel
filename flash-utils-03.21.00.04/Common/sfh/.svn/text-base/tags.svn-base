@@ -1,0 +1,168 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AIS_OS	sfh_AIS_Util.cs	/^    private AisStatus AIS_OS(UInt32 command)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+AIS_POS	sfh_AIS_Util.cs	/^    private AisStatus AIS_POS(UInt32 command)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+AIS_Parser	sfh_AIS_Util.cs	/^    public AIS_Parser(AisHostType hostType, AisSecureType secType, LogFxnDelegate hostLogFxn, ReadFxnDelegate hostReadFxn, WriteFxnDelegate hostWriteFxn)$/;"	m	class:TI.AISLib.AIS_Parser
+AIS_Parser	sfh_AIS_Util.cs	/^  class AIS_Parser$/;"	c	namespace:TI.AISLib
+AIS_RCV_START	sfh_AIS_Util.cs	/^    private UInt32 AIS_RCV_START(Int32 bits)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+AIS_SWS	sfh_AIS_Util.cs	/^    private AisStatus AIS_SWS()$/;"	m	class:TI.AISLib.AIS_Parser	file:
+AIS_XMT_START	sfh_AIS_Util.cs	/^    private UInt32 AIS_XMT_START(Int32 bits)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+AIS_opcode2ack	sfh_AIS_Util.cs	/^    private UInt32 AIS_opcode2ack(UInt32 opcode)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+APPFileName	sfh.cs	/^    public String APPFileName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPFileName	sfh_ais.cs	/^    public String APPFileName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPLoadAddr	sfh.cs	/^    public UInt32 APPLoadAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPLoadAddr	sfh_ais.cs	/^    public UInt32 APPLoadAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPMagicFlag	sfh.cs	/^    public MagicFlags APPMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPMagicFlag	sfh_ais.cs	/^    public MagicFlags APPMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPMagicFlagLeg	sfh_ais.cs	/^    public MagicFlags APPMagicFlagLeg;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPStartAddr	sfh.cs	/^    public UInt32 APPStartAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+APPStartAddr	sfh_ais.cs	/^    public UInt32 APPStartAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+ARMUBLFileName	sfh_ais.cs	/^    public String ARMUBLFileName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+ARMUBLMagicFlag	sfh_ais.cs	/^    public MagicFlags ARMUBLMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+ARMUBLStartAddr	sfh_ais.cs	/^    public UInt32 ARMUBLStartAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+CMDMagicFlag	sfh.cs	/^    public MagicFlags CMDMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+CMDMagicFlag	sfh_ais.cs	/^    public MagicFlags CMDMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+DSPUBLFileName	sfh_ais.cs	/^    public String DSPUBLFileName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+DSPUBLMagicFlag	sfh_ais.cs	/^    public MagicFlags DSPUBLMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+DispHelp	sfh.cs	/^    private static void DispHelp()$/;"	m	class:TIBootAndFlash.Program	file:
+DispHelp	sfh_ais.cs	/^    private static void DispHelp()$/;"	m	class:TIBootAndFlash.Program	file:
+DisplayProgressBar	sfh_ais.cs	/^    private static void DisplayProgressBar(uint totalSize, int chunksize, string loadingText, string verifyingText, string finishedText)$/;"	m	class:TIBootAndFlash.Program	file:
+FlashType	sfh.cs	/^  public enum FlashType : uint$/;"	g	namespace:TIBootAndFlash
+FlashType	sfh_ais.cs	/^  public enum FlashType : uint$/;"	g	namespace:TIBootAndFlash
+I2C_MEM	sfh.cs	/^    I2C_MEM$/;"	e	enum:TIBootAndFlash.FlashType	file:
+I2C_MEM	sfh_ais.cs	/^    I2C_MEM$/;"	e	enum:TIBootAndFlash.FlashType	file:
+ImageHeader	sfh.cs	/^  struct ImageHeader$/;"	s	namespace:TIBootAndFlash
+ImageHeader	sfh_ais.cs	/^  struct ImageHeader$/;"	s	namespace:TIBootAndFlash
+LOCAL_UInt322b	sfh_AIS_Util.cs	/^    private Byte[] LOCAL_UInt322b(UInt32 ui)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_b2UInt32	sfh_AIS_Util.cs	/^    private UInt32 LOCAL_b2UInt32(Byte[] ba)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_bufRead	sfh_AIS_Util.cs	/^    private AisStatus LOCAL_bufRead(Byte[] buffer, Int32 index, Int32 Bytes, Int32 timeout)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_bufWrite	sfh_AIS_Util.cs	/^    private AisStatus LOCAL_bufWrite(Byte[] buffer, Int32 index, Int32 Bytes, Int32 timeout)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_delay	sfh_AIS_Util.cs	/^    private void LOCAL_delay(Int32 N)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_parseInt	sfh_AIS_Util.cs	/^    private UInt32 LOCAL_parseInt(Byte[] ais, ref Int32 cursor)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_parseSkip	sfh_AIS_Util.cs	/^    private void LOCAL_parseSkip(ref Int32 cursor, Int32 n)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LOCAL_roundUpTo	sfh_AIS_Util.cs	/^    private Int32 LOCAL_roundUpTo(Int32 num, Int32 mod)$/;"	m	class:TI.AISLib.AIS_Parser	file:
+LogFxnDelegate	sfh_AIS_Util.cs	/^  delegate void LogFxnDelegate(String line);$/;"	m	namespace:TI.AISLib
+MAGIC_NUMBER_INVALID	sfh.cs	/^    MAGIC_NUMBER_INVALID        = 0xFFFFFFFF,$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+MAGIC_NUMBER_INVALID	sfh_ais.cs	/^    MAGIC_NUMBER_INVALID    = 0xFFFFFFFF,$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+MAGIC_NUMBER_VALID	sfh.cs	/^    MAGIC_NUMBER_VALID          = 0xA1BCED00,$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+MagicFlags	sfh.cs	/^  public enum MagicFlags : uint$/;"	g	namespace:TIBootAndFlash
+MagicFlags	sfh_ais.cs	/^  public enum MagicFlags : uint$/;"	g	namespace:TIBootAndFlash
+Main	sfh.cs	/^    static Int32 Main(String[] args)$/;"	m	class:TIBootAndFlash.Program	file:
+Main	sfh_ais.cs	/^    static Int32 Main(String[] args)$/;"	m	class:TIBootAndFlash.Program	file:
+MySP	sfh.cs	/^    public static SerialPort MySP;$/;"	f	class:TIBootAndFlash.Program
+MySP	sfh_ais.cs	/^    public static SerialPort MySP;$/;"	f	class:TIBootAndFlash.Program
+NAND	sfh.cs	/^    NAND,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+NAND	sfh_ais.cs	/^    NAND,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+NONE	sfh.cs	/^    NONE,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+NONE	sfh_ais.cs	/^    NONE,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+NOR	sfh.cs	/^    NOR,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+NOR	sfh_ais.cs	/^    NOR,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+ONENAND	sfh.cs	/^    ONENAND,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+ONENAND	sfh_ais.cs	/^    ONENAND,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+ParseCmdLine	sfh.cs	/^    public static ProgramCmdParams ParseCmdLine(String[] args)$/;"	m	class:TIBootAndFlash.Program
+ParseCmdLine	sfh_ais.cs	/^    public static ProgramCmdParams ParseCmdLine(String[] args)$/;"	m	class:TIBootAndFlash.Program
+Program	sfh.cs	/^  partial class Program$/;"	c	namespace:TIBootAndFlash
+Program	sfh_ais.cs	/^  partial class Program$/;"	c	namespace:TIBootAndFlash
+ProgramCmdParams	sfh.cs	/^  struct ProgramCmdParams$/;"	s	namespace:TIBootAndFlash
+ProgramCmdParams	sfh_ais.cs	/^  struct ProgramCmdParams$/;"	s	namespace:TIBootAndFlash
+ReadFxnDelegate	sfh_AIS_Util.cs	/^  delegate AisStatus ReadFxnDelegate(Byte[] rcvBuf, Int32 index, Int32 rcvSize, Int32 timeout);$/;"	m	namespace:TI.AISLib
+SD_MMC	sfh.cs	/^    SD_MMC,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+SD_MMC	sfh_ais.cs	/^    SD_MMC,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+SPI_MEM	sfh.cs	/^    SPI_MEM,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+SPI_MEM	sfh_ais.cs	/^    SPI_MEM,$/;"	e	enum:TIBootAndFlash.FlashType	file:
+SerialPortBaudRate	sfh.cs	/^    public Int32 SerialPortBaudRate;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+SerialPortBaudRate	sfh_ais.cs	/^    public Int32 SerialPortBaudRate;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+SerialPortName	sfh.cs	/^    public String SerialPortName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+SerialPortName	sfh_ais.cs	/^    public String SerialPortName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+TI.AISLib	sfh_AIS_Util.cs	/^namespace TI.AISLib$/;"	n
+TIBootAndFlash	sfh.cs	/^namespace TIBootAndFlash$/;"	n
+TIBootAndFlash	sfh_ais.cs	/^namespace TIBootAndFlash$/;"	n
+TransmitAPP	sfh.cs	/^    private static Boolean TransmitAPP()$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitAPP	sfh_ais.cs	/^    private static Boolean TransmitAPP()$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitErase	sfh.cs	/^    private static Boolean TransmitErase()$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitErase	sfh_ais.cs	/^    private static Boolean TransmitErase()$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitImage	sfh.cs	/^    private static Boolean TransmitImage(Byte[] imageData, ImageHeader ackHeader)$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitImage	sfh_ais.cs	/^    private static Boolean TransmitImage(Byte[] imageData, ImageHeader ackHeader)$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitSFT	sfh.cs	/^    private static void TransmitSFT(Byte[] imageData, UARTBOOT_Header ackHeader)$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitSFT	sfh_ais.cs	/^    private static void TransmitSFT(Byte[] imageData)$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitTwoUBLsandAPP	sfh_ais.cs	/^    private static Boolean TransmitTwoUBLsandAPP()$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitUBLandAPP	sfh.cs	/^    private static Boolean TransmitUBLandAPP()$/;"	m	class:TIBootAndFlash.Program	file:
+TransmitUBLandAPP	sfh_ais.cs	/^    private static Boolean TransmitUBLandAPP()$/;"	m	class:TIBootAndFlash.Program	file:
+UARTBOOT_Header	sfh.cs	/^  struct UARTBOOT_Header$/;"	s	namespace:TIBootAndFlash
+UBLFileName	sfh.cs	/^    public String UBLFileName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLFileName	sfh_ais.cs	/^    public String UBLFileName;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLFlashType	sfh.cs	/^    public FlashType UBLFlashType;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLFlashType	sfh_ais.cs	/^    public FlashType UBLFlashType;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLMagicFlag	sfh.cs	/^    public MagicFlags UBLMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLMagicFlag	sfh_ais.cs	/^    public MagicFlags UBLMagicFlag;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLStartAddr	sfh.cs	/^    public UInt32 UBLStartAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBLStartAddr	sfh_ais.cs	/^    public UInt32 UBLStartAddr;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+UBL_MAGIC_BINARY_BOOT	sfh.cs	/^    UBL_MAGIC_BINARY_BOOT       = 0x55424CBB,             \/* App image is a bootable binary *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_BINARY_BOOT	sfh_ais.cs	/^    UBL_MAGIC_BINARY_BOOT   = 0x55424CBB,             \/* App image is a bootable binary *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_BINARY_BOOT_LEG	sfh_ais.cs	/^    UBL_MAGIC_BINARY_BOOT_LEG = 0xA1ACED00,             \/* Legacy Magic Number: App image is a bootable binary *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_DMA	sfh.cs	/^    UBL_MAGIC_DMA               = 0xA1BCED11,	            \/* DMA boot mode *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_DMA_IC	sfh.cs	/^    UBL_MAGIC_DMA_IC            = 0xA1BCED44,	            \/* DMA + ICache boot mode *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_DMA_IC_FAST	sfh.cs	/^    UBL_MAGIC_DMA_IC_FAST       = 0xA1BCED55,	            \/* DMA + ICache + Fast EMIF boot mode *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_ERASE	sfh.cs	/^    UBL_MAGIC_ERASE         = 0x55424C20,       \/* Download via UART & globally erase the flash *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_ERASE	sfh_ais.cs	/^    UBL_MAGIC_ERASE         = 0x55424C20,       \/* Download via UART & globally erase the flash *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FAST	sfh.cs	/^    UBL_MAGIC_FAST              = 0xA1BCED33,	            \/* Fast EMIF boot mode *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FINISHED	sfh.cs	/^    UBL_MAGIC_FINISHED          = 0x55424CFF$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FINISHED	sfh_ais.cs	/^    UBL_MAGIC_FINISHED      = 0x55424CFF$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FLASH	sfh.cs	/^    UBL_MAGIC_FLASH         = 0x55424C10,       \/* Download via UART & Burn UBL and application image *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FLASH	sfh_ais.cs	/^    UBL_MAGIC_FLASH         = 0x55424C10,       \/* Download via UART & Burn UBL and application image *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FLASH_DSP	sfh_ais.cs	/^	UBL_MAGIC_FLASH_DSP	    = 0x55424C30,		\/* Download via UART & Burn DSP and ARM UBL, and application image *\/    $/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FLASH_NO_UBL	sfh.cs	/^    UBL_MAGIC_FLASH_NO_UBL  = 0x55424C00,       \/* Download via UART & Burn single boot image only *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_FLASH_NO_UBL	sfh_ais.cs	/^    UBL_MAGIC_FLASH_NO_UBL  = 0x55424C00,       \/* Download via UART & Burn single boot image only *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_IC	sfh.cs	/^    UBL_MAGIC_IC                = 0xA1BCED22,	            \/* I Cache boot mode *\/$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UBL_MAGIC_SAFE	sfh.cs	/^    UBL_MAGIC_SAFE              = 0xA1BCED00,$/;"	e	enum:TIBootAndFlash.MagicFlags	file:
+UTIL_log	sfh_ais.cs	/^    public static void UTIL_log(String text)$/;"	m	class:TIBootAndFlash.Program
+UTIL_uartRead	sfh_ais.cs	/^    private static AisStatus UTIL_uartRead(byte[] rcvBuf, int index, int rcvSize, int timeout)$/;"	m	class:TIBootAndFlash.Program	file:
+UTIL_uartWrite	sfh_ais.cs	/^    private static AisStatus UTIL_uartWrite(byte[] xmtBuf, int index, int xmtSize, int timeout)$/;"	m	class:TIBootAndFlash.Program	file:
+WorkerThreadStart	sfh.cs	/^    public static void WorkerThreadStart()$/;"	m	class:TIBootAndFlash.Program
+WorkerThreadStart	sfh_ais.cs	/^    public static void WorkerThreadStart()$/;"	m	class:TIBootAndFlash.Program
+WriteFxnDelegate	sfh_AIS_Util.cs	/^  delegate AisStatus WriteFxnDelegate(Byte[] xmtBuf, Int32 index, Int32 xmtSize, Int32 timeout);$/;"	m	namespace:TI.AISLib
+boot	sfh_AIS_Util.cs	/^    public AisStatus boot(Byte[] AIS_Contents)$/;"	m	class:TI.AISLib.AIS_Parser
+byteCnt	sfh.cs	/^    public UInt32 byteCnt;$/;"	f	struct:TIBootAndFlash.ImageHeader
+byteCnt	sfh.cs	/^    public UInt32 byteCnt;$/;"	f	struct:TIBootAndFlash.UARTBOOT_Header
+byteCnt	sfh_ais.cs	/^    public UInt32 byteCnt;$/;"	f	struct:TIBootAndFlash.ImageHeader
+cmdParams	sfh.cs	/^    public static ProgramCmdParams cmdParams;$/;"	f	class:TIBootAndFlash.Program
+cmdParams	sfh_ais.cs	/^    public static ProgramCmdParams cmdParams;$/;"	f	class:TIBootAndFlash.Program
+cmdString	sfh.cs	/^    public static String cmdString;$/;"	f	class:TIBootAndFlash.Program
+cmdString	sfh_ais.cs	/^    public static String cmdString;$/;"	f	class:TIBootAndFlash.Program
+crcVal	sfh.cs	/^    public UInt32 crcVal;$/;"	f	struct:TIBootAndFlash.UARTBOOT_Header
+deviceType	sfh.cs	/^    public String deviceType;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+deviceType	sfh_ais.cs	/^    public String deviceType;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+flashType	sfh.cs	/^    public String flashType;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+flashType	sfh_ais.cs	/^    public String flashType;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+hostDevice	sfh_AIS_Util.cs	/^    private AisHostType hostDevice;$/;"	f	class:TI.AISLib.AIS_Parser	file:
+ioBits	sfh_AIS_Util.cs	/^    public Int32 posN, ioBits, ioDelay, opcodeDelay, ioTimeout;$/;"	f	class:TI.AISLib.AIS_Parser
+ioDelay	sfh_AIS_Util.cs	/^    public Int32 posN, ioBits, ioDelay, opcodeDelay, ioTimeout;$/;"	f	class:TI.AISLib.AIS_Parser
+ioTimeout	sfh_AIS_Util.cs	/^    public Int32 posN, ioBits, ioDelay, opcodeDelay, ioTimeout;$/;"	f	class:TI.AISLib.AIS_Parser
+loadAddr	sfh.cs	/^    public UInt32 loadAddr;$/;"	f	struct:TIBootAndFlash.ImageHeader
+loadAddr	sfh.cs	/^    public UInt32 loadAddr;$/;"	f	struct:TIBootAndFlash.UARTBOOT_Header
+loadAddr	sfh_ais.cs	/^    public UInt32 loadAddr;$/;"	f	struct:TIBootAndFlash.ImageHeader
+logFxn	sfh_AIS_Util.cs	/^    private LogFxnDelegate logFxn;$/;"	f	class:TI.AISLib.AIS_Parser	file:
+magicNum	sfh.cs	/^    public UInt32 magicNum;      $/;"	f	struct:TIBootAndFlash.ImageHeader
+magicNum	sfh_ais.cs	/^    public UInt32 magicNum;      $/;"	f	struct:TIBootAndFlash.ImageHeader
+opcodeDelay	sfh_AIS_Util.cs	/^    public Int32 posN, ioBits, ioDelay, opcodeDelay, ioTimeout;$/;"	f	class:TI.AISLib.AIS_Parser
+posN	sfh_AIS_Util.cs	/^    public Int32 posN, ioBits, ioDelay, opcodeDelay, ioTimeout;$/;"	f	class:TI.AISLib.AIS_Parser
+readFxn	sfh_AIS_Util.cs	/^    private ReadFxnDelegate readFxn;$/;"	f	class:TI.AISLib.AIS_Parser	file:
+secureType	sfh_AIS_Util.cs	/^    private AisSecureType secureType;$/;"	f	class:TI.AISLib.AIS_Parser	file:
+sigSize	sfh_AIS_Util.cs	/^    private Int32 sigSize;$/;"	f	class:TI.AISLib.AIS_Parser	file:
+startAddr	sfh.cs	/^    public UInt32 startAddr;$/;"	f	struct:TIBootAndFlash.ImageHeader
+startAddr	sfh.cs	/^    public UInt32 startAddr;$/;"	f	struct:TIBootAndFlash.UARTBOOT_Header
+startAddr	sfh_ais.cs	/^    public UInt32 startAddr;$/;"	f	struct:TIBootAndFlash.ImageHeader
+valid	sfh.cs	/^    public Boolean valid;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+valid	sfh_ais.cs	/^    public Boolean valid;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+verbose	sfh.cs	/^    public Boolean verbose;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+verbose	sfh_ais.cs	/^    public Boolean verbose;$/;"	f	struct:TIBootAndFlash.ProgramCmdParams
+waitBOOTME	sfh_AIS_Util.cs	/^    public bool waitBOOTME;$/;"	f	class:TI.AISLib.AIS_Parser
+workerThread	sfh.cs	/^    public static Thread workerThread;$/;"	f	class:TIBootAndFlash.Program
+workerThread	sfh_ais.cs	/^    public static Thread workerThread;$/;"	f	class:TIBootAndFlash.Program
+workerThreadSucceeded	sfh.cs	/^    public static Boolean workerThreadSucceeded = false;$/;"	f	class:TIBootAndFlash.Program
+workerThreadSucceeded	sfh_ais.cs	/^    public static Boolean workerThreadSucceeded = false;$/;"	f	class:TIBootAndFlash.Program
+writeFxn	sfh_AIS_Util.cs	/^    private WriteFxnDelegate writeFxn;$/;"	f	class:TI.AISLib.AIS_Parser	file:

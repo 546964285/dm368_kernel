@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138
+END
+test
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/test
+END
+Software_Manifest.doc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/Software_Manifest.doc
+END
+device.mak
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/device.mak
+END
+changelog
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/changelog
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/makefile
+END

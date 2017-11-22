@@ -1,0 +1,37 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="F:\FinalTest\ccs\DM36x\CCS\UBL\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="Linker"
+Tool="XDC"
+Config="Debug"
+
+[Source Files]
+Source="..\..\..\Common\arch\arm926ejs\src\boot.c"
+Source="..\..\..\Common\arch\arm926ejs\src\selfcopy.c"
+Source="..\..\..\Common\drivers\src\async_mem.c"
+Source="..\..\..\Common\drivers\src\nand.c"
+Source="..\..\..\Common\drivers\src\uart.c"
+Source="..\..\..\Common\gnu\src\debug.c"
+Source="..\..\..\Common\src\util.c"
+Source="..\..\..\Common\ubl\src\nandboot.c"
+Source="..\..\..\Common\ubl\src\ubl.c"
+Source="..\..\Common\src\device.c"
+Source="..\..\Common\src\device_async_mem.c"
+Source="..\..\Common\src\device_nand.c"
+Source="..\..\Common\src\device_uart.c"
+Source="UBL.cmd"
+
+["Debug" Settings]
+FinalBuildCmd=hex470.exe $(Proj_dir)\ubl2bin.cmd -o=$(Proj_dir)\UBL_NAND\ubl_DM36x_NAND.bin $(Proj_dir)\NAND\UBL_DM36x_NAND.out;Run=Always
+
+["Compiler" Settings: "Debug"]
+Options= -o3 -fr"$(Proj_dir)\NAND" -fs"$(Proj_dir)\NAND" -i"$(Proj_dir)\include" -i"$(Proj_dir)\..\..\..\Common\arch\arm926ejs\include" -i"$(Proj_dir)\..\..\..\Common\ubl\include" -i"$(Proj_dir)\..\..\..\Common\gnu\include" -i"$(Proj_dir)\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\drivers\include" -me -mv5e --abi=eabi --symdebug:none --define="UBL_NAND" --cmd_file="$(Proj_dir)\devtype.txt"
+
+["Linker" Settings: "Debug"]
+Options=--abi=eabi -q -f0xFF -m"$(Proj_dir)\NAND\UBL_NAND.map" -o"$(Proj_dir)\NAND\UBL_DM36x_NAND.out" -x --retain="*(.selfcopy)"
+

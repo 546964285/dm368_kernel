@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/AISUtils/AISextra/src
+END
+ARM_AISExtra.lds
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/AISUtils/AISextra/src/ARM_AISExtra.lds
+END
+aisextra.c
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/AISUtils/AISextra/src/aisextra.c
+END
+DSP_AISExtra.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/AISUtils/AISextra/src/DSP_AISExtra.cmd
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/AISUtils/AISextra/src/makefile
+END

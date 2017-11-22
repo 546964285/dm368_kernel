@@ -1,0 +1,51 @@
+-------------------------  UBL_SDMMC.pjt - BOOT_SDMMC  -------------------------
+[boot.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "boot.c"
+"boot.c", line 91: warning: this assembly directive potentially unsafe inside a function
+
+[selfcopy.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "selfcopy.c"
+"selfcopy.c", line 103: warning: this assembly directive potentially unsafe inside a function
+"selfcopy.c", line 105: warning: this assembly directive potentially unsafe inside a function
+"selfcopy.c", line 107: warning: this assembly directive potentially unsafe inside a function
+"selfcopy.c", line 109: warning: this assembly directive potentially unsafe inside a function
+"selfcopy.c", line 111: warning: this assembly directive potentially unsafe inside a function
+
+[sdmmc.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "sdmmc.c"
+"sdmmc.c", line 80: warning: variable "rca" was declared but never referenced
+"sdmmc.c", line 783: warning: variable "status" was set but never used
+
+[uart.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "uart.c"
+
+[debug.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "debug.c"
+
+[util.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "util.c"
+
+[sdmmcboot.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "sdmmcboot.c"
+"sdmmcboot.c", line 96: warning: variable "magicNumFound" was set but never used
+
+[uartboot.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "uartboot.c"
+"uartboot.c", line 77: warning: variable "ackHeader" was declared but never referenced
+"uartboot.c", line 78: warning: variable "bootCmd" was declared but never referenced
+"uartboot.c", line 123: warning: function "LOCAL_recvCommand" was declared but never referenced
+"uartboot.c", line 138: warning: function "LOCAL_recvHeaderAndData" was declared but never referenced
+
+[ubl.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../../DM36x/CCS/UBL/BOOT_SDMMC.lkf" "ubl.c"
+
+[device.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../CCS/UBL/BOOT_SDMMC.lkf" "device.c"
+"device.c", line 1026: warning: function "LOCAL_porReset" was declared but never referenced
+
+[device_sdmmc.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../CCS/UBL/BOOT_SDMMC.lkf" "device_sdmmc.c"
+
+[device_uart.c] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -o3 -fr"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -fs"F:/TEMP/ccs/DM36x/CCS/UBL/SDMMC" -i"F:/TEMP/ccs/DM36x/CCS/UBL/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/arch/arm926ejs/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/ubl/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/gnu/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/include" -i"F:/TEMP/ccs/DM36x/CCS/UBL/../../../Common/drivers/include" -d"UBL_SDMMC" -d"DM365" -me -mv5e --abi=eabi --symdebug:none -@"../../CCS/UBL/BOOT_SDMMC.lkf" "device_uart.c"
+
+[Linking...] "C:\Program Files\TMS470 Code Generation Tools 4.5.1\bin\cl470" -@"BOOT_SDMMC.lkf"
+<Linking>
+
+hex470.exe F:\TEMP\ccs\DM36x\CCS\UBL\ubl2bin_mmcsd.cmd -o=F:\TEMP\ccs\DM36x\CCS\UBL\UBL_DM36x_SDMMC.bin F:\TEMP\ccs\DM36x\CCS\UBL\SDMMC\UBL_DM36x_SDMMC.out
+Translating to Binary format...
+   "F:\TEMP\ccs\DM36x\CCS\UBL\SDMMC\UBL_DM36x_SDMMC.out"   ==> .selfcopy
+   "F:\TEMP\ccs\DM36x\CCS\UBL\SDMMC\UBL_DM36x_SDMMC.out"   ==> .text
+   "F:\TEMP\ccs\DM36x\CCS\UBL\SDMMC\UBL_DM36x_SDMMC.out"   ==> .data
+
+Build Complete,
+  0 Errors, 14 Warnings, 0 Remarks.
+  Please view the build output for errors and warnings for any custom steps.

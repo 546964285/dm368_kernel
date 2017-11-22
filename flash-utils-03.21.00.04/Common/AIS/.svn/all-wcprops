@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS
+END
+AIS.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS/AIS.cs
+END
+SecureAISGen.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS/SecureAISGen.cs
+END
+SecureHexAIS_version.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS/SecureHexAIS_version.cs
+END
+AISGen.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS/AISGen.cs
+END
+HexAIS_version.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS/HexAIS_version.cs
+END
+AISParse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/cat_flashutils/!svn/ver/795/branches/03.21.00.03/Common/AIS/AISParse.cs
+END

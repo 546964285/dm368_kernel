@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BINARY	build/makefile	/^BINARY:=..\/$(EXECUTABLE).bin$/;"	m
+CC	build/makefile	/^CC=$(CROSSCOMPILE)gcc$/;"	m
+CFLAGS	build/makefile	/^CFLAGS:=-c -Os -Wall -ffreestanding -DUBL_$(FLASHTYPE) -D$(DEVICETYPE) -I..\/..\/..\/Common\/include -I..\/..\/..\/..\/Common\/include -I..\/..\/..\/..\/Common\/arch\/arm926ejs\/include -I..\/..\/..\/..\/Common\/$(PROGRAM)\/include -I..\/..\/..\/..\/Common\/drivers\/include -I..\/..\/..\/..\/Common\/gnu\/include $/;"	m
+ENTRYPOINT	build/makefile	/^ENTRYPOINT=boot$/;"	m
+EXECUTABLE	build/makefile	/^EXECUTABLE:=$(PROGRAM)_$(DEVICETYPE)_$(FLASHTYPE)$/;"	m
+LDFLAGS	build/makefile	/^LDFLAGS=-Wl,-T$(LINKERSCRIPT) -nostdlib $/;"	m
+LINKERSCRIPT	build/makefile	/^LINKERSCRIPT=..\/$(PROGRAM).lds$/;"	m
+OBJCOPY	build/makefile	/^OBJCOPY=$(CROSSCOMPILE)objcopy$/;"	m
+OBJCOPYFLAGS	build/makefile	/^OBJCOPYFLAGS = --gap-fill 0xFF -S$/;"	m
+OBJDUMP	build/makefile	/^OBJDUMP=$(CROSSCOMPILE)objdump$/;"	m
+OBJECTS	build/makefile	/^OBJECTS:=$(patsubst %.c,%_$(DEVICETYPE)_$(FLASHTYPE).o,$(SOURCES))$/;"	m
+PROGRAM	build/makefile	/^PROGRAM:=ubl$/;"	m
+SOURCES	build/makefile	/^SOURCES=$(PROGRAM).c boot.c selfcopy.c uartboot.c device.c debug.c uart.c device_uart.c util.c$/;"	m

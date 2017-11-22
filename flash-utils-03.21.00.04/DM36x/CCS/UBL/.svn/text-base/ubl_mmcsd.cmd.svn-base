@@ -1,0 +1,81 @@
+-e boot
+
+IRAMStart  = 0x00000000;
+IRAMSize   = 0x00008000;
+DRAMStart  = 0x00010000;
+DRAMSize   = 0x00008000;
+
+ASYNC_MEM_START    = 0x02000000;
+
+INTERNAL_RAM_START = 0x00010000;
+INTERNAL_RAM_SIZE  = 0x00008000;
+
+STACK_START = INTERNAL_RAM_START + INTERNAL_RAM_SIZE;
+
+__selfcopysrc  = ASYNC_MEM_START;
+__selfcopydest = INTERNAL_RAM_START + 0x00000020;
+__selfcopysrcend = DRAMStart + DRAMSize;
+
+MEMORY
+{
+  ARM_I_IVT       (RX)  : origin = 0x00000000   length = 0x00000020
+
+  UBL_I_SELFCOPY  (RX)  : origin = 0x00000020   length = 0x000000E0
+  UBL_I_TEXT      (RX)  : origin = 0x00000100   length = 0x00004300
+  UBL_I_DATA      (RWX) : origin = 0x00004400   length = 0x00000400
+
+  UBL_D_SELFCOPY  (RWX)  : origin = 0x00010020   length = 0x000000E0
+  UBL_D_TEXT      (RWX)  : origin = 0x00010100   length = 0x00004300
+  UBL_D_DATA      (RWX)  : origin = 0x00014400   length = 0x00000400
+
+  UBL_F_SELFCOPY  (RX)  : origin = 0x02000000   length = 0x000000E0
+  UBL_F_TEXT      (R)   : origin = 0x020000E0   length = 0x00004300
+  UBL_F_DATA      (R)   : origin = 0x020043E0   length = 0x00000400
+
+  UBL_BSS         (RW)  : origin = 0x00014800   length = 0x00000400
+  UBL_STACK       (RW)  : origin = 0x00014C00   length = 0x00000400
+  UBL_DRAM        (RWX) : origin = 0x80000000   length = 0x10000000
+}
+
+SECTIONS
+{
+  
+  .selfcopy 
+  {
+    *(.selfcopy)
+    . = align(4);
+  } > UBL_I_SELFCOPY
+  
+  .text 
+  {
+    *(.boot) 
+    . = align(4);
+    *(.text)
+    . = align(4);
+  }   >  UBL_I_TEXT
+
+  .data 
+  {
+    *(.const)
+    . += 4; /* dummy hole creation so load_start and load_size resolve correctly */
+    . = align(4);
+  } > UBL_I_DATA
+
+  .bss :
+  {
+    *(.bss)
+    . = align(4);
+  } > UBL_BSS
+  
+  .ddr_mem :
+  {
+    . += 0x10000000;
+  } run = UBL_DRAM, type=DSECT, RUN_START(EXTERNAL_RAM_START), RUN_END(EXTERNAL_RAM_END), SIZE(EXTERNAL_RAM_SIZE)
+  
+  .stack :
+  {
+    .+=0x0400;
+  } run = UBL_STACK, type=DSECT, SIZE(STACK_SIZE)
+   
+}
+

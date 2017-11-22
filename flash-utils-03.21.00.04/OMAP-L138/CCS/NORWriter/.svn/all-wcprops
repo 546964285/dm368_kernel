@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter
+END
+Debug.lkf
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/Debug.lkf
+END
+NORWriter_ARM.paf2
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/NORWriter_ARM.paf2
+END
+NORWriter_DSP.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/NORWriter_DSP.cmd
+END
+NORWriter_ARM.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/NORWriter_ARM.pjt
+END
+NORWriter_ARM.sbl
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/NORWriter_ARM.sbl
+END
+cc_build_Debug.log
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/cc_build_Debug.log
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/readme.txt
+END
+NORWriter_ARM.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/NORWriter_ARM.cmd
+END
+NORWriter_DSP.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/NORWriter_DSP.pjt
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/NORWriter/makefile
+END

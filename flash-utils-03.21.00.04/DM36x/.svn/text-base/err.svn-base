@@ -1,0 +1,377 @@
+make[2]: timake: Command not found
+make[2]: *** [all] Error 127
+make[2]: timake: Command not found
+make[2]: *** [all] Error 127
+make[2]: timake: Command not found
+make[2]: *** [all] Error 127
+make[2]: timake: Command not found
+make[2]: *** [all] Error 127
+make[2]: timake: Command not found
+make[2]: *** [all] Error 127
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+/bin/sh: line 4: timake: command not found
+mv: cannot stat `UBL.bin': No such file or directory
+make[2]: *** [all] Error 1
+make[1]: *** [all] Error 2
+genecc_reedsolomon.module(117,16): warning CS0219: The variable `extension' is assigned but its value is never used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/sft/src/uartboot.c:121: warning: 'hSpiReadBuf' defined but not used
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/nor.c:749: warning: 'LOCAL_IntelSetLock' defined but not used
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'
+../../../../Common/ubl/src/uartboot.c: In function 'UARTBOOT_copy':
+../../../../Common/ubl/src/uartboot.c:78: warning: unused variable 'bootCmd'
+../../../../Common/ubl/src/uartboot.c:77: warning: unused variable 'ackHeader'
+../../../../Common/ubl/src/uartboot.c: At top level:
+../../../../Common/ubl/src/uartboot.c:124: warning: 'LOCAL_recvCommand' defined but not used
+../../../../Common/ubl/src/uartboot.c:139: warning: 'LOCAL_recvHeaderAndData' defined but not used
+../../../Common/src/device.c:247: warning: this decimal constant is unsigned only in ISO C90
+../../../Common/src/device.c: In function 'DEVICE_init':
+../../../Common/src/device.c:352: warning: unused variable 'temp'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_open':
+../../../../Common/drivers/src/spi_mem.c:82: warning: unused variable 'spiCfg'
+../../../../Common/drivers/src/spi_mem.c:80: warning: unused variable 'flag'
+../../../../Common/drivers/src/spi_mem.c: In function 'SPI_MEM_eraseBytes':
+../../../../Common/drivers/src/spi_mem.c:441: warning: implicit declaration of function 'DEBUG_printString'

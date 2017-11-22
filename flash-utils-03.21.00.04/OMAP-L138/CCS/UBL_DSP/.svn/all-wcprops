@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP
+END
+ubl2bin.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/ubl2bin.cmd
+END
+UBL.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/UBL.cmd
+END
+UBL_SPI_MEM.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/UBL_SPI_MEM.pjt
+END
+UBL_NOR.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/UBL_NOR.pjt
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/makefile
+END
+UBL_NAND.pjt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/UBL_NAND.pjt
+END
+devtype.txt
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/CCS/UBL_DSP/devtype.txt
+END

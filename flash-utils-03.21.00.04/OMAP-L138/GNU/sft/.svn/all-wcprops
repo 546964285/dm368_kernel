@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/sft
+END
+DSP_sft.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/sft/DSP_sft.cmd
+END
+sft_hexais.ini
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/sft/sft_hexais.ini
+END
+ARM_sft.lds
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/sft/ARM_sft.lds
+END
+ARM_sft.cmd
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/sft/ARM_sft.cmd
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cat_flashutils/!svn/ver/797/branches/03.21.00.03/OMAP-L138/GNU/sft/makefile
+END

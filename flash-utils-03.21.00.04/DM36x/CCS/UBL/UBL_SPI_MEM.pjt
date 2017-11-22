@@ -1,0 +1,36 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\pristine\trunk\DM36x\CCS\UBL\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="Linker"
+Tool="XDC"
+Config="Debug"
+
+[Source Files]
+Source="..\..\..\Common\arch\arm926ejs\src\boot.c"
+Source="..\..\..\Common\arch\arm926ejs\src\selfcopy.c"
+Source="..\..\..\Common\drivers\src\spi.c"
+Source="..\..\..\Common\drivers\src\spi_mem.c"
+Source="..\..\..\Common\drivers\src\uart.c"
+Source="..\..\..\Common\gnu\src\debug.c"
+Source="..\..\..\Common\src\util.c"
+Source="..\..\..\Common\ubl\src\spi_memboot.c"
+Source="..\..\..\Common\ubl\src\ubl.c"
+Source="..\..\Common\src\device.c"
+Source="..\..\Common\src\device_spi.c"
+Source="..\..\Common\src\device_uart.c"
+Source="UBL.cmd"
+
+["Debug" Settings]
+FinalBuildCmd=hex470.exe $(Proj_dir)\ubl2bin.cmd -o=$(Proj_dir)\UBL.bin $(Proj_dir)\SPI_MEM\UBL_SPI_MEM.out;Run=Always
+
+["Compiler" Settings: "Debug"]
+Options=-o3 -fr"$(Proj_dir)\SPI_MEM" -fs"$(Proj_dir)\SPI_MEM" -i"$(Proj_dir)\include" -i"$(Proj_dir)\..\..\..\Common\arch\arm926ejs\include" -i"$(Proj_dir)\..\..\..\Common\ubl\include" -i"$(Proj_dir)\..\..\..\Common\gnu\include" -i"$(Proj_dir)\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\include" -i"$(Proj_dir)\..\..\..\Common\drivers\include" -me -mv5e --abi=eabi --symdebug:none --define="UBL_SPI_MEM" --cmd_file="$(Proj_dir)\devtype.txt"
+
+["Linker" Settings: "Debug"]
+Options=--abi=eabi -q -f0xFF -m"$(Proj_dir)\SPI_MEM\UBL_SPI_MEM.map" -o"$(Proj_dir)\SPI_MEM\UBL_SPI_MEM.out" -x --retain="*(.selfcopy)"
+
