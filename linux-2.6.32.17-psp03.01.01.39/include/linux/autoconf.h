@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32-17-ridgerun
- * Fri Aug 11 15:16:01 2017
+ * Wed Nov 22 09:39:05 2017
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_USB_MUSB_HDRC 1
@@ -298,6 +298,7 @@
 #define CONFIG_FONT_8x16 1
 #define CONFIG_BASE_FULL 1
 #define CONFIG_DAVINCI_WATCHDOG 1
+#define CONFIG_KEYBOARD_DAVINCI 1
 #define CONFIG_CRC_CCITT 1
 #define CONFIG_IP_MULTICAST 1
 #define CONFIG_MTD_BLOCK 1

@@ -491,12 +491,13 @@ static const struct mux_config dm365_pins[] = {
 #ifdef CONFIG_DAVINCI_MUX
 MUX_CFG(DM365,	MMCSD0,		0,   24,     1,	  0,	 false)
 
-MUX_CFG(DM365,	SD1_CLK,	0,   16,    3,	  1,	 false)
-MUX_CFG(DM365,	SD1_CMD,	4,   30,    3,	  1,	 false)
-MUX_CFG(DM365,	SD1_DATA3,	4,   28,    3,	  1,	 false)
-MUX_CFG(DM365,	SD1_DATA2,	4,   26,    3,	  1,	 false)
-MUX_CFG(DM365,	SD1_DATA1,	4,   24,    3,	  1,	 false)
-MUX_CFG(DM365,	SD1_DATA0,	4,   22,    3,	  1,	 false)
+//MUX_CFG(DM365,	SD1_CLK,	0,   16,    3,	  1,	 false)
+//MUX_CFG(DM365,	SD1_CMD,	4,   30,    3,	  1,	 false)
+//MUX_CFG(DM365,	SD1_DATA3,	4,   28,    3,	  1,	 false)
+//MUX_CFG(DM365,	SD1_DATA2,	4,   26,    3,	  1,	 false)
+//MUX_CFG(DM365,	SD1_DATA1,	4,   24,    3,	  1,	 false)
+//MUX_CFG(DM365,	SD1_DATA0,	4,   22,    3,	  1,	 false)
+MUX_CFG(DM365,  GPIO38,		4,   22,    3,	  0,	 false)
 
 MUX_CFG(DM365,	I2C_SDA,	3,   23,    3,	  2,	 false)
 MUX_CFG(DM365,	I2C_SCL,	3,   21,    3,	  2,	 false)
@@ -585,10 +586,10 @@ MUX_CFG(DM365,	SPI4_SDENA0,	4,   20,    3,    1,	 false)
 MUX_CFG(DM365,	SPI4_SDENA1,	4,   16,    3,    2,	 false)
 
 MUX_CFG(DM365,	GPIO20,		3,   21,    3,    0,	 false)
-MUX_CFG(DM365,	GPIO23,	    3,   26,    3,    0,	 false)
+MUX_CFG(DM365,	GPIO23,	    3,   26,    3,    0,	 false) // for backlight
 MUX_CFG(DM365,	GPIO33,		4,   12,    3,	  0,	 false)
 MUX_CFG(DM365,	GPIO40,		4,   26,    3,	  0,	 false)
-MUX_CFG(DM365,	GPIO66,		2,   0,     3,	  0,	 false)
+//MUX_CFG(DM365,	GPIO66,		2,   0,     3,	  0,	 false) // usbhost DRV_VBUS out control changed to GIO39
 MUX_CFG(DM365,	GPIO80,		1,   20,    3,	  1,	 false)
 MUX_CFG(DM365,	GPIO82,		1,   17,    1,    1,     false)
 MUX_CFG(DM365,	VCLK,		1,   22,    1,    0,     false)

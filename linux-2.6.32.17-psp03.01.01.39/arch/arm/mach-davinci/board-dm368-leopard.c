@@ -81,6 +81,44 @@ static struct davinci_i2c_platform_data i2c_pdata = {
 	.scl_pin        = 20,
 };
 
+
+static int dm365evm_keyscan_enable(struct device *dev)
+{
+	return davinci_cfg_reg(DM365_KEYSCAN);
+}
+
+static unsigned short dm365evm_keymap[] = {
+	KEY_KP2,
+	KEY_LEFT,
+	KEY_EXIT,
+	KEY_DOWN,
+	KEY_ENTER,
+	KEY_UP,
+	KEY_KP1,
+	KEY_RIGHT,
+	KEY_MENU,
+	KEY_RECORD,
+	KEY_REWIND,
+	KEY_KPMINUS,
+	KEY_STOP,
+	KEY_FASTFORWARD,
+	KEY_KPPLUS,
+	KEY_PLAYPAUSE,
+	0
+};
+
+static struct davinci_ks_platform_data dm365evm_ks_data = {
+	.device_enable	= dm365evm_keyscan_enable,
+	.keymap		= dm365evm_keymap,
+	.keymapsize	= ARRAY_SIZE(dm365evm_keymap),
+	.rep		= 1,
+	/* Scan period = strobe + interval */
+	.strobe		= 0x5,
+	.interval	= 0x2,
+	.matrix_type	= DAVINCI_KEYSCAN_MATRIX_4X4,
+};
+
+
 #if defined(CONFIG_SOC_CAMERA_MT9P031) || defined(CONFIG_SOC_CAMERA_MT9P031_MODULE)
 /* Input available at the mt9p031 */
 static struct v4l2_input mt9p031_inputs[] = {
@@ -312,26 +350,26 @@ static void dm368leopard_emac_configure(void)
 	davinci_cfg_reg(DM365_INT_EMAC_MISCPULSE);
 }
 
-static void dm368leopard_mmc_configure(void)
-{
-	/*
-	 * MMC/SD pins are multiplexed with GPIO and EMIF
-	 * Further details are available at the DM365 ARM
-	 * Subsystem Users Guide(sprufg5.pdf) pages 118, 128 - 131
-	 */
-	davinci_cfg_reg(DM365_SD1_CLK);
-	davinci_cfg_reg(DM365_SD1_CMD);
-	davinci_cfg_reg(DM365_SD1_DATA3);
-	davinci_cfg_reg(DM365_SD1_DATA2);
-	davinci_cfg_reg(DM365_SD1_DATA1);
-	davinci_cfg_reg(DM365_SD1_DATA0);
-}
+//static void dm368leopard_mmc_configure(void)
+//{
+//	/*
+//	 * MMC/SD pins are multiplexed with GPIO and EMIF
+//	 * Further details are available at the DM365 ARM
+//	 * Subsystem Users Guide(sprufg5.pdf) pages 118, 128 - 131
+//	 */
+//	davinci_cfg_reg(DM365_SD1_CLK);
+//	davinci_cfg_reg(DM365_SD1_CMD);
+//	davinci_cfg_reg(DM365_SD1_DATA3);
+//	davinci_cfg_reg(DM365_SD1_DATA2);
+//	davinci_cfg_reg(DM365_SD1_DATA1);
+//	davinci_cfg_reg(DM365_SD1_DATA0);
+//}
 
 static void dm368leopard_usb_configure(void)
 {
-	davinci_cfg_reg(DM365_GPIO66);
-	gpio_request(66, "usb");
-	gpio_direction_output(66, 0);
+	davinci_cfg_reg(DM365_GPIO38);
+	gpio_request(38, "usb");
+	gpio_direction_output(38, 0);
 	setup_usb(500, 8);
 }
 
@@ -505,7 +543,7 @@ static __init void dm368_leopard_init(void)
 
 	dm368leopard_emac_configure();
 	dm368leopard_usb_configure();
-	dm368leopard_mmc_configure();
+	//dm368leopard_mmc_configure(); // sd1 cancelled
 	dm368leopard_prgb_out_configure();
 
 	davinci_setup_mmc(0, &dm368leopard_mmc_config);
@@ -517,6 +555,7 @@ static __init void dm368_leopard_init(void)
 	dm365_init_vc(&dm368_leopard_snd_data);
 #endif
 	dm365_init_rtc();
+	dm365_init_ks(&dm365evm_ks_data); //add keyboard
 
 	platform_add_devices(dm368_leopard_devices,
 		ARRAY_SIZE(dm368_leopard_devices));
