@@ -69,6 +69,9 @@ static struct i2c_board_info i2c_info[] = {
 	{
 		I2C_BOARD_INFO("tlv320aic3x", 0x18),
 	},
+    {
+		I2C_BOARD_INFO("pcf8563", 0x51),
+	},
 	{
 		I2C_BOARD_INFO("ths7303", 0x2c),
 	}
