@@ -113,21 +113,20 @@ static struct logicpd_encoder_config logicpd_encoder_configuration = {
 				       .hsync_len = 42,
 				       .vsync_len = 10,
 				       .flags = 0},	/* hsync +ve, vsync -ve */
-		      .standards[4] = {	/* This is programmed by the user application. We just save
-					   the received timing information */
-				       .name = VID_ENC_STD_NON_STANDARD,
-				       .std = 0,
+		      .standards[4] = {
+				       .name = VID_ENC_STD_LCD_AOHUA,
+				       .std = 1,
 				       .if_type = VID_ENC_IF_PRGB,
 				       .interlaced = 0,
-				       .xres = 0,
-				       .yres = 0,
-				       .fps = {0, 0},
-				       .left_margin = 0,
-				       .right_margin = 0,
-				       .upper_margin = 0,
-				       .lower_margin = 0,
-				       .hsync_len = 0,
-				       .vsync_len = 0,
+				       .xres = 480,
+				       .yres = 640,
+				       .fps = {60, 1},
+				       .left_margin = 20,
+				       .right_margin = 10,
+				       .upper_margin = 80,
+				       .lower_margin = 40,
+				       .hsync_len = 30,
+				       .vsync_len = 40,
 				       .flags = 0},
 		      },
 };
