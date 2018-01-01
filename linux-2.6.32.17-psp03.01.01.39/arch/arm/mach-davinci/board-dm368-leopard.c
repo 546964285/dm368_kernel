@@ -75,7 +75,7 @@ static struct i2c_board_info i2c_info[] = {
 };
 
 static struct davinci_i2c_platform_data i2c_pdata = {
-	.bus_freq	= 200	/* kHz */,
+	.bus_freq	= 100	/* kHz */,
 	.bus_delay	= 0	/* usec */,
 	.sda_pin        = 21,
 	.scl_pin        = 20,

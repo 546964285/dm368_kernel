@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32-17-ridgerun
- * Wed Nov 22 11:24:53 2017
+ * Fri Dec 29 16:18:43 2017
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_USB_MUSB_HDRC 1
