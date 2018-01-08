@@ -1,8 +1,8 @@
-/* This file is auto generated, version 4 */
+/* This file is auto generated, version 5 */
 /*  PREEMPT */
 #define UTS_MACHINE "arm"
-#define UTS_VERSION "#4 PREEMPT Mon Jan 1 22:10:07 CST 2018"
-#define LINUX_COMPILE_TIME "22:10:07"
+#define UTS_VERSION "#5 PREEMPT Mon Jan 8 14:12:16 CST 2018"
+#define LINUX_COMPILE_TIME "14:12:16"
 #define LINUX_COMPILE_BY "andy"
 #define LINUX_COMPILE_HOST "debian-dell"
 #define LINUX_COMPILE_DOMAIN "debian-dell"

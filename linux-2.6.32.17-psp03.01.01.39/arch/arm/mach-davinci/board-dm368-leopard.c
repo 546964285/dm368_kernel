@@ -91,16 +91,16 @@ static int dm365evm_keyscan_enable(struct device *dev)
 }
 
 static unsigned short dm365evm_keymap[] = {
-	KEY_KP2,
-	KEY_LEFT,
+	KEY_ENTER,//KEY_KP2,//key1
+	KEY_RIGHT,//KEY_LEFT,//key4
 	KEY_EXIT,
 	KEY_DOWN,
-	KEY_ENTER,
-	KEY_UP,
+	KEY_M,//KEY_ENTER,//key2
+	KEY_T,//KEY_UP,//key5
 	KEY_KP1,
-	KEY_RIGHT,
-	KEY_MENU,
-	KEY_RECORD,
+	KEY_MENU,//KEY_RIGHT,
+	KEY_LEFT,//KEY_MENU,//key3
+	KEY_P,//KEY_RECORD,//key6
 	KEY_REWIND,
 	KEY_KPMINUS,
 	KEY_STOP,
