@@ -97,7 +97,7 @@ static unsigned short dm365evm_keymap[] = {
 	KEY_DOWN,
 	KEY_M,//KEY_ENTER,//key2
 	KEY_T,//KEY_UP,//key5
-	KEY_KP1,
+	KEY_C,//KEY_KP1,// capture
 	KEY_MENU,//KEY_RIGHT,
 	KEY_LEFT,//KEY_MENU,//key3
 	KEY_P,//KEY_RECORD,//key6
