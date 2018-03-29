@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32-17-ridgerun
- * Mon Jan  1 22:10:05 2018
+ * Fri Mar 16 09:48:31 2018
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_USB_MUSB_HDRC 1
@@ -169,6 +169,7 @@
 #define CONFIG_CRYPTO_RNG2 1
 #define CONFIG_ENC_MNGR_MAX_CHANNELS 1
 #define CONFIG_MEDIA_TUNER_TEA5761 1
+#define CONFIG_STM32_MODULE 1
 #define CONFIG_LBDAF 1
 #define CONFIG_MODVERSIONS 1
 #define CONFIG_SYSCTL_SYSCALL 1

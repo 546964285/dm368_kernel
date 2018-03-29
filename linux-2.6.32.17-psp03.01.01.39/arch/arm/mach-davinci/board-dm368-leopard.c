@@ -74,6 +74,9 @@ static struct i2c_board_info i2c_info[] = {
 	},
 	{
 		I2C_BOARD_INFO("ths7303", 0x2c),
+	},
+    {
+		I2C_BOARD_INFO("stm32", 0x55),
 	}
 };
 
